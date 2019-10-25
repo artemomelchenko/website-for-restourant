@@ -3,6 +3,7 @@
 namespace common\models;
 
 use Yii;
+use yii\web\UploadedFile;
 
 /**
  * This is the model class for table "gallery".
@@ -53,5 +54,33 @@ class Gallery extends \yii\db\ActiveRecord
     public function getPages()
     {
         return $this->hasOne(Pages::className(), ['id' => 'pages_id']);
+    }
+
+    public function getImg(){
+        $image = UploadedFile::getInstance($this, 'img');
+//            VarDumper::dump($image,10,1);
+        if (!is_null($image)) {
+            $ext = end((explode(".", $image->name)));
+            $avatar = Yii::$app->security->generateRandomString() . ".{$ext}";
+            Yii::$app->params['uploadPath'] = Yii::getAlias('@frontend') . '/web/img/' . $avatar;
+            $path = Yii::$app->params['uploadPath'];
+            $image->saveAs($path);
+            $this->img = $avatar;
+        }
+    }
+    public function getUpdate($id)
+    {
+        $old_img = self::findOne($id)->img;
+        $image = UploadedFile::getInstance($this, 'img');
+        if (is_null($image)){
+            $this->img = $old_img;
+        }else{
+            $ext = end((explode(".", $image->name)));
+            $avatar = Yii::$app->security->generateRandomString().".{$ext}";
+            Yii::$app->params['uploadPath'] = Yii::getAlias('@frontend') . '/web/img/' . $avatar;
+            $path = Yii::$app->params['uploadPath'];
+            $image->saveAs($path);
+            $this->img = $avatar;
+        }
     }
 }

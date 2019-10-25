@@ -2,19 +2,19 @@
 
 namespace backend\controllers;
 
+use common\models\Category;
+use common\models\CategorySearch;
 use Yii;
-use common\models\Slider;
-use common\models\SliderSearch;
-use yii\helpers\VarDumper;
+use common\models\Menu;
+use common\models\MenuSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-use yii\web\UploadedFile;
 
 /**
- * SliderController implements the CRUD actions for Slider model.
+ * MenuController implements the CRUD actions for Menu model.
  */
-class SliderController extends Controller
+class MenuController extends Controller
 {
     /**
      * {@inheritdoc}
@@ -32,12 +32,12 @@ class SliderController extends Controller
     }
 
     /**
-     * Lists all Slider models.
+     * Lists all Menu models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new SliderSearch();
+        $searchModel = new MenuSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -47,30 +47,43 @@ class SliderController extends Controller
     }
 
     /**
-     * Displays a single Slider model.
+     * Displays a single Menu model.
      * @param integer $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
     public function actionView($id)
-    {
+    {       $category = Category::findOne($id);
         return $this->render('view', [
-            'model' => $this->findModel($id),
+            'category' => $category
+        ]);
+    }
+
+    public function actionMenu($id)
+    {
+        $searchModel = new CategorySearch();
+        $dataProvider = $searchModel->searches(Yii::$app->request->queryParams, $id);
+//        VarDumper::dump($dataProvider,10,1);
+        return $this->render('menu', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+            'id' => $id
         ]);
     }
 
     /**
-     * Creates a new Slider model.
+     * Creates a new Menu model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new Slider();
+        $model = new Category();
+
         $post = Yii::$app->request->post();
         if ($model->load($post)) {
-            $model->getFiles1();
-            $model->getFiles2();
+
+            $model->getImg();
 
             if ($model->save()) {
 
@@ -84,7 +97,7 @@ class SliderController extends Controller
     }
 
     /**
-     * Updates an existing Slider model.
+     * Updates an existing Menu model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -93,21 +106,18 @@ class SliderController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
-        $post = Yii::$app->request->post();
-        if ($model->load($post)) {
-            $model->getUpdate1($id);
-            $model->getUpdate2($id);
-            if ($model->save()) {
-                return $this->redirect(['view', 'id' => $model->id]);
-            }
+
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect(['view', 'id' => $model->id]);
         }
+
         return $this->render('update', [
             'model' => $model,
         ]);
     }
 
     /**
-     * Deletes an existing Slider model.
+     * Deletes an existing Menu model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -121,15 +131,15 @@ class SliderController extends Controller
     }
 
     /**
-     * Finds the Slider model based on its primary key value.
+     * Finds the Menu model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Slider the loaded model
+     * @return Menu the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Slider::findOne($id)) !== null) {
+        if (($model = Menu::findOne($id)) !== null) {
             return $model;
         }
 

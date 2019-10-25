@@ -67,11 +67,9 @@ class Slider extends \yii\db\ActiveRecord
     {
         return $this->hasOne(Pages::className(), ['id' => 'pages_id']);
     }
-
-    public function  getFiles1()
-    {
+    public function getFiles1(){
         $image = UploadedFile::getInstance($this, 'main_img');
-            VarDumper::dump($image,10,1);
+//            VarDumper::dump($image,10,1);
         if (!is_null($image)) {
             $ext = end((explode(".", $image->name)));
             $avatar = Yii::$app->security->generateRandomString() . ".{$ext}";
@@ -80,15 +78,44 @@ class Slider extends \yii\db\ActiveRecord
             $image->saveAs($path);
             $this->main_img = $avatar;
         }
-
     }
-    public function getFiles2()
-    {
+    public function getFiles2(){
         $image = UploadedFile::getInstance($this, 'background_img');
 //            VarDumper::dump($image,10,1);
         if (!is_null($image)) {
             $ext = end((explode(".", $image->name)));
             $avatar = Yii::$app->security->generateRandomString() . ".{$ext}";
+            Yii::$app->params['uploadPath'] = Yii::getAlias('@frontend') . '/web/img/' . $avatar;
+            $path = Yii::$app->params['uploadPath'];
+            $image->saveAs($path);
+            $this->background_img = $avatar;
+        }
+    }
+    public function getUpdate1($id)
+    {
+        $old_img = self::findOne($id)->main_img;
+//        VarDumper::dump($old_img,10,1);
+        $image = UploadedFile::getInstance($this, 'main_img');
+        if (is_null($image)){
+            $this->main_img = $old_img;
+        }else{
+            $ext = end((explode(".", $image->name)));
+            $avatar = Yii::$app->security->generateRandomString().".{$ext}";
+            Yii::$app->params['uploadPath'] = Yii::getAlias('@frontend') . '/web/img/' . $avatar;
+            $path = Yii::$app->params['uploadPath'];
+            $image->saveAs($path);
+            $this->main_img = $avatar;
+        }
+    }
+    public function getUpdate2($id)
+    {
+        $old_img = self::findOne($id)->background_img;
+        $image = UploadedFile::getInstance($this, 'background_img');
+        if (is_null($image)){
+            $this->background_img = $old_img;
+        }else{
+            $ext = end((explode(".", $image->name)));
+            $avatar = Yii::$app->security->generateRandomString().".{$ext}";
             Yii::$app->params['uploadPath'] = Yii::getAlias('@frontend') . '/web/img/' . $avatar;
             $path = Yii::$app->params['uploadPath'];
             $image->saveAs($path);

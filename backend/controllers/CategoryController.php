@@ -3,18 +3,16 @@
 namespace backend\controllers;
 
 use Yii;
-use common\models\Slider;
-use common\models\SliderSearch;
-use yii\helpers\VarDumper;
+use common\models\Category;
+use common\models\CategorySearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-use yii\web\UploadedFile;
 
 /**
- * SliderController implements the CRUD actions for Slider model.
+ * CategoryController implements the CRUD actions for Category model.
  */
-class SliderController extends Controller
+class CategoryController extends Controller
 {
     /**
      * {@inheritdoc}
@@ -32,12 +30,12 @@ class SliderController extends Controller
     }
 
     /**
-     * Lists all Slider models.
+     * Lists all Category models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new SliderSearch();
+        $searchModel = new CategorySearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -47,7 +45,7 @@ class SliderController extends Controller
     }
 
     /**
-     * Displays a single Slider model.
+     * Displays a single Category model.
      * @param integer $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
@@ -60,17 +58,18 @@ class SliderController extends Controller
     }
 
     /**
-     * Creates a new Slider model.
+     * Creates a new Category model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new Slider();
+        $model = new Category();
+
         $post = Yii::$app->request->post();
         if ($model->load($post)) {
-            $model->getFiles1();
-            $model->getFiles2();
+
+            $model->getImg();
 
             if ($model->save()) {
 
@@ -84,7 +83,7 @@ class SliderController extends Controller
     }
 
     /**
-     * Updates an existing Slider model.
+     * Updates an existing Category model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -93,21 +92,18 @@ class SliderController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
-        $post = Yii::$app->request->post();
-        if ($model->load($post)) {
-            $model->getUpdate1($id);
-            $model->getUpdate2($id);
-            if ($model->save()) {
-                return $this->redirect(['view', 'id' => $model->id]);
-            }
+
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect(['view', 'id' => $model->id]);
         }
+
         return $this->render('update', [
             'model' => $model,
         ]);
     }
 
     /**
-     * Deletes an existing Slider model.
+     * Deletes an existing Category model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -121,15 +117,15 @@ class SliderController extends Controller
     }
 
     /**
-     * Finds the Slider model based on its primary key value.
+     * Finds the Category model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Slider the loaded model
+     * @return Category the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Slider::findOne($id)) !== null) {
+        if (($model = Category::findOne($id)) !== null) {
             return $model;
         }
 

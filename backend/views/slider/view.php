@@ -35,8 +35,26 @@ $this->params['breadcrumbs'][] = $this->title;
             'text',
             'button_text',
             'button_link',
-            'main_img',
-            'background_img',
+            [
+                'label' => 'Картинка головна',
+                'format' => 'raw',
+                'value' => function ($data) {
+                    return Html::img(  '/img/'.$data->main_img, [
+                        'alt' => 'Картинка',
+                        'style' => 'width:150px;'
+                    ]);
+                },
+            ],
+            [
+                'label' => 'Картинка заднього фону',
+                'format' => 'raw',
+                'value' => function ($data) {
+                    return Html::img(  '/img/'.$data->background_img,[
+                        'alt' => 'Картинка',
+                        'style' => 'width:150px;'
+                    ]);
+                },
+            ],
             'pages_id',
         ],
     ]) ?>

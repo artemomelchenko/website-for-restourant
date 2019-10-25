@@ -47,7 +47,7 @@
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a href="/admin/menu-category" class="nav-link <?= Yii::$app->controller->id == 'menu-category' ? 'active' : '' ?>">
+                    <a href="/admin/menu" class="nav-link <?= Yii::$app->controller->id == 'menu-category' ? 'active' : '' ?>">
                         <i class="fas fa-tools"></i>
                         <p>
                             Меню
