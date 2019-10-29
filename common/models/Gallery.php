@@ -58,7 +58,6 @@ class Gallery extends \yii\db\ActiveRecord
 
     public function getImg(){
         $image = UploadedFile::getInstance($this, 'img');
-//            VarDumper::dump($image,10,1);
         if (!is_null($image)) {
             $ext = end((explode(".", $image->name)));
             $avatar = Yii::$app->security->generateRandomString() . ".{$ext}";

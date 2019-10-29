@@ -5,6 +5,7 @@ namespace backend\controllers;
 use Yii;
 use common\models\Slider;
 use common\models\SliderSearch;
+use yii\filters\AccessControl;
 use yii\helpers\VarDumper;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -22,12 +23,23 @@ class SliderController extends Controller
     public function behaviors()
     {
         return [
+            'access' => [
+                'class' => AccessControl::className(),
+                'rules' => [
+                    [
+                        'actions' => ['view', 'index', 'create', 'update', 'delete'],
+                        'allow' => true,
+                        'roles' => ['@'],
+                    ],
+
+                ],
+            ],
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
-                    'delete' => ['POST'],
-                ],
-            ],
+                    'delete' => ['POST']
+                ]
+            ]
         ];
     }
 

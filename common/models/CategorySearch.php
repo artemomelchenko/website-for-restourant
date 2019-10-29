@@ -5,7 +5,6 @@ namespace common\models;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
 use common\models\Category;
-use yii\helpers\VarDumper;
 
 /**
  * CategorySearch represents the model behind the search form of `common\models\Category`.
@@ -39,7 +38,7 @@ class CategorySearch extends Category
      *
      * @return ActiveDataProvider
      */
-    public function search($params)
+    public function search($params, $id)
     {
         $query = Category::find();
 
@@ -70,10 +69,8 @@ class CategorySearch extends Category
     }
     public function searches($params,$id)
     {
-//        $category = new Categories();
-//        $id = $category->find()->where(['id'=>$category->id]);
+
         $query = Category::find()->where(['menu_id' => $id]);
-//        VarDumper::dump($query,10,1);
         // add conditions that should always apply here
 
         $dataProvider = new ActiveDataProvider([

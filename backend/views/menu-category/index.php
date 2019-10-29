@@ -29,10 +29,29 @@ $this->params['breadcrumbs'][] = $this->title;
 
 //            'id',
             'name',
-            'img',
-            'pages_id',
+            [
+                'attribute' => 'img',
+                'format' => 'raw',
+                'value' => function ($data) {
+                    return Html::img('/img/' . $data->img, [
+                        'alt' => 'Картинка',
+                        'style' => 'width:150px;'
+                    ]);
+                },
+            ],
+//            'pages_id',
 
-            ['class' => 'yii\grid\ActionColumn'],
+            [
+                'class' => 'yii\grid\ActionColumn',
+                'template' => '{view}',
+                'buttons' => [
+                    'view' => function ($url, $model) {
+                        return Html::a(
+                            '<span class="glyphicon glyphicon-eye-open"></span>',
+                            '/admin/menu-category/menu?id=' . $model->id);
+                    },
+                ],
+            ],
         ],
     ]); ?>
 

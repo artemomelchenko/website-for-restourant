@@ -4,7 +4,6 @@ namespace common\models;
 
 use Yii;
 use yii\web\UploadedFile;
-use yii\helpers\VarDumper;
 
 /**
  * This is the model class for table "slider".
@@ -69,7 +68,6 @@ class Slider extends \yii\db\ActiveRecord
     }
     public function getFiles1(){
         $image = UploadedFile::getInstance($this, 'main_img');
-//            VarDumper::dump($image,10,1);
         if (!is_null($image)) {
             $ext = end((explode(".", $image->name)));
             $avatar = Yii::$app->security->generateRandomString() . ".{$ext}";
@@ -81,7 +79,6 @@ class Slider extends \yii\db\ActiveRecord
     }
     public function getFiles2(){
         $image = UploadedFile::getInstance($this, 'background_img');
-//            VarDumper::dump($image,10,1);
         if (!is_null($image)) {
             $ext = end((explode(".", $image->name)));
             $avatar = Yii::$app->security->generateRandomString() . ".{$ext}";
@@ -94,7 +91,6 @@ class Slider extends \yii\db\ActiveRecord
     public function getUpdate1($id)
     {
         $old_img = self::findOne($id)->main_img;
-//        VarDumper::dump($old_img,10,1);
         $image = UploadedFile::getInstance($this, 'main_img');
         if (is_null($image)){
             $this->main_img = $old_img;

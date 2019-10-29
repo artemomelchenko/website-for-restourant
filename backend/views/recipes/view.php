@@ -33,7 +33,16 @@ $this->params['breadcrumbs'][] = $this->title;
 //            'id',
             'title',
             'text:ntext',
-            'img',
+            [
+                'label' => 'Картинка головна',
+                'format' => 'raw',
+                'value' => function ($data) {
+                    return Html::img('/img/' . $data->img, [
+                        'alt' => 'Картинка',
+                        'style' => 'width:150px;'
+                    ]);
+                },
+            ],
             'pages_id',
         ],
     ]) ?>

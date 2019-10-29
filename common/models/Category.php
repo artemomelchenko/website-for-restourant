@@ -68,9 +68,9 @@ class Category extends \yii\db\ActiveRecord
         return $this->hasMany(Item::className(), ['category_id' => 'id']);
     }
 
-    public function getImg(){
+    public function getImg()
+    {
         $image = UploadedFile::getInstance($this, 'img');
-//            VarDumper::dump($image,10,1);
         if (!is_null($image)) {
             $ext = end((explode(".", $image->name)));
             $avatar = Yii::$app->security->generateRandomString() . ".{$ext}";
@@ -81,4 +81,19 @@ class Category extends \yii\db\ActiveRecord
         }
     }
 
+    public function getUpdate($id)
+    {
+        $old_img = self::findOne($id)->img;
+        $image = UploadedFile::getInstance($this, 'img');
+        if (is_null($image)) {
+            $this->img = $old_img;
+        } else {
+            $ext = end((explode(".", $image->name)));
+            $avatar = Yii::$app->security->generateRandomString() . ".{$ext}";
+            Yii::$app->params['uploadPath'] = Yii::getAlias('@frontend') . '/web/img/' . $avatar;
+            $path = Yii::$app->params['uploadPath'];
+            $image->saveAs($path);
+            $this->img = $avatar;
+        }
+    }
 }

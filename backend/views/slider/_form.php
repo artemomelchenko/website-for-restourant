@@ -22,11 +22,27 @@ use kartik\file\FileInput;
     <?= $form->field($model, 'button_link')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'main_img')->widget(FileInput::classname(), [
-        'options' => ['accept' => 'image/*'],
+        'pluginOptions' => [
+            'initialPreview'=>[
+                isset($model->main_img) ? Html::img("/img/" . $model->main_img, ['style' => 'width:200px;']) : ''
+            ],
+            'showPreview' => true,
+            'showCaption' => false,
+            'showRemove' => false,
+            'showUpload' => true
+        ]
     ]);?>
 
     <?=  $form->field($model,   'background_img')->widget(FileInput::classname(), [
-        'options' => ['accept' => 'image/*'],
+        'pluginOptions' => [
+            'initialPreview'=>[
+                isset($model->background_img) ? Html::img("/img/" . $model->background_img, ['style' => 'width:200px;']) : ''
+            ],
+            'showPreview' => true,
+            'showCaption' => false,
+            'showRemove' => false,
+            'showUpload' => true
+        ]
     ]); ?>
 
     <?= $form->field($model, 'pages_id')->textInput() ?>

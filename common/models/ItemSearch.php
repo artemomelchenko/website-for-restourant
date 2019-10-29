@@ -4,12 +4,12 @@ namespace common\models;
 
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use common\models\Dishes;
+use common\models\Item;
 
 /**
- * DishesSearch represents the model behind the search form of `common\models\Dishes`.
+ * ItemSearch represents the model behind the search form of `common\models\Item`.
  */
-class DishesSearch extends Dishes
+class ItemSearch extends Item
 {
     /**
      * {@inheritdoc}
@@ -17,7 +17,7 @@ class DishesSearch extends Dishes
     public function rules()
     {
         return [
-            [['id', 'menu_category_id'], 'integer'],
+            [['id', 'category_id'], 'integer'],
             [['name', 'price'], 'safe'],
         ];
     }
@@ -38,9 +38,9 @@ class DishesSearch extends Dishes
      *
      * @return ActiveDataProvider
      */
-    public function search($params)
+    public function search($params, $id)
     {
-        $query = Dishes::find();
+        $query = Item::find()->where(['category_id' => $id]);
 
         // add conditions that should always apply here
 
@@ -59,7 +59,7 @@ class DishesSearch extends Dishes
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
-            'menu_category_id' => $this->menu_category_id,
+            'category_id' => $this->category_id,
         ]);
 
         $query->andFilterWhere(['like', 'name', $this->name])

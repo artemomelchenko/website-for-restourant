@@ -7,6 +7,7 @@ use common\models\CategorySearch;
 use Yii;
 use common\models\Menu;
 use common\models\MenuSearch;
+use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -22,12 +23,23 @@ class MenuController extends Controller
     public function behaviors()
     {
         return [
+            'access' => [
+                'class' => AccessControl::className(),
+                'rules' => [
+                    [
+                        'actions' => ['view', 'index', 'create', 'update', 'delete', 'menu'],
+                        'allow' => true,
+                        'roles' => ['@'],
+                    ],
+
+                ],
+            ],
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
-                    'delete' => ['POST'],
-                ],
-            ],
+                    'delete' => ['POST']
+                ]
+            ]
         ];
     }
 
@@ -53,7 +65,8 @@ class MenuController extends Controller
      * @throws NotFoundHttpException if the model cannot be found
      */
     public function actionView($id)
-    {       $category = Category::findOne($id);
+    {
+        $category = Category::findOne($id);
         return $this->render('view', [
             'category' => $category
         ]);
@@ -63,7 +76,6 @@ class MenuController extends Controller
     {
         $searchModel = new CategorySearch();
         $dataProvider = $searchModel->searches(Yii::$app->request->queryParams, $id);
-//        VarDumper::dump($dataProvider,10,1);
         return $this->render('menu', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
@@ -76,7 +88,7 @@ class MenuController extends Controller
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
-    public function actionCreate()
+    public function actionCreate($id)
     {
         $model = new Category();
 
@@ -85,6 +97,7 @@ class MenuController extends Controller
 
             $model->getImg();
 
+            $model->menu_id = $id;
             if ($model->save()) {
 
                 return $this->redirect(['view', 'id' => $model->id]);
@@ -105,12 +118,15 @@ class MenuController extends Controller
      */
     public function actionUpdate($id)
     {
-        $model = $this->findModel($id);
+        $model = Category::findOne($id);
+        $post = Yii::$app->request->post();
+        if ($model->load($post)) {
+            $model->getUpdate($id);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            if ($model->save()) {
+                return $this->redirect(['view', 'id' => $model->id]);
+            }
         }
-
         return $this->render('update', [
             'model' => $model,
         ]);

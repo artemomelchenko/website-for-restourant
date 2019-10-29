@@ -13,38 +13,38 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="menu-index">
     <div class="card">
         <div class="card-body">
-    <h1><?= Html::encode($this->title) ?></h1>
+            <h1><?= Html::encode($this->title) ?></h1>
 
-    <p>
-<!--        --><?//= Html::a(Yii::t('app', 'Create Menu'), ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
+            <p>
+                <!--        --><? //= Html::a(Yii::t('app', 'Create Menu'), ['create'], ['class' => 'btn btn-success']) ?>
+            </p>
 
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+            <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
-    <?= GridView::widget([
-        'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
-        'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
+            <?= GridView::widget([
+                'dataProvider' => $dataProvider,
+                'filterModel' => $searchModel,
+                'columns' => [
+                    ['class' => 'yii\grid\SerialColumn'],
 
 //            'id',
-            'name',
+                    'name',
 
-            [
-                'class' => 'yii\grid\ActionColumn',
-                'template' => '{view}',
-                'buttons' => [
-                    'view' => function ($url, $model) {
-                        return Html::a(
-                            '<span class="glyphicon glyphicon-eye-open"></span>',
-                            '/admin/menu/menu?id='.$model->id);
-                    },
+                    [
+                        'class' => 'yii\grid\ActionColumn',
+                        'template' => '{view}',
+                        'buttons' => [
+                            'view' => function ($url, $model) {
+                                return Html::a(
+                                    '<span class="glyphicon glyphicon-eye-open"></span>',
+                                    '/admin/menu/menu?id=' . $model->id);
+                            },
+                        ],
+                    ],
                 ],
-            ],
-        ],
-    ]); ?>
+            ]); ?>
 
 
         </div>
-        </div>
+    </div>
 </div>

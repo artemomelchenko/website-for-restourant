@@ -13,7 +13,15 @@ use kartik\file\FileInput;
     <?php $form = ActiveForm::begin(); ?>
 
     <?=  $form->field($model, 'img')->widget(FileInput::classname(), [
-        'options' => ['accept' => 'image/*'],
+        'pluginOptions' => [
+            'initialPreview'=>[
+                isset($model->img) ? Html::img("/img/" . $model->img, ['style' => 'width:200px;']) : ''
+            ],
+            'showPreview' => true,
+            'showCaption' => false,
+            'showRemove' => false,
+            'showUpload' => true
+        ]
     ]); ?>
 
     <?= $form->field($model, 'pages_id')->textInput() ?>

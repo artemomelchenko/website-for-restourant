@@ -2,15 +2,17 @@
 
 namespace backend\controllers;
 
+use common\models\CategorySearch;
+use common\models\Item;
+use common\models\ItemSearch;
 use Yii;
-use common\models\MenuCategory;
-use common\models\MenuCategorySearch;
+use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * MenuCategoryController implements the CRUD actions for MenuCategory model.
+ * MenuCategoryController implements the CRUD actions for Item model.
  */
 class MenuCategoryController extends Controller
 {
@@ -20,23 +22,34 @@ class MenuCategoryController extends Controller
     public function behaviors()
     {
         return [
+            'access' => [
+                'class' => AccessControl::className(),
+                'rules' => [
+                    [
+                        'actions' => ['view', 'index', 'create', 'update', 'delete', 'menu'],
+                        'allow' => true,
+                        'roles' => ['@'],
+                    ],
+
+                ],
+            ],
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
-                    'delete' => ['POST'],
-                ],
-            ],
+                    'delete' => ['POST']
+                ]
+            ]
         ];
     }
 
     /**
-     * Lists all MenuCategory models.
+     * Lists all Category models.
      * @return mixed
      */
-    public function actionIndex()
+    public function actionIndex($id)
     {
-        $searchModel = new MenuCategorySearch();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        $searchModel = new CategorySearch();
+        $dataProvider = $searchModel->searches(Yii::$app->request->queryParams, $id);
 
         return $this->render('index', [
             'searchModel' => $searchModel,
@@ -45,7 +58,7 @@ class MenuCategoryController extends Controller
     }
 
     /**
-     * Displays a single MenuCategory model.
+     * Displays a single Item model.
      * @param integer $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
@@ -57,26 +70,43 @@ class MenuCategoryController extends Controller
         ]);
     }
 
+    public function actionMenu($id)
+    {
+
+        $searchModel = new ItemSearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams, $id);
+
+        return $this->render('menu', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+            'id' => $id,
+        ]);
+    }
+
     /**
-     * Creates a new MenuCategory model.
+     * Creates a new Item model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
-    public function actionCreate()
+    public function actionCreate($id)
     {
-        $model = new MenuCategory();
+        $model = new Item();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        if ($model->load(Yii::$app->request->post())) {
+
+            $model->category_id = $id;
+            $model->save();
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
         return $this->render('create', [
             'model' => $model,
+            'id' => $id,
         ]);
     }
 
     /**
-     * Updates an existing MenuCategory model.
+     * Updates an existing Item model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -96,7 +126,7 @@ class MenuCategoryController extends Controller
     }
 
     /**
-     * Deletes an existing MenuCategory model.
+     * Deletes an existing Item model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -110,15 +140,15 @@ class MenuCategoryController extends Controller
     }
 
     /**
-     * Finds the MenuCategory model based on its primary key value.
+     * Finds the Item model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return MenuCategory the loaded model
+     * @return Item the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = MenuCategory::findOne($id)) !== null) {
+        if (($model = Item::findOne($id)) !== null) {
             return $model;
         }
 

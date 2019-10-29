@@ -15,10 +15,18 @@ use kartik\file\FileInput;
 
     <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'menu_id')->textInput() ?>
-    <div class="col-md-11">
+<!--    --><?//= $form->field($model, 'menu_id')->textInput() ?>
+
     <?=  $form->field($model, 'img')->widget(FileInput::classname(), [
-        'options' => ['accept' => 'image/*'],
+        'pluginOptions' => [
+            'initialPreview'=>[
+                isset($model->img) ? Html::img("/img/" . $model->img, ['style' => 'width:200px;']) : ''
+            ],
+            'showPreview' => true,
+            'showCaption' => false,
+            'showRemove' => false,
+            'showUpload' => true
+        ]
     ]); ?>
 
     <div class="form-group">
@@ -26,5 +34,5 @@ use kartik\file\FileInput;
     </div>
 
     <?php ActiveForm::end(); ?>
-</div>
+
 </div>

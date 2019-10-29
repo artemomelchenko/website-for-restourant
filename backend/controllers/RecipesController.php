@@ -5,6 +5,7 @@ namespace backend\controllers;
 use Yii;
 use common\models\Recipes;
 use common\models\RecipesSearch;
+use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -20,12 +21,23 @@ class RecipesController extends Controller
     public function behaviors()
     {
         return [
+            'access' => [
+                'class' => AccessControl::className(),
+                'rules' => [
+                    [
+                        'actions' => ['view', 'index', 'create', 'update', 'delete'],
+                        'allow' => true,
+                        'roles' => ['@'],
+                    ],
+
+                ],
+            ],
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
-                    'delete' => ['POST'],
-                ],
-            ],
+                    'delete' => ['POST']
+                ]
+            ]
         ];
     }
 
@@ -66,8 +78,15 @@ class RecipesController extends Controller
     {
         $model = new Recipes();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+        $post = Yii::$app->request->post();
+        if ($model->load($post)) {
+
+            $model->getImg();
+
+            if ($model->save()) {
+
+                return $this->redirect(['view', 'id' => $model->id]);
+            }
         }
 
         return $this->render('create', [
@@ -86,10 +105,14 @@ class RecipesController extends Controller
     {
         $model = $this->findModel($id);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
-        }
+        $post = Yii::$app->request->post();
+        if ($model->load($post)) {
+            $model->getUpdate($id);
 
+            if ($model->save()) {
+                return $this->redirect(['view', 'id' => $model->id]);
+            }
+        }
         return $this->render('update', [
             'model' => $model,
         ]);
