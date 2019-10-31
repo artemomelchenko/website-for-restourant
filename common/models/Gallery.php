@@ -61,7 +61,7 @@ class Gallery extends \yii\db\ActiveRecord
         if (!is_null($image)) {
             $ext = end((explode(".", $image->name)));
             $avatar = Yii::$app->security->generateRandomString() . ".{$ext}";
-            Yii::$app->params['uploadPath'] = Yii::getAlias('@frontend') . '/web/img/' . $avatar;
+            Yii::$app->params['uploadPath'] = Yii::getAlias('@frontend') . '/web/img/gallery/' . $avatar;
             $path = Yii::$app->params['uploadPath'];
             $image->saveAs($path);
             $this->img = $avatar;
@@ -76,7 +76,7 @@ class Gallery extends \yii\db\ActiveRecord
         }else{
             $ext = end((explode(".", $image->name)));
             $avatar = Yii::$app->security->generateRandomString().".{$ext}";
-            Yii::$app->params['uploadPath'] = Yii::getAlias('@frontend') . '/web/img/' . $avatar;
+            Yii::$app->params['uploadPath'] = Yii::getAlias('@frontend') . '/web/img/gallery/' . $avatar;
             $path = Yii::$app->params['uploadPath'];
             $image->saveAs($path);
             $this->img = $avatar;

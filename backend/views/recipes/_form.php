@@ -20,7 +20,7 @@ use kartik\file\FileInput;
     <?= $form->field($model, 'img')->widget(FileInput::classname(), [
         'pluginOptions' => [
             'initialPreview'=>[
-                isset($model->img) ? Html::img("/img/" . $model->img, ['style' => 'width:200px;']) : ''
+                isset($model->img) ? Html::img("/img/recipes/" . $model->img, ['style' => 'width:200px;']) : ''
             ],
             'showPreview' => true,
             'showCaption' => false,
@@ -29,7 +29,7 @@ use kartik\file\FileInput;
         ]
     ]); ?>
 
-    <?= $form->field($model, 'pages_id')->textInput() ?>
+
 
     <div class="form-group">
         <?= Html::submitButton(Yii::t('app', 'Save'), ['class' => 'btn btn-success']) ?>

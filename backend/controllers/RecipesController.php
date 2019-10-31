@@ -82,7 +82,7 @@ class RecipesController extends Controller
         if ($model->load($post)) {
 
             $model->getImg();
-
+            $model->pages_id = 1;
             if ($model->save()) {
 
                 return $this->redirect(['view', 'id' => $model->id]);

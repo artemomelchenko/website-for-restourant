@@ -24,7 +24,7 @@ use kartik\file\FileInput;
     <?= $form->field($model, 'main_img')->widget(FileInput::classname(), [
         'pluginOptions' => [
             'initialPreview'=>[
-                isset($model->main_img) ? Html::img("/img/" . $model->main_img, ['style' => 'width:200px;']) : ''
+                isset($model->main_img) ? Html::img("/img/slider/" . $model->main_img, ['style' => 'width:200px;']) : ''
             ],
             'showPreview' => true,
             'showCaption' => false,
@@ -36,7 +36,7 @@ use kartik\file\FileInput;
     <?=  $form->field($model,   'background_img')->widget(FileInput::classname(), [
         'pluginOptions' => [
             'initialPreview'=>[
-                isset($model->background_img) ? Html::img("/img/" . $model->background_img, ['style' => 'width:200px;']) : ''
+                isset($model->background_img) ? Html::img("/img/slider/" . $model->background_img, ['style' => 'width:200px;']) : ''
             ],
             'showPreview' => true,
             'showCaption' => false,
@@ -45,7 +45,7 @@ use kartik\file\FileInput;
         ]
     ]); ?>
 
-    <?= $form->field($model, 'pages_id')->textInput() ?>
+<!--    --><?//= $form->field($model, 'pages_id')->textInput() ?>
 
     <div class="form-group">
         <?= Html::submitButton(Yii::t('app', 'Save'), ['class' => 'btn btn-success']) ?>

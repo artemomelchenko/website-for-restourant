@@ -83,7 +83,7 @@ class SliderController extends Controller
         if ($model->load($post)) {
             $model->getFiles1();
             $model->getFiles2();
-
+            $model->pages_id = 1;
             if ($model->save()) {
 
                 return $this->redirect(['view', 'id' => $model->id]);

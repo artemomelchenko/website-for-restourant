@@ -1,10 +1,12 @@
 <?php
 namespace frontend\controllers;
 
+use common\models\Pages;
 use frontend\models\ResendVerificationEmailForm;
 use frontend\models\VerifyEmailForm;
 use Yii;
 use yii\base\InvalidArgumentException;
+use yii\helpers\VarDumper;
 use yii\web\BadRequestHttpException;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
@@ -74,7 +76,10 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        $page = Pages::find()->with('sliders')->with('recipes')->with('galleries')->where(['id' => 1])->one();
+        return $this->render('index',[
+            'page' => $page,
+        ]);
     }
 
     /**

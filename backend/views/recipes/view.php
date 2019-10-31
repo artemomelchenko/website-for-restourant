@@ -37,13 +37,13 @@ $this->params['breadcrumbs'][] = $this->title;
                 'label' => 'Картинка головна',
                 'format' => 'raw',
                 'value' => function ($data) {
-                    return Html::img('/img/' . $data->img, [
+                    return Html::img('/img/recipes/' . $data->img, [
                         'alt' => 'Картинка',
                         'style' => 'width:150px;'
                     ]);
                 },
             ],
-            'pages_id',
+
         ],
     ]) ?>
         </div>

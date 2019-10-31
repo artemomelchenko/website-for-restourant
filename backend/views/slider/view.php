@@ -39,7 +39,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'label' => 'Картинка головна',
                 'format' => 'raw',
                 'value' => function ($data) {
-                    return Html::img(  '/img/'.$data->main_img, [
+                    return Html::img(  '/img/slider/'.$data->main_img, [
                         'alt' => 'Картинка',
                         'style' => 'width:150px;'
                     ]);
@@ -49,13 +49,13 @@ $this->params['breadcrumbs'][] = $this->title;
                 'label' => 'Картинка заднього фону',
                 'format' => 'raw',
                 'value' => function ($data) {
-                    return Html::img(  '/img/'.$data->background_img,[
+                    return Html::img(  '/img/slider/'.$data->background_img,[
                         'alt' => 'Картинка',
                         'style' => 'width:150px;'
                     ]);
                 },
             ],
-            'pages_id',
+
         ],
     ]) ?>
         </div>
