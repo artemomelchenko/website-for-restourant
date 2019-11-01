@@ -34,7 +34,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'title',
             'text:ntext',
             [
-                'label' => 'Картинка головна',
+                'attribute' => 'img',
                 'format' => 'raw',
                 'value' => function ($data) {
                     return Html::img('/img/recipes/' . $data->img, [

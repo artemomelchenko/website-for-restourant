@@ -83,6 +83,7 @@ class GalleryController extends Controller
 
             $model->getImg();
             $model->pages_id = 1;
+
             if ($model->save()) {
 
                 return $this->redirect(['view', 'id' => $model->id]);

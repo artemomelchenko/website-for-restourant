@@ -36,7 +36,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'button_text',
             'button_link',
             [
-                'label' => 'Картинка головна',
+                'attribute' => 'main_img',
                 'format' => 'raw',
                 'value' => function ($data) {
                     return Html::img(  '/img/slider/'.$data->main_img, [
@@ -46,7 +46,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 },
             ],
             [
-                'label' => 'Картинка заднього фону',
+                'attribute' => 'background_img',
                 'format' => 'raw',
                 'value' => function ($data) {
                     return Html::img(  '/img/slider/'.$data->background_img,[

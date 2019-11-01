@@ -141,9 +141,11 @@ class MenuController extends Controller
      */
     public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
+        $model = $this->findModel($id);
+            $mid = $model->id;
+            $model->delete();
 
-        return $this->redirect(['index']);
+        return $this->redirect(['menu','id'=>$mid]);
     }
 
     /**

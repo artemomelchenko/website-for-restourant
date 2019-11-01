@@ -2,6 +2,7 @@
 
 namespace backend\controllers;
 
+use common\models\Category;
 use common\models\CategorySearch;
 use common\models\Item;
 use common\models\ItemSearch;
@@ -134,9 +135,11 @@ class MenuCategoryController extends Controller
      */
     public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
+        $model = $this->findModel($id);
+        $cid = $model->category_id;
+        $model->delete();
 
-        return $this->redirect(['index']);
+        return $this->redirect(['menu', 'id' => $cid]);
     }
 
     /**
