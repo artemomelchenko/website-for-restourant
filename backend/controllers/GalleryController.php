@@ -82,6 +82,7 @@ class GalleryController extends Controller
         if ($model->load($post)) {
 
             $model->getImg();
+            $model->getImg2();
             $model->pages_id = 1;
 
             if ($model->save()) {
@@ -108,7 +109,7 @@ class GalleryController extends Controller
         $post = Yii::$app->request->post();
         if ($model->load($post)) {
             $model->getUpdate($id);
-
+            $model->getUpdate2($id);
             if ($model->save()) {
                 return $this->redirect(['view', 'id' => $model->id]);
             }

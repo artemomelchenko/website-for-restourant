@@ -10,6 +10,8 @@ $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Menu Categories'), '
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="menu-category-create">
+    <div class="card">
+        <div class="card-body">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
@@ -17,5 +19,6 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
         'id' => $id,
     ]) ?>
-
+        </div>
+</div>
 </div>

@@ -19,6 +19,8 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'img') ?>
 
+    <?= $form->field($model, 'small_img') ?>
+
     <?= $form->field($model, 'pages_id') ?>
 
     <div class="form-group">

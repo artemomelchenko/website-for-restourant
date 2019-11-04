@@ -36,6 +36,9 @@ AppAsset::register($this);
 
     <?php if (Yii::$app->user->identity): ?>
         <div class="content-wrapper">
+            <?= Breadcrumbs::widget([
+                'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
+            ]) ?>
             <?= $content ?>
         </div>
     <?php endif; ?>

@@ -23,6 +23,17 @@ use kartik\file\FileInput;
             'showUpload' => true
         ]
     ]); ?>
+            <?=  $form->field($model, 'small_img')->widget(FileInput::classname(), [
+                'pluginOptions' => [
+                    'initialPreview'=>[
+                        isset($model->img) ? Html::img("/img/gallery/" . $model->small_img, ['style' => 'width:200px;']) : ''
+                    ],
+                    'showPreview' => true,
+                    'showCaption' => false,
+                    'showRemove' => false,
+                    'showUpload' => true
+                ]
+            ]); ?>
 
 
     <div class="form-group">

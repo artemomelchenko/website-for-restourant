@@ -77,6 +77,7 @@ class SiteController extends Controller
     public function actionIndex()
     {
         $page = Pages::find()->with('sliders')->with('recipes')->with('galleries')->where(['id' => 1])->one();
+
         return $this->render('index',[
             'page' => $page,
         ]);

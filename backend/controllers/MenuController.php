@@ -145,7 +145,7 @@ class MenuController extends Controller
             $mid = $model->id;
             $model->delete();
 
-        return $this->redirect(['menu','id'=>$mid]);
+        return $this->redirect(['index','id'=>$mid]);
     }
 
     /**
@@ -157,7 +157,7 @@ class MenuController extends Controller
      */
     protected function findModel($id)
     {
-        if (($model = Menu::findOne($id)) !== null) {
+        if (($model = Category::findOne($id)) !== null) {
             return $model;
         }
 

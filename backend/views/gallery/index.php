@@ -28,11 +28,22 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
 //            'id',
+
             [
                 'label' => 'Картинка головна',
                 'format' => 'raw',
                 'value' => function ($data) {
                     return Html::img(  '/img/gallery/'.$data->img, [
+                        'alt' => 'Картинка',
+                        'style' => 'width:150px;'
+                    ]);
+                },
+            ],
+            [
+                'label' => 'Картинка головна',
+                'format' => 'raw',
+                'value' => function ($data) {
+                    return Html::img(  '/img/gallery/'.$data->small_img, [
                         'alt' => 'Картинка',
                         'style' => 'width:150px;'
                     ]);
