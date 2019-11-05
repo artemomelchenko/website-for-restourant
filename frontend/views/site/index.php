@@ -10,7 +10,7 @@ $gallerys = array_chunk($page->galleries,6,true);
 //}
 ?>
 <?php 
-    $this->registerJsFile('/js/app.js');
+    $this->registerJsFile('/js/app.js', ['depends' => ['frontend\assets\AppAsset']]);
 ?>
 <div id="eclipse" class=""></div>
 <div class="form_wrapper">

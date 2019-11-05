@@ -2,6 +2,16 @@
     $this->registerCssFile('/css/menu.css', ['depends' => ['frontend\assets\AppAsset']]);
     $this->registerJsFile('/js/menu.js');
 ?>
+ <div class="container">
+      <div class="header_wrapper">
+        <div class="logo" data-pause="2500">
+          <img class="logo_image" src="/img/Logo_Kampana.svg" alt="логотип Кампана">
+        </div>
+        <div class="header_menu page_menu">
+          <img class="menu_image" src="/assets/img/menu.svg" alt="іконка меню">
+          <span class="header_menu_text_page">Меню</span>
+        </div>
+      </div>
 <section id="dishes">
           <!-- <div class="container"> -->
         <div class="dishes">
