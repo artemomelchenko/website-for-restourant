@@ -13,12 +13,12 @@ class AppAsset extends AssetBundle
     public $baseUrl = '@web';
     public $css = [
         '//fonts.googleapis.com/css?family=Montserrat|Playfair+Display&display=swap&subset=cyrillic',
-        '//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css',
-        '//cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css',
+        // '//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css',
+        // '//cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css',
         'css/site.css',
     ];
     public $js = [
-        'js/main.min.js'
+        // 'js/main.min.js'
     ];
     public $depends = [
 //        'yii\web\YiiAsset',

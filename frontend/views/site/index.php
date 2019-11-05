@@ -9,7 +9,9 @@ $gallerys = array_chunk($page->galleries,6,true);
 //    \yii\helpers\VarDumper::dump($gallery1,10,1);
 //}
 ?>
-
+<?php 
+    $this->registerJsFile('/js/app.js');
+?>
 <div id="eclipse" class=""></div>
 <div class="form_wrapper">
     <div class="form_heading">
@@ -82,7 +84,7 @@ $gallerys = array_chunk($page->galleries,6,true);
                 <a href=""><img class="logo_image" src="/img/Logo_Kampana.png" alt="логотип Кампана"></a>
             </div>
             <div class="header_menu">
-                <a class="menu-wrap" href="menu.html">
+                <a class="menu-wrap" href="/menu">
                     <img class="menu_image" src="/img/menu.svg" alt="іконка меню">
                     <span class="header_menu_text">Меню</span>
                 </a>

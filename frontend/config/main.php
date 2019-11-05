@@ -44,6 +44,7 @@ return [
             'rules' => [
                 //['class' => 'frontend\components\ClassUrlRule'],
                 '' => 'site/index',
+                'menu' => 'site/menu',
                 '<controller:\w+>/<action:\w+>/' => '<controller>/<action>',
             ],
         ],
