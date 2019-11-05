@@ -4,9 +4,10 @@
 ?>
  <div class="container">
       <div class="header_wrapper">
-        <div class="logo" data-pause="2500">
-          <img class="logo_image" src="/img/Logo_Kampana.svg" alt="логотип Кампана">
-        </div>
+        <a href="/"><div class="logo" data-pause="2500">
+            <img class="logo_image" src="/img/Logo_Kampana.svg" alt="логотип Кампана">
+          </div>
+        </a>
         <div class="header_menu page_menu">
           <img class="menu_image" src="/assets/img/menu.svg" alt="іконка меню">
           <span class="header_menu_text_page">Меню</span>
@@ -325,7 +326,7 @@
               </div>
             </div>
             <div class="btn_page_menu">
-                <a href="index.html" class="main_btn" id="btn_menu_page">на головну</a>
+                <a href="/" class="main_btn" id="btn_menu_page">на головну</a>
             </div>
        </div> <!--container end -->
     </section>

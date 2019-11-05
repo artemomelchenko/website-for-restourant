@@ -8,14 +8,14 @@ window.onload = function() {
         sixth: document.getElementById('gallery'),
         seventh: document.getElementById('about')
     };
-
+    console.log('object');
     sliderInit().home();
     const animation = animationController();
     function checkPoints(){ 
      return new Waypoint({
       element: map['first'],
       handler: function(direction) {
-        console.log(direction);
+        // console.log(direction);
         animation.animateFirstSection();
         this.destroy();
       },

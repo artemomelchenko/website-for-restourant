@@ -50,7 +50,6 @@ function sliderInit() {
           if(i % 6 == 0 && i !== 0) {
             let result = createWrapp(temp);  
             temp = [];
-            console.log(result , i);
             acc.push(result);
           }
           temp.push(childItems[i]); 
@@ -62,7 +61,6 @@ function sliderInit() {
           let index = 0;
           function iter (list){
             if(index == wrapps.length){
-              console.log('1')
               return;
             }
 
@@ -88,6 +86,37 @@ function sliderInit() {
         counterGallery.update(currentSlide);
       });
       
+
+      const slider = document.getElementsByClassName('main-slider')[0];
+      const sliderRecipe = document.getElementsByClassName('recipe_slider')[0];
+      const gallerySlider = document.getElementsByClassName('gallery_slider')[0];
+      
+      const counterMain = counterBuilder(slider);
+      const counterRecipe = counterBuilder(sliderRecipe);
+      const counterGallery = counterBuilder(gallerySlider);
+      console.log(slider, '++++');
+
+      function counterBuilder(slide) {
+        let el = document.createElement('div');
+        el.className = 'slider__counter';
+        let currentSlider = slide.dataset.slider;
+        el.innerHTML = `<span id="counter__num-${currentSlider}">01</span>`;
+       
+        if(currentSlider == 1) {
+            slide.parentElement.appendChild(el);
+        }
+        else {
+            slide.appendChild(el);
+        }
+        
+        let num = document.getElementById(`counter__num-${currentSlider}`);
+  
+        return {
+          update: (val) => {
+            (val + 1 < 10)?num.innerHTML = '0' + (val + 1):num.innerHTML = val + 1;
+          }
+        }
+     }
 
       // $('.menu_page_slider_dishes').slick({
       //   arrows: false,
@@ -139,37 +168,6 @@ function sliderInit() {
         // targetProduct(document.getElementsByClassName('menu_page_slider_dishes')[0]);
         // targetProduct(document.getElementsByClassName('menu_page_slider_drinks')[0]);
       }
-
-      const slider = document.getElementsByClassName('main-slider')[0];
-      const sliderRecipe = document.getElementsByClassName('recipe_slider')[0];
-      const gallerySlider = document.getElementsByClassName('gallery_slider')[0];
-      
-      // const counterMain = counterBuilder(slider);
-      // const counterRecipe = counterBuilder(sliderRecipe);
-      // const counterGallery = counterBuilder(gallerySlider);
-
-      function counterBuilder(slide) {
-        let el = document.createElement('div');
-        el.className = 'slider__counter';
-        let currentSlider = slide.dataset.slider;
-        el.innerHTML = `<span id="counter__num-${currentSlider}">01</span>`;
-       
-        if(currentSlider == 1) {
-            slide.parentElement.appendChild(el);
-        }
-        else {
-            slide.appendChild(el);
-        }
-        
-        let num = document.getElementById(`counter__num-${currentSlider}`);
-  
-        return {
-          update: (val) => {
-            (val + 1 < 10)?num.innerHTML = '0' + (val + 1):num.innerHTML = val + 1;
-          }
-        }
-     }
-     
   function menuSliders(){
     const disheSlider = document.getElementsByClassName('menu_page_slider_dishes')[0];
     const drinkSlider = document.getElementsByClassName('menu_page_slider_drinks')[0];
