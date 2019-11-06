@@ -8,14 +8,13 @@ window.onload = function() {
         sixth: document.getElementById('gallery'),
         seventh: document.getElementById('about')
     };
-    console.log('object');
+
     sliderInit().home();
     const animation = animationController();
     function checkPoints(){ 
      return new Waypoint({
       element: map['first'],
       handler: function(direction) {
-        // console.log(direction);
         animation.animateFirstSection();
         this.destroy();
       },
@@ -284,7 +283,7 @@ function animationController() {
   
               const inputs = Array.from(form.getElementsByTagName('input'));
               const textarea = form.getElementsByTagName('textarea')[0];
-              console.log(textarea);
+
               let res = {};
               inputs.forEach(el => {
                 let key = el.getAttribute('name');
@@ -297,8 +296,7 @@ function animationController() {
               let value = textarea.value;
               res[key]= value;
               res.id = form.dataset.id;
-              
-              console.log(res);
+
               const path = window.location.pathname;
   
               $.ajax({
@@ -306,11 +304,10 @@ function animationController() {
                 path: path,
                 data: res,
                 success: function(){
-                  console.log(12323);
+                  // console.log(12323);
                 }
               })
-  
-            }) 
+            });
             modalUtils.eclipse.classList.add('active');
             modalUtils.activeForm = form.parentNode;
             showModal(form.parentNode);

@@ -9,8 +9,10 @@ $gallerys = array_chunk($page->galleries,6,true);
 //    \yii\helpers\VarDumper::dump($gallery1,10,1);
 //}
 ?>
-<?php 
+<?php
     $this->registerJsFile('/js/app.js', ['depends' => ['frontend\assets\AppAsset']]);
+    $this->registerCssFile('/css/fixing.css', ['depends' => ['frontend\assets\AppAsset']]);
+    $this->registerCssFile('/css/fixed.css', ['depends' => ['frontend\assets\AppAsset']]);
 ?>
 <div id="eclipse" class=""></div>
 <div class="form_wrapper">

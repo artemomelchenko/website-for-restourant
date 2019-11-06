@@ -116,7 +116,7 @@
           </svg>
         </div>
 
-        <div class="menu_page_slider_dishes">
+        <div class="menu_page_slider_dishes" data-slider="1">
 
             <?php foreach($dishes->categories as $dish): ?>
           <div class="menu_page_slider_content">

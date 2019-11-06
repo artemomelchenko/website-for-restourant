@@ -94,29 +94,6 @@ function sliderInit() {
       const counterMain = counterBuilder(slider);
       const counterRecipe = counterBuilder(sliderRecipe);
       const counterGallery = counterBuilder(gallerySlider);
-      console.log(slider, '++++');
-
-      function counterBuilder(slide) {
-        let el = document.createElement('div');
-        el.className = 'slider__counter';
-        let currentSlider = slide.dataset.slider;
-        el.innerHTML = `<span id="counter__num-${currentSlider}">01</span>`;
-       
-        if(currentSlider == 1) {
-            slide.parentElement.appendChild(el);
-        }
-        else {
-            slide.appendChild(el);
-        }
-        
-        let num = document.getElementById(`counter__num-${currentSlider}`);
-  
-        return {
-          update: (val) => {
-            (val + 1 < 10)?num.innerHTML = '0' + (val + 1):num.innerHTML = val + 1;
-          }
-        }
-     }
 
       // $('.menu_page_slider_dishes').slick({
       //   arrows: false,
@@ -143,52 +120,109 @@ function sliderInit() {
       //     dots: true
       //   });
 
-        function targetProduct(slider) {
-          const el = document.createElement('div');
-          const ul = slider.getElementsByTagName('ul')[0];
-
-          el.className = 'target-product';
-          el.innerHTML = slider.getElementsByClassName('slick-slide slick-active')[0].getElementsByTagName('h2')[0].innerHTML;
-          slider.appendChild(el);
-          const headerArr = Array.from(slider.getElementsByTagName('h2')).map(el => el.innerHTML);
-          
-          const list = Array.from(ul.getElementsByTagName('li'));
-          list.forEach(function(element, index) {
-            element.dataset.name = headerArr[index];
-            element.addEventListener('mouseenter', (e) => {
-              let target = e.target;
-              el.innerHTML = target.dataset.name;
-              el.classList.add('active');
-            });
-            element.addEventListener('mouseleave', (e) => {
-              el.classList.remove('active');
-            })
-          });
-        }
         // targetProduct(document.getElementsByClassName('menu_page_slider_dishes')[0]);
         // targetProduct(document.getElementsByClassName('menu_page_slider_drinks')[0]);
+}
+  function targetProduct(slider) {
+    const el = document.createElement('div');
+    const ul = slider.getElementsByTagName('ul')[0];
+
+    el.className = 'target-product';
+    el.innerHTML = slider.getElementsByClassName('slick-slide slick-active')[0].getElementsByTagName('h2')[0].innerHTML;
+    slider.appendChild(el);
+    const headerArr = Array.from(slider.getElementsByTagName('h2')).map(el => el.innerHTML);
+
+    const list = Array.from(ul.getElementsByTagName('li'));
+    list.forEach(function(element, index) {
+      element.dataset.name = headerArr[index];
+      element.addEventListener('mouseenter', (e) => {
+        let target = e.target;
+        el.innerHTML = target.dataset.name;
+        el.classList.add('active');
+      });
+      element.addEventListener('mouseleave', (e) => {
+        el.classList.remove('active');
+      })
+    });
+  }
+
+  function counterBuilder(slide) {
+    let el = document.createElement('div');
+    el.className = 'slider__counter';
+    let currentSlider = slide.dataset.slider;
+    el.innerHTML = `<span id="counter__num-${currentSlider}">01</span>`;
+
+    if(currentSlider == 1) {
+        slide.parentElement.appendChild(el);
+    }
+
+    else {
+        slide.appendChild(el);
+    }
+
+    let num = document.getElementById(`counter__num-${currentSlider}`);
+
+    return {
+      update: (val) => {
+        (val + 1 < 10)?num.innerHTML = '0' + (val + 1):num.innerHTML = val + 1;
       }
+    }
+ }
+
   function menuSliders(){
     const disheSlider = document.getElementsByClassName('menu_page_slider_dishes')[0];
     const drinkSlider = document.getElementsByClassName('menu_page_slider_drinks')[0];
     
     $([disheSlider, drinkSlider]).slick({
-      arrows: false,
       infinite: false,
       fade: true,
       speed: 700,
-      dots: true
+      dots: true,
+      responsive: [
+        {
+          breakpoint: 1025,
+          settings: {
+            arrow: true,
+            nextArrow: '<div class="arrow arrow__l"><div class="wrap"></div></div>',
+            prevArrow: '<div class="arrow arrow__r"><div class="wrap"></div></div>',
+            // adaptiveHeight: true
+          }
+        },
+      //   {
+      //     breakpoint: 500,
+      //     settings: {
+      //       // dots: false,
+      //       arrow: true,
+      //       nextArrow: '<div class="arrow arrow__l"><div class="wrap"></div></div>',
+      //       prevArrow: '<div class="arrow arrow__r"><div class="wrap"></div></div>',
+      //       adaptiveHeight: true
+      //   }
+      // }
+    ]
     });
 
-    function targetProduct(slider) {
+    if(window.screen.width < 1025) {
+      const dishCounter = counterBuilder(disheSlider);
+      const drinkCounter = counterBuilder(drinkSlider);
+
+      $(disheSlider).on('afterChange', (event, slick, currentSlide, nextSlide) => {
+        dishCounter.update(currentSlide);
+      });
+
+      $(drinkSlider).on('afterChange', (event, slick, currentSlide, nextSlide) => {
+        drinkCounter.update(currentSlide);
+      });
+    }
+
+    function hoverProduct(slider) {
       const el = document.createElement('div');
       const ul = slider.getElementsByTagName('ul')[0];
 
       el.className = 'target-product';
       el.innerHTML = slider.getElementsByClassName('slick-slide slick-active')[0].getElementsByTagName('h2')[0].innerHTML;
       slider.appendChild(el);
+
       const headerArr = Array.from(slider.getElementsByTagName('h2')).map(el => el.innerHTML);
-      
       const list = Array.from(ul.getElementsByTagName('li'));
       list.forEach(function(element, index) {
         element.dataset.name = headerArr[index];
@@ -202,9 +236,81 @@ function sliderInit() {
         })
       });
     }
-    targetProduct(disheSlider);
-    targetProduct(drinkSlider);
+    if(window.screen.width >= 800) {
+      hoverProduct(disheSlider);
+      hoverProduct(drinkSlider);
   }
+
+  dropDownInit(disheSlider);
+  // dropDownInit(drinkSlider);
+  function dropDownInit(slider){
+    const heads = Array.from(slider.getElementsByTagName('h2'));
+    const wrap = document.createElement('div');
+    wrap.classList ='slider__dropdown';
+
+    const dropdownControl = function() {
+      let el = document.createElement('div');
+      el.classList = 'dropdown__item-header';
+      let dropDownHeight;
+      let state = true;
+
+      el.addEventListener('click', function() {
+        console.log(dropDownHeight);
+        if(state){
+          wrap.style.height = 45 + 'px';
+          state = false;
+        }
+        else {
+          state = true;
+          wrap.style.height = dropDownHeight + 'px';
+        }
+
+      });
+
+      wrap.appendChild(el);
+      return {
+        set: function(target) {
+          el.innerText = target;
+        },
+        init: function() {
+          console.log(wrap.getBoundingClientRect().height);
+          dropDownHeight =  wrap.getBoundingClientRect().height;
+        }
+      }
+    }
+    let current = slider.getElementsByClassName('slick-slide slick-active')[0]
+      .getElementsByTagName('h2')[0];
+
+    const activeItem = dropdownControl();
+    activeItem.set(current.innerHTML);
+
+
+    const buildElement = function(data, index) {
+      let el = document.createElement('div');
+      el.classList = 'dropdown__item';
+      el.innerHTML = data.innerHTML;
+      el.dataset.id = index;
+
+      el.addEventListener('click', function(e){
+        let target = e.target;
+        activeItem.set(target.innerHTML);
+        $(slider).slick('slickGoTo',target.dataset.id)
+      });
+      wrap.appendChild(el);
+    }
+    for(let i = 0; i < heads.length; i++) {
+      buildElement(heads[i], i);
+    }
+    // heads.forEach(function(el) {
+    //   buildElement(el);
+    // })
+
+      document.getElementById('dishes').appendChild(wrap);
+      activeItem.init();
+  }
+
+  }
+
 
 
   return {
