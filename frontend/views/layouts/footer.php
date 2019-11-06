@@ -1,3 +1,7 @@
+<?php
+
+$settings = \common\models\Settings::find()->one();
+?>
 <div class="scrollTop"></div>
 
 <footer id="footer">
@@ -18,14 +22,14 @@
         </div>
         <div class="footer_content">
             <div class="phone">
-                <a class="phone" href="tel:+380508882323">
+                <a class="phone" href="tel:<?= $settings->phone ?>">
                     <img src="/img/phone.svg" alt="іконка телефону">
-                    <span class="number">050 888 23 23</span>
+                    <span class="number"><?= $settings->phone ?></span>
                 </a>
             </div>
             <div class="location">
                 <img src="/img/location.svg" alt="іконка телефону">
-                <span class="adress">вул. воробкевича, 23</span>
+                <span class="adress"><?= $settings->address ?></span>
             </div>
             <div class="btn_footer">
                 <button class="main_btn modal_btn" data-form="reserveTable" data-id="footer">забронювати стіл</button>

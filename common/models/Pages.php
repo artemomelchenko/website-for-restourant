@@ -73,12 +73,12 @@ class Pages extends \yii\db\ActiveRecord
 
     public function getAboutUs()
     {
-        return $this->hasMany(AboutUsBlock::className(), ['pages_id' => 'id']);
+        return $this->hasOne(AboutUsBlock::className(), ['pages_id' => 'id']);
     }
 
     public function getMenuBlock()
     {
-        return $this->hasMany(MenuBlock::className(), ['pages_id' => 'id']);
+        return $this->hasOne(MenuBlock::className(), ['pages_id' => 'id']);
     }
 
     public function getMenu()

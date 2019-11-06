@@ -79,7 +79,7 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        $page = Pages::find()->with('sliders')->with('recipes')->with('galleries')->where(['id' => 1])->one();
+        $page = Pages::find()->with('sliders')->with('menuBlock')->with('aboutUs')->with('recipes')->with('galleries')->where(['id' => 1])->one();
 
         $leads = new Leads();
 

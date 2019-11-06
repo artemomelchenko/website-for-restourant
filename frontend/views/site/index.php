@@ -4,15 +4,10 @@
 /* @var $page \common\models\Pages */
 
 $this->title = 'Kampana';
-$gallerys = array_chunk($page->galleries,6,true);
-//foreach ($gallerys as $gallery1){
-//    \yii\helpers\VarDumper::dump($gallery1,10,1);
-//}
-?>
-<?php
-    $this->registerJsFile('/js/app.js', ['depends' => ['frontend\assets\AppAsset']]);
-    $this->registerCssFile('/css/fixing.css', ['depends' => ['frontend\assets\AppAsset']]);
-    $this->registerCssFile('/css/fixed.css', ['depends' => ['frontend\assets\AppAsset']]);
+
+$this->registerJsFile('/js/app.js', ['depends' => ['frontend\assets\AppAsset']]);
+$this->registerCssFile('/css/fixing.css', ['depends' => ['frontend\assets\AppAsset']]);
+$this->registerCssFile('/css/fixed.css', ['depends' => ['frontend\assets\AppAsset']]);
 ?>
 <div id="eclipse" class=""></div>
 <div class="form_wrapper">
@@ -60,7 +55,7 @@ $gallerys = array_chunk($page->galleries,6,true);
 
         <div class="form_row">
             <label for="reserv-phone">Номер телефону</label>
-            <input type="text"  name="phone" id="reserv-phone" required>
+            <input type="text" name="phone" id="reserv-phone" required>
         </div>
         <div class="form_row">
             <label for="reserv-data">Дата та час</label>
@@ -68,14 +63,14 @@ $gallerys = array_chunk($page->galleries,6,true);
         </div>
         <div class="form_row">
             <label for="reserv-people">К-сть чоловік</label>
-            <input id="reserv-people" type="number" name="people" >
+            <input id="reserv-people" type="number" name="people">
         </div>
         <div class="form_row">
             <label for="reserv-message">Коментар</label>
-            <textarea  id="reserv-message" name="comment"></textarea>
+            <textarea id="reserv-message" name="comment"></textarea>
         </div>
         <div class="form_btn">
-            <button class="main_btn " >Забронювати</button>
+            <button class="main_btn ">Забронювати</button>
         </div>
     </form>
 </div>
@@ -105,7 +100,8 @@ $gallerys = array_chunk($page->galleries,6,true);
                         xmlns="http://www.w3.org/2000/svg"
                         data-pause="250">
 
-                    <path d="M199.2 214C194.507 221.04 189.707 226.267 184.8 229.68C179.893 232.88 173.28 234.48 164.96 234.48C156.427 234.48 149.28 232.027 143.52 227.12C137.973 222.213 133.707 213.147 130.72 199.92L121.76 160.24C119.2 149.36 116.64 141.04 114.08 135.28C111.733 129.307 107.68 124.613 101.92 121.2C96.3733 117.573 88.48 115.76 78.24 115.76H57.12V196.08C57.12 204.187 57.76 210.053 59.04 213.68C60.32 217.307 62.6667 219.76 66.08 221.04C69.7067 222.32 75.36 223.173 83.04 223.6V230C73.2267 229.36 59.68 229.04 42.4 229.04C24.0533 229.04 10.4 229.36 1.44 230V223.6C9.12 223.173 14.6667 222.32 18.08 221.04C21.7067 219.76 24.16 217.307 25.44 213.68C26.72 210.053 27.36 204.187 27.36 196.08V37.36C27.36 29.2533 26.72 23.3867 25.44 19.76C24.16 16.1333 21.7067 13.68 18.08 12.4C14.6667 11.12 9.12 10.2667 1.44 9.84V3.44C10.4 4.07999 24.0533 4.39999 42.4 4.39999C59.4667 4.39999 73.0133 4.07999 83.04 3.44V9.84C75.36 10.2667 69.7067 11.12 66.08 12.4C62.6667 13.68 60.32 16.1333 59.04 19.76C57.76 23.3867 57.12 29.2533 57.12 37.36V109.68C72.9067 109.467 85.4933 103.28 94.88 91.12L125.6 52.08C136.48 38.64 141.92 28.4 141.92 21.36C141.92 13.8933 135.307 10.0533 122.08 9.84V3.44C134.24 4.07999 146.507 4.39999 158.88 4.39999C170.613 4.39999 179.68 4.07999 186.08 3.44V9.84C171.573 11.9733 158.987 19.76 148.32 33.2L88.16 110C105.227 110.64 119.093 114.373 129.76 121.2C140.64 127.813 148 139.44 151.84 156.08L161.12 196.4C163.467 206.64 165.6 213.573 167.52 217.2C169.653 220.827 172.747 222.64 176.8 222.64C180.427 222.64 183.413 221.68 185.76 219.76C188.32 217.84 191.2 214.747 194.4 210.48L199.2 214Z" stroke="#D9B696"
+                    <path d="M199.2 214C194.507 221.04 189.707 226.267 184.8 229.68C179.893 232.88 173.28 234.48 164.96 234.48C156.427 234.48 149.28 232.027 143.52 227.12C137.973 222.213 133.707 213.147 130.72 199.92L121.76 160.24C119.2 149.36 116.64 141.04 114.08 135.28C111.733 129.307 107.68 124.613 101.92 121.2C96.3733 117.573 88.48 115.76 78.24 115.76H57.12V196.08C57.12 204.187 57.76 210.053 59.04 213.68C60.32 217.307 62.6667 219.76 66.08 221.04C69.7067 222.32 75.36 223.173 83.04 223.6V230C73.2267 229.36 59.68 229.04 42.4 229.04C24.0533 229.04 10.4 229.36 1.44 230V223.6C9.12 223.173 14.6667 222.32 18.08 221.04C21.7067 219.76 24.16 217.307 25.44 213.68C26.72 210.053 27.36 204.187 27.36 196.08V37.36C27.36 29.2533 26.72 23.3867 25.44 19.76C24.16 16.1333 21.7067 13.68 18.08 12.4C14.6667 11.12 9.12 10.2667 1.44 9.84V3.44C10.4 4.07999 24.0533 4.39999 42.4 4.39999C59.4667 4.39999 73.0133 4.07999 83.04 3.44V9.84C75.36 10.2667 69.7067 11.12 66.08 12.4C62.6667 13.68 60.32 16.1333 59.04 19.76C57.76 23.3867 57.12 29.2533 57.12 37.36V109.68C72.9067 109.467 85.4933 103.28 94.88 91.12L125.6 52.08C136.48 38.64 141.92 28.4 141.92 21.36C141.92 13.8933 135.307 10.0533 122.08 9.84V3.44C134.24 4.07999 146.507 4.39999 158.88 4.39999C170.613 4.39999 179.68 4.07999 186.08 3.44V9.84C171.573 11.9733 158.987 19.76 148.32 33.2L88.16 110C105.227 110.64 119.093 114.373 129.76 121.2C140.64 127.813 148 139.44 151.84 156.08L161.12 196.4C163.467 206.64 165.6 213.573 167.52 217.2C169.653 220.827 172.747 222.64 176.8 222.64C180.427 222.64 183.413 221.68 185.76 219.76C188.32 217.84 191.2 214.747 194.4 210.48L199.2 214Z"
+                          stroke="#D9B696"
                           stroke-width="1"
                     />
                     <path d="M386.315 203.12C391.435 216.347 398.795 223.173 408.395 223.6V230C399.862 229.36 388.448 229.04 374.155 229.04C355.808 229.04 342.155 229.36 333.195 230V223.6C341.302 223.173 347.062 222.213 350.475 220.72C354.102 219.013 355.915 216.027 355.915 211.76C355.915 208.133 354.635 203.12 352.075 196.72L332.555 144.24H255.115L241.995 178.16C237.728 189.68 235.595 198.427 235.595 204.4C235.595 211.013 237.835 215.813 242.315 218.8C247.008 221.787 254.048 223.387 263.435 223.6V230C251.275 229.36 239.008 229.04 226.635 229.04C217.035 229.04 209.035 229.36 202.635 230V223.6C213.302 221.04 221.728 211.76 227.915 195.76L303.115 1.83998H308.235L386.315 203.12ZM329.995 137.84L294.155 42.16L257.675 137.84H329.995Z"
@@ -124,7 +120,8 @@ $gallerys = array_chunk($page->galleries,6,true);
                           stroke="#D9B696"
                           stroke-width="1"
                     />
-                    <path d="M1357.74 9.84C1350.06 10.2667 1344.4 11.12 1340.78 12.4C1337.36 13.68 1335.02 16.1333 1333.74 19.76C1332.46 23.3867 1331.82 29.2533 1331.82 37.36V196.08C1331.82 204.187 1332.46 210.053 1333.74 213.68C1335.02 217.307 1337.36 219.76 1340.78 221.04C1344.4 222.32 1350.06 223.173 1357.74 223.6V230C1348.78 229.36 1335.12 229.04 1316.78 229.04C1299.5 229.04 1285.95 229.36 1276.14 230V223.6C1283.82 223.173 1289.36 222.32 1292.78 221.04C1296.4 219.76 1298.86 217.307 1300.14 213.68C1301.42 210.053 1302.06 204.187 1302.06 196.08V119.28H1198.06V196.08C1198.06 204.187 1198.7 210.053 1199.98 213.68C1201.26 217.307 1203.6 219.76 1207.02 221.04C1210.64 222.32 1216.3 223.173 1223.98 223.6V230C1214.16 229.36 1200.62 229.04 1183.34 229.04C1164.99 229.04 1151.34 229.36 1142.38 230V223.6C1150.06 223.173 1155.6 222.32 1159.02 221.04C1162.64 219.76 1165.1 217.307 1166.38 213.68C1167.66 210.053 1168.3 204.187 1168.3 196.08V37.36C1168.3 29.2533 1167.66 23.3867 1166.38 19.76C1165.1 16.1333 1162.64 13.68 1159.02 12.4C1155.6 11.12 1150.06 10.2667 1142.38 9.84V3.44C1151.34 4.07999 1164.99 4.39999 1183.34 4.39999C1200.4 4.39999 1213.95 4.07999 1223.98 3.44V9.84C1216.3 10.2667 1210.64 11.12 1207.02 12.4C1203.6 13.68 1201.26 16.1333 1199.98 19.76C1198.7 23.3867 1198.06 29.2533 1198.06 37.36V112.88H1302.06V37.36C1302.06 29.2533 1301.42 23.3867 1300.14 19.76C1298.86 16.1333 1296.4 13.68 1292.78 12.4C1289.36 11.12 1283.82 10.2667 1276.14 9.84V3.44C1285.95 4.07999 1299.5 4.39999 1316.78 4.39999C1335.12 4.39999 1348.78 4.07999 1357.74 3.44V9.84Z" stroke="#D9B696"
+                    <path d="M1357.74 9.84C1350.06 10.2667 1344.4 11.12 1340.78 12.4C1337.36 13.68 1335.02 16.1333 1333.74 19.76C1332.46 23.3867 1331.82 29.2533 1331.82 37.36V196.08C1331.82 204.187 1332.46 210.053 1333.74 213.68C1335.02 217.307 1337.36 219.76 1340.78 221.04C1344.4 222.32 1350.06 223.173 1357.74 223.6V230C1348.78 229.36 1335.12 229.04 1316.78 229.04C1299.5 229.04 1285.95 229.36 1276.14 230V223.6C1283.82 223.173 1289.36 222.32 1292.78 221.04C1296.4 219.76 1298.86 217.307 1300.14 213.68C1301.42 210.053 1302.06 204.187 1302.06 196.08V119.28H1198.06V196.08C1198.06 204.187 1198.7 210.053 1199.98 213.68C1201.26 217.307 1203.6 219.76 1207.02 221.04C1210.64 222.32 1216.3 223.173 1223.98 223.6V230C1214.16 229.36 1200.62 229.04 1183.34 229.04C1164.99 229.04 1151.34 229.36 1142.38 230V223.6C1150.06 223.173 1155.6 222.32 1159.02 221.04C1162.64 219.76 1165.1 217.307 1166.38 213.68C1167.66 210.053 1168.3 204.187 1168.3 196.08V37.36C1168.3 29.2533 1167.66 23.3867 1166.38 19.76C1165.1 16.1333 1162.64 13.68 1159.02 12.4C1155.6 11.12 1150.06 10.2667 1142.38 9.84V3.44C1151.34 4.07999 1164.99 4.39999 1183.34 4.39999C1200.4 4.39999 1213.95 4.07999 1223.98 3.44V9.84C1216.3 10.2667 1210.64 11.12 1207.02 12.4C1203.6 13.68 1201.26 16.1333 1199.98 19.76C1198.7 23.3867 1198.06 29.2533 1198.06 37.36V112.88H1302.06V37.36C1302.06 29.2533 1301.42 23.3867 1300.14 19.76C1298.86 16.1333 1296.4 13.68 1292.78 12.4C1289.36 11.12 1283.82 10.2667 1276.14 9.84V3.44C1285.95 4.07999 1299.5 4.39999 1316.78 4.39999C1335.12 4.39999 1348.78 4.07999 1357.74 3.44V9.84Z"
+                          stroke="#D9B696"
                           stroke-width="1"
                     />
                     <path d="M1552.57 203.12C1557.69 216.347 1565.05 223.173 1574.65 223.6V230C1566.11 229.36 1554.7 229.04 1540.41 229.04C1522.06 229.04 1508.41 229.36 1499.45 230V223.6C1507.55 223.173 1513.31 222.213 1516.73 220.72C1520.35 219.013 1522.17 216.027 1522.17 211.76C1522.17 208.133 1520.89 203.12 1518.33 196.72L1498.81 144.24H1421.37L1408.25 178.16C1403.98 189.68 1401.85 198.427 1401.85 204.4C1401.85 211.013 1404.09 215.813 1408.57 218.8C1413.26 221.787 1420.3 223.387 1429.69 223.6V230C1417.53 229.36 1405.26 229.04 1392.89 229.04C1383.29 229.04 1375.29 229.36 1368.89 230V223.6C1379.55 221.04 1387.98 211.76 1394.17 195.76L1469.37 1.83998H1474.49L1552.57 203.12ZM1496.25 137.84L1460.41 42.16L1423.93 137.84H1496.25Z"
@@ -135,34 +132,35 @@ $gallerys = array_chunk($page->galleries,6,true);
             </div>
             <div class="container slider_container" data-pause="0">
                 <div class="main-slider" data-slider="1">
-                    <?php foreach ($page->sliders as $slider):?>
-                    <?php if (!empty($slider)): ?>
-                    <div class="slider_flex_container ">
-                        <div class="slider_left_part">
-                            <h1 class="slider_heading"><?= !empty($slider->title) ? $slider->title : '' ?></h1>
-                            <p class="slider_text">
-                                <?= !empty($slider->text) ? $slider->text : '' ?>
-                            </p>
-                            <?php if (!empty($slider->button_text)): ?>
-                            <a class="main_btn main_btn_small" href="<?= $slider->button_link ?>" ><?= $slider->button_text ?></a>
-                            <?php endif; ?>
-                        </div>
+                    <?php foreach ($page->sliders as $slider): ?>
+                        <?php if (!empty($slider)): ?>
+                            <div class="slider_flex_container ">
+                                <div class="slider_left_part">
+                                    <h1 class="slider_heading"><?= !empty($slider->title) ? $slider->title : '' ?></h1>
+                                    <p class="slider_text">
+                                        <?= !empty($slider->text) ? $slider->text : '' ?>
+                                    </p>
+                                    <?php if (!empty($slider->button_text)): ?>
+                                        <a class="main_btn main_btn_small"
+                                           href="<?= $slider->button_link ?>"><?= $slider->button_text ?></a>
+                                    <?php endif; ?>
+                                </div>
 
-                        <div class="slider_right_part">
-                            <?php if (!empty($slider->main_img)):?>
-                            <div class="slider_img">
-                                <img  src="/img/slider/<?= $slider->main_img ?>" alt="">
+                                <div class="slider_right_part">
+                                    <?php if (!empty($slider->main_img)): ?>
+                                        <div class="slider_img">
+                                            <img src="/img/slider/<?= $slider->main_img ?>" alt="">
+                                        </div>
+                                    <?php endif; ?>
+                                    <?php if (!empty($slider->background_img)): ?>
+                                        <div class="slider_picture">
+                                            <img src="/img/slider/<?= $slider->background_img ?>" alt="">
+                                        </div>
+                                    <?php endif; ?>
+                                </div>
                             </div>
-                        <?php endif;?>
-                            <?php if (!empty($slider->background_img)):?>
-                            <div class="slider_picture">
-                                <img  src="/img/slider/<?= $slider->background_img?>" alt="">
-                            </div>
-                            <?php endif;?>
-                        </div>
-                    </div>
-                    <?php endif; ?>
-                    <?php endforeach;?>
+                        <?php endif; ?>
+                    <?php endforeach; ?>
                 </div>
             </div>
         </div>
@@ -171,36 +169,36 @@ $gallerys = array_chunk($page->galleries,6,true);
 <section id="menu">
     <div class="container">
         <div class="menu_headig_wrapper ">
-            <h2> <svg
+            <h2>
+                <svg
                         id="svg_menu"
                         width="131"
                         height="119"
                         viewBox="0 0 131 119"
                         fill="none"
                         xmlns="http://www.w3.org/2000/svg">
-                    <path  d="M128.695 6.91846L129.64 6.86599V5.92V2.72V1.65266L128.575 1.72212C123.7 2.04003 116.952 2.19999 108.32 2.19999H100.8H100.106L99.8631 2.8503L66.3917 92.5227L32.1348 2.36481L31.8652 1.6554L31.1095 1.72411C27.6314 2.04029 23.1313 2.19999 17.6 2.19999C11.2102 2.19999 6.28555 2.04001 
+                    <path d="M128.695 6.91846L129.64 6.86599V5.92V2.72V1.65266L128.575 1.72212C123.7 2.04003 116.952 2.19999 108.32 2.19999H100.8H100.106L99.8631 2.8503L66.3917 92.5227L32.1348 2.36481L31.8652 1.6554L31.1095 1.72411C27.6314 2.04029 23.1313 2.19999 17.6 2.19999C11.2102 2.19999 6.28555 2.04001
             2.81054 1.72411L1.72 1.62497V2.72V5.92V6.86599L2.66453 6.91846C6.48982 7.13097 9.13356 7.55308 10.6889 8.13633L10.698 8.13975L10.7072 8.14299C12.2353 8.68233 13.2377 9.68468 13.777 11.2128C14.3567 12.8553 14.68 15.6429 14.68 19.68V97.44C14.68 101.457 14.3608 104.433 13.7643 106.426C13.2022 
             108.2 12.1515 109.474 10.5928 110.305C8.95485 111.07 6.34363 111.591 2.66295 111.802L1.72 111.856V112.8V116V117.095L2.81054 116.996C6.28555 116.68 11.2102 116.52 17.6 116.52C24.6309 116.52 30.0384 116.68 33.837 116.997L34.92 117.087V116V112.8V111.849L33.9699 111.801C29.7466 111.59 26.75 
             111.065 24.8882 110.287C23.1065 109.438 21.9182 108.149 21.2665 106.396C20.6788 104.52 20.36 101.559 20.36 97.44V18.2981L58.7478 117.162L58.9956 117.8H59.68H62.24H62.9346L63.1771 117.149L99.8 18.8295V99.04C99.8 103.077 99.4767 105.865 98.897 107.507C98.3577 109.035 97.3553 110.038 95.8272 
             110.577L95.818 110.58L95.8089 110.584C94.2536 111.167 91.6098 111.589 87.7845 111.802L86.84 111.854V112.8V116V117.074L87.9112 116.997C92.3541 116.68 99.1514 116.52 108.32 116.52C116.952 116.52 123.7 116.68 128.575 116.998L129.64 117.067V116V112.8V111.854L128.695 111.802C124.883 111.59 122.177 
             111.169 120.502 110.58C119.094 110.05 118.13 109.056 117.583 107.507C117.003 105.865 116.68 103.077 116.68 99.04V19.68C116.68 15.6429 117.003 12.8553 117.583 11.2128C118.13 9.66403 119.094 8.67042 120.502 8.13973C122.176 7.55074 124.883 7.13029 128.695 6.91846Z"
-                           stroke="#D9B696"
-                           stroke-width="1"/>
+                          stroke="#D9B696"
+                          stroke-width="1"/>
                 </svg>
                 <span class="menu_headig head">Меню</span>
         </div>
         </h2>
         <div class="menu_wrapper">
             <div class="menu_img">
-                <img src="/img/menu-1.jpg" alt="фото страви лосось з клюквиним соусом">
+                <img src="/img/<?= $page->menuBlock->img ?>" alt="фото страви лосось з клюквиним соусом">
             </div>
             <div class="menu_text">
                 <p>
-                    Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit,
-                    sed quia consequuntur magni dolores eos qui
+                    <?= $page->menuBlock->text ?>
                 </p>
                 <div class="menu_btn_phon">
-                    <a href="" class="arrow-menu"> переглянути меню
+                    <a href="/menu" class="arrow-menu"> переглянути меню
                         <span class="arrow"></span>
                     </a>
                 </div>
@@ -234,8 +232,10 @@ $gallerys = array_chunk($page->galleries,6,true);
             <div class="reserv_img">
                 <img src="/img/reserv.png" alt="фото тарілкі та столових пріборів">
             </div>
-            <div >
-                <button class="main_btn modal_btn reserv_btn" data-form="reserveTable" data-id="reserv">Забронювати стіл</button>
+            <div>
+                <button class="main_btn modal_btn reserv_btn" data-form="reserveTable" data-id="reserv">Забронювати
+                    стіл
+                </button>
             </div>
         </div>
     </div>
@@ -276,50 +276,24 @@ $gallerys = array_chunk($page->galleries,6,true);
             </svg>
             <span class="heading_recipe head">Рецепт</span>
         </div>
-        <div class="recipe_slider"data-slider="2">
-            <?php foreach ($page->recipes as $recipe):?>
-            <?php if (!empty($recipe)): ?>
-            <div class="recipe_slider_wrapper">
-                <div class="recipe_text">
-                    <h3><?= $recipe->title?></h3>
-                    <p><?= $recipe->text?>
-                    </p>
-                </div>
-                <?php if (!empty($recipe)):?>
-                <div class="recipe_img">
-                    <img src="/img/recipes/<?= $recipe->img?>" alt="">
-                </div>
-                <?php endif?>
-            </div>
+        <div class="recipe_slider" data-slider="2">
+            <?php foreach ($page->recipes as $recipe): ?>
+                <?php if (!empty($recipe)): ?>
+                    <div class="recipe_slider_wrapper">
+                        <div class="recipe_text">
+                            <h3><?= $recipe->title ?></h3>
+                            <p><?= $recipe->text ?>
+                            </p>
+                        </div>
+                        <?php if (!empty($recipe)): ?>
+                            <div class="recipe_img">
+                                <img src="/img/recipes/<?= $recipe->img ?>" alt="">
+                            </div>
+                        <?php endif ?>
+                    </div>
 
-<!--            <div class="recipe_slider_wrapper">-->
-<!--                <div class="recipe_text">-->
-<!--                    <h3>Рецепт від Шеф Кухаря на кожний день</h3>-->
-<!--                    <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque-->
-<!--                        laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto-->
-<!--                        beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut-->
-<!--                        odit aut fugit, sed quia consequuntur magni dolores eos qui-->
-<!--                    </p>-->
-<!--                </div>-->
-<!--                <div class="recipe_img">-->
-<!--                    <img src="/img/sheff.jpg" alt="фото салату">-->
-<!--                </div>-->
-<!--            </div>-->
-<!--            <div class="recipe_slider_wrapper">-->
-<!--                <div class="recipe_text">-->
-<!--                    <h3>Соковитий стейк рибай та пекельний соус </h3>-->
-<!--                    <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque-->
-<!--                        laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto-->
-<!--                        beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut-->
-<!--                        odit aut fugit, sed quia consequuntur magni dolores eos qui-->
-<!--                    </p>-->
-<!--                </div>-->
-<!--                <div class="recipe_img">-->
-<!--                    <img src="/img/rubai.jpg" alt="фото салату">-->
-<!--                </div>-->
-<!--            </div>-->
                 <?php endif; ?>
-            <?php endforeach;?>
+            <?php endforeach; ?>
         </div>
         <div class="recipe_decoration">
             <img src="/img/hat.png" alt="">
@@ -371,7 +345,9 @@ $gallerys = array_chunk($page->galleries,6,true);
             </div>
         </div>
         <div class="calculation_brn">
-            <a href="#"><button class="main_btn calc_btn">Розрахувати банкет</button></a>
+            <a href="#">
+                <button class="main_btn calc_btn">Розрахувати банкет</button>
+            </a>
         </div>
     </div>
     <div class="calculation_decoration">
@@ -384,7 +360,7 @@ $gallerys = array_chunk($page->galleries,6,true);
     <div class="container">
         <div class="gallery_heading_wrapper ">
             <svg
-                    id= "gallery_svg"
+                    id="gallery_svg"
                     width="132"
                     height="143"
                     viewBox="0 0 132 143"
@@ -425,87 +401,13 @@ $gallerys = array_chunk($page->galleries,6,true);
         </div>
         <div class="gallery_slider">
 
-            <?php foreach ($page->galleries as $gallery):?>
+            <?php foreach ($page->galleries as $gallery): ?>
                 <div class="galerry_img">
                     <a data-fancybox="gallery" href="/img/gallery/<?= $gallery->small_img ?>">
                         <img src="/img/gallery/<?= $gallery->img ?>" alt="фото ресторану">
                     </a>
                 </div>
             <?php endforeach; ?>
-
-<!--            --><?php //foreach ($page->galleries as $gallery):?>
-<!--                <div class="galerry_img">-->
-<!--                    <a data-fancybox="gallery" href="/img/gal-1.jpg">-->
-<!--                        <img src="/img/gal1.jpg" alt="фото ресторану">-->
-<!--                    </a>-->
-<!--                </div>-->
-<!--            --><?php //endforeach; ?>
-
-            <!-- <div class="gallery_slider_wrapper"> -->
-<!--            <div class="galerry_img">-->
-<!--                <a data-fancybox="gallery" href="/img/gal-1.jpg">-->
-<!--                    <img src="/img/gal1.jpg" alt="фото ресторану">-->
-<!--                </a>-->
-<!--            </div>-->
-<!--            <div class="galerry_img">-->
-<!--                <a data-fancybox="gallery" href="/img/gal-2.jpg">-->
-<!--                    <img src="/img/gal2.jpg" alt="фото ресторану">-->
-<!--                </a>-->
-<!--            </div>-->
-<!--            <div class="galerry_img">-->
-<!--                <a data-fancybox="gallery" href="/img/gal-3.jpg">-->
-<!--                    <img src="/img/gal3.jpg" alt="фото ресторану">-->
-<!--                </a>-->
-<!--            </div>-->
-<!--            <div class="galerry_img">-->
-<!--                <a data-fancybox="gallery" href="/img/gal-4.jpg">-->
-<!--                    <img src="/img/gal4.jpg" alt="фото ресторану">-->
-<!--                </a>-->
-<!--            </div>-->
-<!--            <div class="galerry_img">-->
-<!--                <a data-fancybox="gallery" href="/img/gal-5.jpg">-->
-<!--                    <img src="/img/gal5.jpg" alt="фото ресторану">-->
-<!--                </a>-->
-<!--            </div>-->
-<!--            <div class="galerry_img">-->
-<!--                <a data-fancybox="gallery" href="/img/gal-6.jpg">-->
-<!--                    <img src="/img/gal6.jpg" alt="фото ресторану">-->
-<!--                </a>-->
-<!--            </div>-->
-            <!-- </div> -->
-
-            <!-- <div class="gallery_slider_wrapper"> -->
-<!--            <div class="galerry_img">-->
-<!--                <a data-fancybox="gallery" href="/img/gal-4.jpg">-->
-<!--                    <img src="/img/gal4.jpg" alt="фото ресторану">-->
-<!--                </a>-->
-<!--            </div>-->
-<!--            <div class="galerry_img">-->
-<!--                <a data-fancybox="gallery" href="/img/gal-5.jpg">-->
-<!--                    <img src="/img/gal5.jpg" alt="фото ресторану">-->
-<!--                </a>-->
-<!--            </div>-->
-<!--            <div class="galerry_img">-->
-<!--                <a data-fancybox="gallery" href="/img/gal-6.jpg">-->
-<!--                    <img src="/img/gal6.jpg" alt="фото ресторану">-->
-<!--                </a>-->
-<!--            </div>-->
-<!--            <div class="galerry_img">-->
-<!--                <a data-fancybox="gallery" href="/img/gal-1.jpg">-->
-<!--                    <img src="/img/gal1.jpg" alt="фото ресторану">-->
-<!--                </a>-->
-<!--            </div>-->
-<!--            <div class="galerry_img">-->
-<!--                <a data-fancybox="gallery" href="/img/gal-2.jpg">-->
-<!--                    <img src="/img/gal2.jpg" alt="фото ресторану">-->
-<!--                </a>-->
-<!--            </div>-->
-<!--            <div class="galerry_img">-->
-<!--                <a data-fancybox="gallery" href="/img/gal-3.jpg">-->
-<!--                    <img src="/img/gal3.jpg" alt="фото ресторану">-->
-<!--                </a>-->
-<!--            </div>-->
-            <!-- </div> -->
 
         </div>
     </div>
@@ -533,24 +435,21 @@ $gallerys = array_chunk($page->galleries,6,true);
               109.88 97.9931 108.653 97.3531 106.84C96.7131 105.027 96.3931 102.093 96.3931 98.04L96.3931 18.68C96.3931 14.6266 96.7131 11.6933 97.3531 9.87997C97.9931 8.06663 99.1664 6.83997 100.873 6.19997C102.686 5.55996 105.513 5.1333 109.353 4.91997V1.71997C109.095 1.73844 108.828 1.75637 108.554 1.77377C104.077 2.0579 97.517 2.19996 88.8731 2.19996C83.6464 2.19996 76.7664 2.0933 68.2331 1.87997L55.7531 1.71997L42.9531 1.87997C34.4197 2.0933 27.4864 2.19996 22.1531 2.19996C13.5091 2.19996 6.94879 2.0579 2.47211 1.77377C2.19795 1.75637 1.9316 1.73844 1.67307 1.71997L1.67307 4.91997C5.51307 5.1333 
               8.2864 5.55996 9.99307 6.19997C11.8064 6.83997 13.0331 8.06663 13.6731 9.87997C14.3131 11.6933 14.6331 14.6266 14.6331 18.68L14.6331 98.04C14.6331 102.093 14.3131 105.027 13.6731 106.84C13.0331 108.653 11.8064 109.88 9.99307 110.52C8.2864 111.16 5.51307 111.587 1.67307 111.8L1.67307 115C1.9316 114.982 2.19795 114.964 2.47211 114.946C6.94879 114.662 13.5091 114.52 22.1531 114.52C30.3334 114.52 36.8404 114.663 41.674 114.95C41.9457 114.966 42.212 114.983 42.4731 115V111.8C38.6331 111.587 35.8064 111.16 33.9931 110.52Z"
                       stroke="#D9B696"
-                      stroke-width="1"/>/>
+                      stroke-width="1"/>
+                />
             </svg>
-
-
 
 
             <span class="about_heading head">Про Нас</span>
         </div>
         <div class="about_content">
             <div class="abaut_img">
-                <img src="/img/about.jpg" alt="фото ресторану">
+                <img src="/img/<?= $page->aboutUs->img ?>" alt="фото ресторану">
             </div>
             <div class="about_text">
-                <h3>Kampana Restaurant</h3>
-                <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque
-                    laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi
-                    architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas
-                    sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui
+                <h3><?= $page->aboutUs->title ?></h3>
+                <p>
+                    <?= $page->aboutUs->text ?>
                 </p>
             </div>
         </div>
