@@ -11,6 +11,8 @@ $gallerys = array_chunk($page->galleries,6,true);
 ?>
 <?php 
     $this->registerJsFile('/js/app.js', ['depends' => ['frontend\assets\AppAsset']]);
+    $this->registerCssFile('/css/fixing.css', ['depends' => ['frontend\assets\AppAsset']]);
+    $this->registerCssFile('/css/fixed.css', ['depends' => ['frontend\assets\AppAsset']]);
 ?>
 <div id="eclipse" class=""></div>
 <div class="form_wrapper">
@@ -423,70 +425,86 @@ $gallerys = array_chunk($page->galleries,6,true);
         </div>
         <div class="gallery_slider">
 
+            <?php foreach ($page->galleries as $gallery):?>
+                <div class="galerry_img">
+                    <a data-fancybox="gallery" href="/img/gallery/<?= $gallery->small_img ?>">
+                        <img src="/img/gallery/<?= $gallery->img ?>" alt="фото ресторану">
+                    </a>
+                </div>
+            <?php endforeach; ?>
+
+<!--            --><?php //foreach ($page->galleries as $gallery):?>
+<!--                <div class="galerry_img">-->
+<!--                    <a data-fancybox="gallery" href="/img/gal-1.jpg">-->
+<!--                        <img src="/img/gal1.jpg" alt="фото ресторану">-->
+<!--                    </a>-->
+<!--                </div>-->
+<!--            --><?php //endforeach; ?>
+
             <!-- <div class="gallery_slider_wrapper"> -->
-            <div class="galerry_img">
-                <a data-fancybox="gallery" href="/img/gal-1.jpg">
-                    <img src="/img/gal1.jpg" alt="фото ресторану">
-                </a>
-            </div>
-            <div class="galerry_img">
-                <a data-fancybox="gallery" href="/img/gal-2.jpg">
-                    <img src="/img/gal2.jpg" alt="фото ресторану">
-                </a>
-            </div>
-            <div class="galerry_img">
-                <a data-fancybox="gallery" href="/img/gal-3.jpg">
-                    <img src="/img/gal3.jpg" alt="фото ресторану">
-                </a>
-            </div>
-            <div class="galerry_img">
-                <a data-fancybox="gallery" href="/img/gal-4.jpg">
-                    <img src="/img/gal4.jpg" alt="фото ресторану">
-                </a>
-            </div>
-            <div class="galerry_img">
-                <a data-fancybox="gallery" href="/img/gal-5.jpg">
-                    <img src="/img/gal5.jpg" alt="фото ресторану">
-                </a>
-            </div>
-            <div class="galerry_img">
-                <a data-fancybox="gallery" href="/img/gal-6.jpg">
-                    <img src="/img/gal6.jpg" alt="фото ресторану">
-                </a>
-            </div>
+<!--            <div class="galerry_img">-->
+<!--                <a data-fancybox="gallery" href="/img/gal-1.jpg">-->
+<!--                    <img src="/img/gal1.jpg" alt="фото ресторану">-->
+<!--                </a>-->
+<!--            </div>-->
+<!--            <div class="galerry_img">-->
+<!--                <a data-fancybox="gallery" href="/img/gal-2.jpg">-->
+<!--                    <img src="/img/gal2.jpg" alt="фото ресторану">-->
+<!--                </a>-->
+<!--            </div>-->
+<!--            <div class="galerry_img">-->
+<!--                <a data-fancybox="gallery" href="/img/gal-3.jpg">-->
+<!--                    <img src="/img/gal3.jpg" alt="фото ресторану">-->
+<!--                </a>-->
+<!--            </div>-->
+<!--            <div class="galerry_img">-->
+<!--                <a data-fancybox="gallery" href="/img/gal-4.jpg">-->
+<!--                    <img src="/img/gal4.jpg" alt="фото ресторану">-->
+<!--                </a>-->
+<!--            </div>-->
+<!--            <div class="galerry_img">-->
+<!--                <a data-fancybox="gallery" href="/img/gal-5.jpg">-->
+<!--                    <img src="/img/gal5.jpg" alt="фото ресторану">-->
+<!--                </a>-->
+<!--            </div>-->
+<!--            <div class="galerry_img">-->
+<!--                <a data-fancybox="gallery" href="/img/gal-6.jpg">-->
+<!--                    <img src="/img/gal6.jpg" alt="фото ресторану">-->
+<!--                </a>-->
+<!--            </div>-->
             <!-- </div> -->
 
             <!-- <div class="gallery_slider_wrapper"> -->
-            <div class="galerry_img">
-                <a data-fancybox="gallery" href="/img/gal-4.jpg">
-                    <img src="/img/gal4.jpg" alt="фото ресторану">
-                </a>
-            </div>
-            <div class="galerry_img">
-                <a data-fancybox="gallery" href="/img/gal-5.jpg">
-                    <img src="/img/gal5.jpg" alt="фото ресторану">
-                </a>
-            </div>
-            <div class="galerry_img">
-                <a data-fancybox="gallery" href="/img/gal-6.jpg">
-                    <img src="/img/gal6.jpg" alt="фото ресторану">
-                </a>
-            </div>
-            <div class="galerry_img">
-                <a data-fancybox="gallery" href="/img/gal-1.jpg">
-                    <img src="/img/gal1.jpg" alt="фото ресторану">
-                </a>
-            </div>
-            <div class="galerry_img">
-                <a data-fancybox="gallery" href="/img/gal-2.jpg">
-                    <img src="/img/gal2.jpg" alt="фото ресторану">
-                </a>
-            </div>
-            <div class="galerry_img">
-                <a data-fancybox="gallery" href="/img/gal-3.jpg">
-                    <img src="/img/gal3.jpg" alt="фото ресторану">
-                </a>
-            </div>
+<!--            <div class="galerry_img">-->
+<!--                <a data-fancybox="gallery" href="/img/gal-4.jpg">-->
+<!--                    <img src="/img/gal4.jpg" alt="фото ресторану">-->
+<!--                </a>-->
+<!--            </div>-->
+<!--            <div class="galerry_img">-->
+<!--                <a data-fancybox="gallery" href="/img/gal-5.jpg">-->
+<!--                    <img src="/img/gal5.jpg" alt="фото ресторану">-->
+<!--                </a>-->
+<!--            </div>-->
+<!--            <div class="galerry_img">-->
+<!--                <a data-fancybox="gallery" href="/img/gal-6.jpg">-->
+<!--                    <img src="/img/gal6.jpg" alt="фото ресторану">-->
+<!--                </a>-->
+<!--            </div>-->
+<!--            <div class="galerry_img">-->
+<!--                <a data-fancybox="gallery" href="/img/gal-1.jpg">-->
+<!--                    <img src="/img/gal1.jpg" alt="фото ресторану">-->
+<!--                </a>-->
+<!--            </div>-->
+<!--            <div class="galerry_img">-->
+<!--                <a data-fancybox="gallery" href="/img/gal-2.jpg">-->
+<!--                    <img src="/img/gal2.jpg" alt="фото ресторану">-->
+<!--                </a>-->
+<!--            </div>-->
+<!--            <div class="galerry_img">-->
+<!--                <a data-fancybox="gallery" href="/img/gal-3.jpg">-->
+<!--                    <img src="/img/gal3.jpg" alt="фото ресторану">-->
+<!--                </a>-->
+<!--            </div>-->
             <!-- </div> -->
 
         </div>

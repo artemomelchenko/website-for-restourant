@@ -1,6 +1,8 @@
 <?php
 namespace frontend\controllers;
 
+use common\models\Category;
+use common\models\Menu;
 use common\models\Pages;
 use frontend\models\ResendVerificationEmailForm;
 use frontend\models\VerifyEmailForm;
@@ -153,7 +155,28 @@ class SiteController extends Controller
 
     public function actionMenu()
     {
-        return $this->render('menu');
+
+        $dishes = Menu::find()->with(['categories' => function($query){
+            $query->with('items');
+        }])->where(['id' => 1])->one();
+        $drinks = Menu::find()->with(['categories' => function($query){
+            $query->with('items');
+        }])->where(['id' => 2])->one();
+
+//        VarDumper::dump($dishes,10,1);
+//        VarDumper::dump($drinks,10,1);
+//        $page = Pages::find()->with(['menu' => function($query){
+//            $query->with(['categories' => function($query){
+//                $query->with('items');
+//            }]);
+//        }])->where(['id' => 2])->all();
+
+
+
+        return $this->render('menu', [
+            'dishes' => $dishes,
+            'drinks' => $drinks
+        ]);
     }
 
     /**
