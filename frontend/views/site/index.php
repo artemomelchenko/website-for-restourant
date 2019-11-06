@@ -403,8 +403,8 @@ $this->registerCssFile('/css/fixed.css', ['depends' => ['frontend\assets\AppAsse
 
             <?php foreach ($page->galleries as $gallery): ?>
                 <div class="galerry_img">
-                    <a data-fancybox="gallery" href="/img/gallery/<?= $gallery->small_img ?>">
-                        <img src="/img/gallery/<?= $gallery->img ?>" alt="фото ресторану">
+                    <a data-fancybox="gallery" href="/img/gallery/<?= $gallery->img ?>">
+                        <img src="/img/gallery/<?= $gallery->small_img ?>" alt="фото ресторану">
                     </a>
                 </div>
             <?php endforeach; ?>
