@@ -13,6 +13,8 @@ use Yii;
  * @property Gallery[] $galleries
  * @property Recipes[] $recipes
  * @property Slider[] $sliders
+ * @property AboutUsBlock[] $aboutUs
+ * @property MenuBlock[] $menuBlock
  */
 class Pages extends \yii\db\ActiveRecord
 {
@@ -67,5 +69,20 @@ class Pages extends \yii\db\ActiveRecord
     public function getSliders()
     {
         return $this->hasMany(Slider::className(), ['pages_id' => 'id']);
+    }
+
+    public function getAboutUs()
+    {
+        return $this->hasMany(AboutUsBlock::className(), ['pages_id' => 'id']);
+    }
+
+    public function getMenuBlock()
+    {
+        return $this->hasMany(MenuBlock::className(), ['pages_id' => 'id']);
+    }
+
+    public function getMenu()
+    {
+        return $this->hasMany(Menu::className(), ['pages_id' => 'id']);
     }
 }

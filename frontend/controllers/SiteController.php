@@ -1,6 +1,9 @@
 <?php
 namespace frontend\controllers;
 
+use common\models\Category;
+use common\models\Leads;
+use common\models\Menu;
 use common\models\Pages;
 use frontend\models\ResendVerificationEmailForm;
 use frontend\models\VerifyEmailForm;
@@ -78,6 +81,12 @@ class SiteController extends Controller
     {
         $page = Pages::find()->with('sliders')->with('recipes')->with('galleries')->where(['id' => 1])->one();
 
+        $leads = new Leads();
+
+        if (Yii::$app->request->isAjax){
+            VarDumper::dump(Yii::$app->request->post(),10,1);
+        }
+
         return $this->render('index',[
             'page' => $page,
         ]);
@@ -149,6 +158,32 @@ class SiteController extends Controller
     public function actionAbout()
     {
         return $this->render('about');
+    }
+
+    public function actionMenu()
+    {
+
+        $dishes = Menu::find()->with(['categories' => function($query){
+            $query->with('items');
+        }])->where(['id' => 1])->one();
+        $drinks = Menu::find()->with(['categories' => function($query){
+            $query->with('items');
+        }])->where(['id' => 2])->one();
+
+//        VarDumper::dump($dishes,10,1);
+//        VarDumper::dump($drinks,10,1);
+//        $page = Pages::find()->with(['menu' => function($query){
+//            $query->with(['categories' => function($query){
+//                $query->with('items');
+//            }]);
+//        }])->where(['id' => 2])->all();
+
+
+
+        return $this->render('menu', [
+            'dishes' => $dishes,
+            'drinks' => $drinks
+        ]);
     }
 
     /**

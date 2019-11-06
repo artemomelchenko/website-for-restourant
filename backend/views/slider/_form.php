@@ -6,6 +6,51 @@ use kartik\file\FileInput;
 /* @var $this yii\web\View */
 /* @var $model common\models\Slider */
 /* @var $form yii\widgets\ActiveForm */
+
+
+$params = [
+    'prompt' => 'Оберіть посилання'
+];
+
+$items =
+    [
+        0 => [
+            'link' => '#menu',
+            'name' => 'Головна "Меню"',
+        ],
+        1 => [
+            'link' => '#reserv',
+            'name' => 'Головна "Забронювати стіл"',
+        ],
+        2 => [
+            'link' => '#recipe',
+            'name' => 'Головна "Рецепти"',
+        ],
+        3 => [
+            'link' => '#calculation',
+            'name' => 'Головна "Розрахунок банкету"',
+        ],
+        4 => [
+            'link' => '#gallery',
+            'name' => 'Головна "Фотогалерея"',
+        ],
+        5 => [
+            'link' => '#about',
+            'name' => 'Головна "Про нас"',
+        ],
+        6 => [
+            'link' => '#footer',
+            'name' => 'Головна "Контакти"',
+        ],
+        7 => [
+            'link' => '/menu',
+            'name' => 'Сторінка "Меню"',
+        ],
+    ];
+
+$items = \yii\helpers\ArrayHelper::map($items,'link','name');
+
+
 ?>
 
 <div class="slider-form">
@@ -19,7 +64,7 @@ use kartik\file\FileInput;
 
     <?= $form->field($model, 'button_text')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'button_link')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'button_link')->dropDownList($items, $params) ?>
 
     <?= $form->field($model, 'main_img')->widget(FileInput::classname(), [
         'pluginOptions' => [
@@ -29,7 +74,10 @@ use kartik\file\FileInput;
             'showPreview' => true,
             'showCaption' => false,
             'showRemove' => false,
-            'showUpload' => true
+            'showUpload' => false,
+            'maxImageWidth' => 664,
+            'maxImageHeight' => 416,
+            'allowedFileExtensions'=>['png'],
         ]
     ]);?>
 
@@ -41,7 +89,10 @@ use kartik\file\FileInput;
             'showPreview' => true,
             'showCaption' => false,
             'showRemove' => false,
-            'showUpload' => true
+            'showUpload' => false,
+            'maxImageWidth' => 570,
+            'maxImageHeight' => 504,
+            'allowedFileExtensions'=>['png'],
         ]
     ]); ?>
 

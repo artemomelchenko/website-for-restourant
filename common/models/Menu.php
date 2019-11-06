@@ -51,8 +51,4 @@ class Menu extends \yii\db\ActiveRecord
     {
         return $this->hasMany(Category::className(), ['menu_id' => 'id']);
     }
-    public function getCategory()
-    {
-        return $this->hasMany(Category::className(), ['menu_id' => 'id']);
-    }
 }

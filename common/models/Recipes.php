@@ -32,9 +32,9 @@ class Recipes extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['text'], 'string'],
+            [['text'], 'string', 'max' => 500],
             [['pages_id'], 'integer'],
-            [['title', 'img'], 'string', 'max' => 255],
+            [['title', 'img'], 'string', 'max' => 100],
             [['pages_id'], 'exist', 'skipOnError' => true, 'targetClass' => Pages::className(), 'targetAttribute' => ['pages_id' => 'id']],
         ];
     }

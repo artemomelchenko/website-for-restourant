@@ -15,7 +15,7 @@ use kartik\file\FileInput;
 
     <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'text')->textarea(['rows' => 6]) ?>
+    <?= $form->field($model, 'text')->textarea(['rows' => 6, 'maxlength' => true]) ?>
 
     <?= $form->field($model, 'img')->widget(FileInput::classname(), [
         'pluginOptions' => [
@@ -25,7 +25,10 @@ use kartik\file\FileInput;
             'showPreview' => true,
             'showCaption' => false,
             'showRemove' => false,
-            'showUpload' => true
+            'showUpload' => false,
+            'maxImageWidth' => 539,
+            'maxImageHeight' => 359,
+            'allowedFileExtensions'=>['jpg','jpeg','gif','png'],
         ]
     ]); ?>
 

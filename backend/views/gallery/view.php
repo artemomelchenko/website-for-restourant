@@ -32,7 +32,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'attributes' => [
 //            'id',
                     [
-                        'attribute' => '',
+                        'attribute' => 'img',
                         'format' => 'raw',
                         'value' => function ($data) {
                             return Html::img('/img/gallery/' . $data->img, [

@@ -25,7 +25,10 @@ use kartik\file\FileInput;
             'showPreview' => true,
             'showCaption' => false,
             'showRemove' => false,
-            'showUpload' => true
+            'showUpload' => false,
+            'maxImageWidth' => 536,
+            'maxImageHeight' => 359,
+            'allowedFileExtensions'=>['jpg','jpeg','gif','png'],
         ]
     ]); ?>
 

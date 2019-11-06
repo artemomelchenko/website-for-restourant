@@ -20,18 +20,24 @@ use kartik\file\FileInput;
             'showPreview' => true,
             'showCaption' => false,
             'showRemove' => false,
-            'showUpload' => true
+            'showUpload' => false,
+            'maxImageWidth' => 862,
+            'maxImageHeight' => 573,
+            'allowedFileExtensions'=>['jpg','jpeg','gif','png'],
         ]
     ]); ?>
             <?=  $form->field($model, 'small_img')->widget(FileInput::classname(), [
                 'pluginOptions' => [
                     'initialPreview'=>[
-                        isset($model->img) ? Html::img("/img/gallery/" . $model->small_img, ['style' => 'width:200px;']) : ''
+                        isset($model->small_img) ? Html::img("/img/gallery/" . $model->small_img, ['style' => 'width:200px;']) : ''
                     ],
                     'showPreview' => true,
                     'showCaption' => false,
                     'showRemove' => false,
-                    'showUpload' => true
+                    'showUpload' => false,
+                    'maxImageWidth' => 350,
+                    'maxImageHeight' => 233,
+                    'allowedFileExtensions'=>['jpg','jpeg','gif','png'],
                 ]
             ]); ?>
 

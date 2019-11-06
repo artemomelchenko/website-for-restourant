@@ -36,8 +36,9 @@ class Slider extends \yii\db\ActiveRecord
     {
         return [
             [['pages_id'], 'integer'],
-            [['title', 'text', 'main_img', 'background_img'], 'string', 'max' => 255],
-            [['button_text', 'button_link'], 'string', 'max' => 100],
+            [['title', 'button_text'], 'string', 'max' => 20],
+            [['main_img', 'background_img'], 'string', 'max' => 255],
+            [['button_link', 'text'], 'string', 'max' => 100],
             [['pages_id'], 'exist', 'skipOnError' => true, 'targetClass' => Pages::className(), 'targetAttribute' => ['pages_id' => 'id']],
         ];
     }

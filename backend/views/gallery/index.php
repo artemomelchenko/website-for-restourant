@@ -23,14 +23,14 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
+//        'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
 //            'id',
 
             [
-                'label' => 'Картинка головна',
+                'attribute' => 'img',
                 'format' => 'raw',
                 'value' => function ($data) {
                     return Html::img(  '/img/gallery/'.$data->img, [
@@ -40,7 +40,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 },
             ],
             [
-                'label' => 'Картинка головна',
+                'attribute' => 'small_img',
                 'format' => 'raw',
                 'value' => function ($data) {
                     return Html::img(  '/img/gallery/'.$data->small_img, [
