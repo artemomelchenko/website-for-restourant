@@ -13,9 +13,7 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="about-us-block-index">
     <div class="card">
         <div class="card-body">
-    <h1><?= Html::encode($this->title) ?></h1>
-
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+            <h1><?= Html::encode($this->title) ?></h1>
 
             <?= GridView::widget([
                 'dataProvider' => $dataProvider,
@@ -23,12 +21,11 @@ $this->params['breadcrumbs'][] = $this->title;
                 'columns' => [
                     ['class' => 'yii\grid\SerialColumn'],
 
-//            'id',
                     [
                         'attribute' => 'img',
                         'format' => 'raw',
                         'value' => function ($data) {
-                            return Html::img(  '/img/'.$data->img, [
+                            return Html::img('/img/' . $data->img, [
                                 'alt' => 'Картинка',
                                 'style' => 'width:150px;'
                             ]);
@@ -36,8 +33,6 @@ $this->params['breadcrumbs'][] = $this->title;
                     ],
                     'title',
                     'text',
-//            'pages_id',
-
                     [
                         'class' => 'yii\grid\ActionColumn',
                         'template' => '{view} {update}',

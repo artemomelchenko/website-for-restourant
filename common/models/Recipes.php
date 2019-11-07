@@ -61,7 +61,8 @@ class Recipes extends \yii\db\ActiveRecord
         return $this->hasOne(Pages::className(), ['id' => 'pages_id']);
     }
 
-    public function getImg(){
+    public function getImg()
+    {
         $image = UploadedFile::getInstance($this, 'img');
         if (!is_null($image)) {
             $ext = end((explode(".", $image->name)));
@@ -72,15 +73,16 @@ class Recipes extends \yii\db\ActiveRecord
             $this->img = $avatar;
         }
     }
+
     public function getUpdate($id)
     {
         $old_img = self::findOne($id)->img;
         $image = UploadedFile::getInstance($this, 'img');
-        if (is_null($image)){
+        if (is_null($image)) {
             $this->img = $old_img;
-        }else{
+        } else {
             $ext = end((explode(".", $image->name)));
-            $avatar = Yii::$app->security->generateRandomString().".{$ext}";
+            $avatar = Yii::$app->security->generateRandomString() . ".{$ext}";
             Yii::$app->params['uploadPath'] = Yii::getAlias('@frontend') . '/web/img/recipes/' . $avatar;
             $path = Yii::$app->params['uploadPath'];
             $image->saveAs($path);

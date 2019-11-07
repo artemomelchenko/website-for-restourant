@@ -7,9 +7,11 @@ use yii\db\Migration;
  */
 class m191106_111754_settings extends Migration
 {
-    public static function tableName(){
+    public static function tableName()
+    {
         return '{{%settings}}';
     }
+
     /**
      * {@inheritdoc}
      */

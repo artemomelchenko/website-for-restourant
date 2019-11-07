@@ -19,18 +19,12 @@ $this->params['breadcrumbs'][] = $this->title;
             <p>
                 <?= Html::a(Yii::t('app', 'Create Category'), ['create', 'id' => $id], ['class' => 'btn btn-success']) ?>
             </p>
-
-            <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
-
             <?= GridView::widget([
                 'dataProvider' => $dataProvider,
                 'filterModel' => $searchModel,
                 'columns' => [
                     ['class' => 'yii\grid\SerialColumn'],
-
-//                    'id',
                     'name',
-//                    'menu_id',
                     [
                         'label' => 'Картинка головна',
                         'format' => 'raw',

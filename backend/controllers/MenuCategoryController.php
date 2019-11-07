@@ -2,7 +2,6 @@
 
 namespace backend\controllers;
 
-use common\models\Category;
 use common\models\CategorySearch;
 use common\models\Item;
 use common\models\ItemSearch;

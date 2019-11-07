@@ -2,6 +2,7 @@
 
 /* @var $this yii\web\View */
 /* @var $form yii\bootstrap\ActiveForm */
+
 /* @var $model \common\models\LoginForm */
 
 use yii\helpers\Html;
@@ -19,35 +20,11 @@ $fieldOptions2 = [
     'inputTemplate' => '{input}<div class="input-group-append"><div class="input-group-text"><span class="fas fa-lock"></span></div></div>'
 ];
 ?>
-<!--<div class="site-login">-->
-<!--    <h1>--><?//= Html::encode($this->title) ?><!--</h1>-->
-<!---->
-<!--    <p>Please fill out the following fields to login:</p>-->
-<!---->
-<!--    <div class="row">-->
-<!--        <div class="col-lg-5">-->
-<!--            -->
-<!---->
-<!--                -->
-<!---->
-<!--
-<?//= $form->field($model, 'rememberMe')->checkbox() ?>
-
-<!-                <div class="form-group">-->
-<!--                    -->
-<!--                </div>-->
-<!---->
-<!--            -->
-<!--        </div>-->
-<!--    </div>-->
-<!--</div>-->
 
 <div class="login-box">
     <div class="login-logo">
         <a href=""><b>АдмінПанель</b>Kampana</a>
     </div>
-    <!-- /.login-logo -->
-    <!--    <div class="card">-->
     <div class="card-body login-card-body">
         <p class="login-box-msg">Sign in to start your session</p>
         <?php $form = ActiveForm::begin(['id' => 'login-form']); ?>
@@ -68,11 +45,7 @@ $fieldOptions2 = [
         <div class="col-xs-4">
             <?= Html::submitButton('Sign in', ['class' => 'btn btn-primary btn-block btn-flat', 'name' => 'login-button']) ?>
         </div>
-        <!-- /.col -->
     </div>
     <?php ActiveForm::end(); ?>
     <div class="social-auth-links text-center mb-3">
-
-        <!-- /.login-card-body -->
-        <!--    </div>-->
     </div>

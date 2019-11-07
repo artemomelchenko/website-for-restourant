@@ -6,11 +6,9 @@ use Yii;
 use common\models\Slider;
 use common\models\SliderSearch;
 use yii\filters\AccessControl;
-use yii\helpers\VarDumper;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-use yii\web\UploadedFile;
 
 /**
  * SliderController implements the CRUD actions for Slider model.

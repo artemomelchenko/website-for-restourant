@@ -8,9 +8,11 @@ use yii\db\Migration;
 class m191106_094754_leads extends Migration
 {
 
-    public static function tableName(){
+    public static function tableName()
+    {
         return '{{%leads}}';
     }
+
     /**
      * {@inheritdoc}
      */

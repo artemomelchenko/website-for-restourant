@@ -3,6 +3,7 @@
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use kartik\file\FileInput;
+
 /* @var $this yii\web\View */
 /* @var $model common\models\Slider */
 /* @var $form yii\widgets\ActiveForm */
@@ -48,7 +49,7 @@ $items =
         ],
     ];
 
-$items = \yii\helpers\ArrayHelper::map($items,'link','name');
+$items = \yii\helpers\ArrayHelper::map($items, 'link', 'name');
 
 
 ?>
@@ -56,53 +57,50 @@ $items = \yii\helpers\ArrayHelper::map($items,'link','name');
 <div class="slider-form">
     <div class="card">
         <div class="card-body">
-    <?php $form = ActiveForm::begin(); ?>
+            <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
+            <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'text')->textInput(['maxlength' => true]) ?>
+            <?= $form->field($model, 'text')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'button_text')->textInput(['maxlength' => true]) ?>
+            <?= $form->field($model, 'button_text')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'button_link')->dropDownList($items, $params) ?>
+            <?= $form->field($model, 'button_link')->dropDownList($items, $params) ?>
 
-    <?= $form->field($model, 'main_img')->widget(FileInput::classname(), [
-        'pluginOptions' => [
-            'initialPreview'=>[
-                isset($model->main_img) ? Html::img("/img/slider/" . $model->main_img, ['style' => 'width:200px;']) : ''
-            ],
-            'showPreview' => true,
-            'showCaption' => false,
-            'showRemove' => false,
-            'showUpload' => false,
-            'maxImageWidth' => 664,
-            'maxImageHeight' => 416,
-            'allowedFileExtensions'=>['png'],
-        ]
-    ]);?>
+            <?= $form->field($model, 'main_img')->widget(FileInput::classname(), [
+                'pluginOptions' => [
+                    'initialPreview' => [
+                        isset($model->main_img) ? Html::img("/img/slider/" . $model->main_img, ['style' => 'width:200px;']) : ''
+                    ],
+                    'showPreview' => true,
+                    'showCaption' => false,
+                    'showRemove' => false,
+                    'showUpload' => false,
+                    'maxImageWidth' => 664,
+                    'maxImageHeight' => 416,
+                    'allowedFileExtensions' => ['png'],
+                ]
+            ]); ?>
 
-    <?=  $form->field($model,   'background_img')->widget(FileInput::classname(), [
-        'pluginOptions' => [
-            'initialPreview'=>[
-                isset($model->background_img) ? Html::img("/img/slider/" . $model->background_img, ['style' => 'width:200px;']) : ''
-            ],
-            'showPreview' => true,
-            'showCaption' => false,
-            'showRemove' => false,
-            'showUpload' => false,
-            'maxImageWidth' => 570,
-            'maxImageHeight' => 504,
-            'allowedFileExtensions'=>['png'],
-        ]
-    ]); ?>
+            <?= $form->field($model, 'background_img')->widget(FileInput::classname(), [
+                'pluginOptions' => [
+                    'initialPreview' => [
+                        isset($model->background_img) ? Html::img("/img/slider/" . $model->background_img, ['style' => 'width:200px;']) : ''
+                    ],
+                    'showPreview' => true,
+                    'showCaption' => false,
+                    'showRemove' => false,
+                    'showUpload' => false,
+                    'maxImageWidth' => 570,
+                    'maxImageHeight' => 504,
+                    'allowedFileExtensions' => ['png'],
+                ]
+            ]); ?>
+            <div class="form-group">
+                <?= Html::submitButton(Yii::t('app', 'Save'), ['class' => 'btn btn-success']) ?>
+            </div>
 
-<!--    --><?//= $form->field($model, 'pages_id')->textInput() ?>
-
-    <div class="form-group">
-        <?= Html::submitButton(Yii::t('app', 'Save'), ['class' => 'btn btn-success']) ?>
-    </div>
-
-    <?php ActiveForm::end(); ?>
+            <?php ActiveForm::end(); ?>
         </div>
-</div>
+    </div>
 </div>

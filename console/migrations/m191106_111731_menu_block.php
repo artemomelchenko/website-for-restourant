@@ -7,9 +7,11 @@ use yii\db\Migration;
  */
 class m191106_111731_menu_block extends Migration
 {
-    public static function tableName(){
+    public static function tableName()
+    {
         return '{{%menu_block}}';
     }
+
     /**
      * {@inheritdoc}
      */

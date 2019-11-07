@@ -31,9 +31,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <?= DetailView::widget([
                 'model' => $category,
                 'attributes' => [
-//            'id',
                     'name',
-//            'menu_id',
                     [
                         'label' => 'Картинка головна',
                         'format' => 'raw',

@@ -2,4 +2,4 @@
 
 /* @var $this yii\web\View */
 
-$this->title ='КАМПАНА';
+$this->title = 'КАМПАНА';

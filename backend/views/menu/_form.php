@@ -15,11 +15,9 @@ use kartik\file\FileInput;
 
     <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
 
-<!--    --><?//= $form->field($model, 'menu_id')->textInput() ?>
-
-    <?=  $form->field($model, 'img')->widget(FileInput::classname(), [
+    <?= $form->field($model, 'img')->widget(FileInput::classname(), [
         'pluginOptions' => [
-            'initialPreview'=>[
+            'initialPreview' => [
                 isset($model->img) ? Html::img("/img/" . $model->img, ['style' => 'width:200px;']) : ''
             ],
             'showPreview' => true,
@@ -28,7 +26,7 @@ use kartik\file\FileInput;
             'showUpload' => false,
             'maxImageWidth' => 536,
             'maxImageHeight' => 359,
-            'allowedFileExtensions'=>['jpg','jpeg','gif','png'],
+            'allowedFileExtensions' => ['jpg', 'jpeg', 'gif', 'png'],
         ]
     ]); ?>
 

@@ -16,17 +16,17 @@ $this->params['breadcrumbs'][] = $this->title;
     <div class="card">
         <div class="card-body">
 
-    <p>
-        <?= Html::a(Yii::t('app', 'Update'), ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-    </p>
+            <p>
+                <?= Html::a(Yii::t('app', 'Update'), ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+            </p>
 
-    <?= DetailView::widget([
-        'model' => $model,
-        'attributes' => [
-            'phone',
-            'address',
-        ],
-    ]) ?>
+            <?= DetailView::widget([
+                'model' => $model,
+                'attributes' => [
+                    'phone',
+                    'address',
+                ],
+            ]) ?>
         </div>
     </div>
 </div>

@@ -15,26 +15,26 @@ $this->params['breadcrumbs'][] = $this->title;
     <div class="card">
         <div class="card-body">
 
-    <p>
-        <?= Html::a(Yii::t('app', 'Update'), ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-    </p>
+            <p>
+                <?= Html::a(Yii::t('app', 'Update'), ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+            </p>
 
-    <?= DetailView::widget([
-        'model' => $model,
-        'attributes' => [
-            [
-                'attribute' => 'img',
-                'format' => 'raw',
-                'value' => function ($data) {
-                    return Html::img('/img/' . $data->img, [
-                        'alt' => 'Картинка',
-                        'style' => 'width:150px;'
-                    ]);
-                },
-            ],
-            'text',
-        ],
-    ]) ?>
+            <?= DetailView::widget([
+                'model' => $model,
+                'attributes' => [
+                    [
+                        'attribute' => 'img',
+                        'format' => 'raw',
+                        'value' => function ($data) {
+                            return Html::img('/img/' . $data->img, [
+                                'alt' => 'Картинка',
+                                'style' => 'width:150px;'
+                            ]);
+                        },
+                    ],
+                    'text',
+                ],
+            ]) ?>
         </div>
     </div>
 </div>

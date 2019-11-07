@@ -67,7 +67,9 @@ class Slider extends \yii\db\ActiveRecord
     {
         return $this->hasOne(Pages::className(), ['id' => 'pages_id']);
     }
-    public function getFiles1(){
+
+    public function getFiles1()
+    {
         $image = UploadedFile::getInstance($this, 'main_img');
         if (!is_null($image)) {
             $ext = end((explode(".", $image->name)));
@@ -78,7 +80,9 @@ class Slider extends \yii\db\ActiveRecord
             $this->main_img = $avatar;
         }
     }
-    public function getFiles2(){
+
+    public function getFiles2()
+    {
         $image = UploadedFile::getInstance($this, 'background_img');
         if (!is_null($image)) {
             $ext = end((explode(".", $image->name)));
@@ -89,30 +93,32 @@ class Slider extends \yii\db\ActiveRecord
             $this->background_img = $avatar;
         }
     }
+
     public function getUpdate1($id)
     {
         $old_img = self::findOne($id)->main_img;
         $image = UploadedFile::getInstance($this, 'main_img');
-        if (is_null($image)){
+        if (is_null($image)) {
             $this->main_img = $old_img;
-        }else{
+        } else {
             $ext = end((explode(".", $image->name)));
-            $avatar = Yii::$app->security->generateRandomString().".{$ext}";
+            $avatar = Yii::$app->security->generateRandomString() . ".{$ext}";
             Yii::$app->params['uploadPath'] = Yii::getAlias('@frontend') . '/web/img/slider/' . $avatar;
             $path = Yii::$app->params['uploadPath'];
             $image->saveAs($path);
             $this->main_img = $avatar;
         }
     }
+
     public function getUpdate2($id)
     {
         $old_img = self::findOne($id)->background_img;
         $image = UploadedFile::getInstance($this, 'background_img');
-        if (is_null($image)){
+        if (is_null($image)) {
             $this->background_img = $old_img;
-        }else{
+        } else {
             $ext = end((explode(".", $image->name)));
-            $avatar = Yii::$app->security->generateRandomString().".{$ext}";
+            $avatar = Yii::$app->security->generateRandomString() . ".{$ext}";
             Yii::$app->params['uploadPath'] = Yii::getAlias('@frontend') . '/web/img/slider/' . $avatar;
             $path = Yii::$app->params['uploadPath'];
             $image->saveAs($path);

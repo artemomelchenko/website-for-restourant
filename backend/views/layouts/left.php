@@ -27,7 +27,8 @@ $controller = Yii::$app->controller;
                     </a>
                 </li>
                 <li class="nav-item has-treeview <?= ($controller->id == 'slider' || $controller->id == 'recipes' || $controller->id == 'gallery' || $controller->id == 'menu-block' || $controller->id == 'about-us-block') ? 'menu-open' : '' ?>">
-                    <a href="#" class="nav-link <?= ($controller->id == 'slider' || $controller->id == 'recipes' || $controller->id == 'gallery' || $controller->id == 'menu-block' || $controller->id == 'about-us-block') ? 'active'  : '' ?>">
+                    <a href="#"
+                       class="nav-link <?= ($controller->id == 'slider' || $controller->id == 'recipes' || $controller->id == 'gallery' || $controller->id == 'menu-block' || $controller->id == 'about-us-block') ? 'active' : '' ?>">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>
                             Головна сторінка
@@ -42,25 +43,29 @@ $controller = Yii::$app->controller;
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="/admin/menu-block" class="nav-link <?= $controller->id == 'menu-block' ? 'active' : '' ?>">
+                            <a href="/admin/menu-block"
+                               class="nav-link <?= $controller->id == 'menu-block' ? 'active' : '' ?>">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Блок меню</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="/admin/recipes" class="nav-link <?= $controller->id == 'recipes' ? 'active' : '' ?>">
+                            <a href="/admin/recipes"
+                               class="nav-link <?= $controller->id == 'recipes' ? 'active' : '' ?>">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Рецепти</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="/admin/gallery" class="nav-link <?= $controller->id == 'gallery' ? 'active' : '' ?>">
+                            <a href="/admin/gallery"
+                               class="nav-link <?= $controller->id == 'gallery' ? 'active' : '' ?>">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Фотогалерея</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="/admin/about-us-block" class="nav-link <?= $controller->id == 'about-us-block' ? 'active' : '' ?>">
+                            <a href="/admin/about-us-block"
+                               class="nav-link <?= $controller->id == 'about-us-block' ? 'active' : '' ?>">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Про нас</p>
                             </a>
@@ -68,7 +73,8 @@ $controller = Yii::$app->controller;
                     </ul>
                 </li>
                 <li class="nav-item has-treeview <?= ($controller->id == 'menu-category' || $controller->id == 'menu') ? 'menu-open' : '' ?>">
-                    <a href="/admin/menu" class="nav-link <?= ($controller->id == 'menu-category' || $controller->id == 'menu') ? 'active' : '' ?>">
+                    <a href="/admin/menu"
+                       class="nav-link <?= ($controller->id == 'menu-category' || $controller->id == 'menu') ? 'active' : '' ?>">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>
                             Сторінка Меню
@@ -85,12 +91,13 @@ $controller = Yii::$app->controller;
                             </a>
                         </li>
                         <?php foreach ($menu as $v): ?>
-                        <li class="nav-item">
-                            <a href="/admin/menu-category?id=<?= $v->id ?>" class="nav-link <?= ($controller->id == 'menu-category' && (int)$controller->actionParams['id'] == (int)$v->id) ? 'active' : '' ?>">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p><?= $v->name ?></p>
-                            </a>
-                        </li>
+                            <li class="nav-item">
+                                <a href="/admin/menu-category?id=<?= $v->id ?>"
+                                   class="nav-link <?= ($controller->id == 'menu-category' && (int)$controller->actionParams['id'] == (int)$v->id) ? 'active' : '' ?>">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p><?= $v->name ?></p>
+                                </a>
+                            </li>
                         <?php endforeach; ?>
                     </ul>
                 </li>

@@ -22,7 +22,6 @@ class AppAsset extends AssetBundle
     public $js = [
         'js/adminlte.js',
         'js/demo.js',
-//        'js/dashboard3.js',
     ];
     public $depends = [
         'yii\web\YiiAsset',
