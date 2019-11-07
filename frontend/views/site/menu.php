@@ -186,6 +186,11 @@ $this->registerJsFile('/js/menu.js');
                     <div class="menu_page_slider_img">
                         <img src="/img/<?= $category2->img ?>" alt="картинка  коктейлі">
                     </div>
+                    <ul>
+                        <?php foreach($drinks->categories as $drink): ?>
+                            <li><?= $drink->name ?></li>
+                        <?php endforeach; ?>
+                    </ul>
                     <div class="menu_page_slider_list revers">
                         <table>
                             <?php foreach ($category2->items as $item2): ?>
