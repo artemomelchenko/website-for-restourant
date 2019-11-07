@@ -127,11 +127,12 @@ $this->registerJsFile('/js/menu.js');
             <div class="menu_page_slider_img">
               <img src="img/<?= $dish->img ?>" alt="картинка  страв">
             </div>
-            <ul>
-            <?php foreach($dishes->categories as $dish2): ?>
-              <li><?= $dish2->name ?></li>
-            <?php endforeach; ?>
-            </ul>
+            <ol class="slider__dropdown">
+              <li class="dropdown__item-header"><?= $dish->name ?></li>
+              <?php foreach($dishes->categories as $dish2): ?>
+                <li class="dropdown__item"><?= $dish2->name ?></li>
+              <?php endforeach; ?>
+            </ol>
             <div class="menu_page_slider_list">
               <table>
                   <?php foreach ($dish->items as $item): ?>
@@ -186,11 +187,12 @@ $this->registerJsFile('/js/menu.js');
                     <div class="menu_page_slider_img">
                         <img src="/img/<?= $category2->img ?>" alt="картинка  коктейлі">
                     </div>
-                    <ul>
+                    <ol class="slider__dropdown">
+                      <li class="dropdown__item-header"><?= $category2->name ?></li>
                         <?php foreach($drinks->categories as $drink): ?>
-                            <li><?= $drink->name ?></li>
+                            <li class="dropdown__item"><?= $drink->name ?></li>
                         <?php endforeach; ?>
-                    </ul>
+                    </ol>
                     <div class="menu_page_slider_list revers">
                         <table>
                             <?php foreach ($category2->items as $item2): ?>

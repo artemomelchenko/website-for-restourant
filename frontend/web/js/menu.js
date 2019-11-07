@@ -139,7 +139,18 @@ window.addEventListener('DOMContentLoaded', (event) => {
           element.classList.add('active');
           this.destroy();
         },
-        offset: '70%'
+        offset: '85%'
+      });
+    });
+
+    menuMap.forEach(element => {
+      new Waypoint({
+        element: element,
+        handler: function(direction) {
+          element.classList.add('active');
+          this.destroy();
+        },
+        offset: '-75%'
       });
     });
   }

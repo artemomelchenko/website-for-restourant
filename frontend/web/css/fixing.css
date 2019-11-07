@@ -103,9 +103,9 @@
 /* Dropdown------------------ */
 
 .slider__dropdown {
-    display: flex;
+    display: none;
     flex-direction: column;
-    position: absolute;
+    position: static;
     top: 330px;
     left: 5vw;
     width: 90vw;
@@ -113,13 +113,13 @@
     border: 1px solid #d9b696; 
     /* color: #d9b696; */
     font-family: 'Montserrat';
-    height: auto;
+    /* height: 100%; */
     min-height: 45px;
     transition: height .4s ease, width .4s ease;
     background-color: white;
     overflow: hidden;
     padding: 0;
-    will-change: height, width;
+    will-change: height;
     
     /* transform: skew(-5deg); */
 }
@@ -143,13 +143,11 @@
 }
 
 .dropdown__item {
-    transform: translate(3px);
-    opacity: 0;
-    transition: transform .3s ease .3s, opacity .3s ease .1s;
+    opacity: 1;
+    transition: opacity .3s ease .1s;
 }
 
 .slider__dropdown.active .dropdown__item {
-    transform: translate(-1px);
     opacity: 1;
 }
 
@@ -158,6 +156,7 @@
     margin: 0;
     width: 100%;
     height: 45px;
+    line-height: 45px;
     min-height: 45px;
     padding-left: 15px;
     cursor: pointer;
@@ -343,6 +342,9 @@
 }
 
 @media only screen and (max-width: 480px) {
+    .slider__dropdown {
+        display: inline-flex;
+    }
     .slider_right_part {
         bottom: 210px;
     }
@@ -429,6 +431,10 @@
 
     #dishes_svg, #drinks_svg {
         opacity: 1;
+    }
+
+    .menu_page_slider_drinks .slider__counter {
+        display: none;
     }
 
 
