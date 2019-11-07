@@ -17,7 +17,7 @@ class LeadsSearch extends Leads
     {
         return [
             [['id', 'page_id'], 'integer'],
-            [['name', 'phone', 'datetime', 'people', 'comment', 'section'], 'safe'],
+            [['name', 'phone', 'datetime', 'people', 'comment', 'section', 'create_at'], 'safe'],
         ];
     }
 
@@ -60,6 +60,7 @@ class LeadsSearch extends Leads
             'id' => $this->id,
             'datetime' => $this->datetime,
             'page_id' => $this->page_id,
+            'create_at' => $this->create_at,
         ]);
 
         $query->andFilterWhere(['like', 'name', $this->name])

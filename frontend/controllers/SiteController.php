@@ -87,8 +87,8 @@ class SiteController extends Controller
 
         if (Yii::$app->request->isAjax) {
             if ($post['data']){
-                $test = $leads->savingToDb($post['data']);
-            VarDumper::dump($test, 10, 1);
+
+                $leads->allSend($post['data'], 'index');
             }
         }
 
@@ -174,6 +174,17 @@ class SiteController extends Controller
         $drinks = Menu::find()->with(['categories' => function ($query) {
             $query->with('items');
         }])->where(['id' => 2])->one();
+
+        $leads = new Leads();
+
+        $post = Yii::$app->request->post();
+
+        if (Yii::$app->request->isAjax) {
+            if ($post['data']){
+
+                $leads->allSend($post['data'], 'menu');
+            }
+        }
 
         return $this->render('menu', [
             'dishes' => $dishes,
