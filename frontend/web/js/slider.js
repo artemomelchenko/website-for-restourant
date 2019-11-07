@@ -241,94 +241,55 @@ function sliderInit() {
 
   if(window.screen.width  < 500) {
     dropDownInit(disheSlider);
+    dropDownInit(drinkSlider);
+
   }
-  // dropDownInit(drinkSlider);
   function dropDownInit(slider){
-    const heads = Array.from(slider.getElementsByTagName('h2'));
-    const wrap = document.createElement('div');
-    wrap.classList ='slider__dropdown active';
+    const dropDowns = Array.from(slider.getElementsByClassName('slider__dropdown'));
+    let state = false;
+    let dropDownHeight = dropDowns[0].getBoundingClientRect().height;
+    let pos = 0;
 
-    const dropdownControl = function() {
-      let el = document.createElement('div');
-      el.classList = 'dropdown__item-header';
-      let dropDownHeight;
-      let state = true;
+    dropDowns.forEach(element => {
+      let li = Array.from(element.getElementsByClassName('dropdown__item'));
+      element.classList.remove('active');
+      element.style.height = 45 + 'px';
+      let index = 0;
+      li.forEach(element => {
+        element.dataset.id = index++;
+        element.addEventListener('click', function(e) {
+          e.stopImmediatePropagation();
+          if(e.target.dataset.id == pos) {
+            return;
+          }
 
-      el.addEventListener('click', function() {
+          let prev = element.parentElement|| false;
+          pos = element.dataset.id;
+
+          if(prev) {
+            prev.classList.remove('active');
+            prev.style.height = 45 + 'px';
+          }
+
+          state = false;
+          $(slider).slick('slickGoTo', pos);
+        })
+      });
+
+      element.addEventListener('click', function(e) {
+        // e.stopImmediatePropagation();
         if(state){
-          wrap.style.height = 45 + 'px';
-          wrap.classList.remove('active');
+          element.style.height = 45 + 'px';
+          element.classList.remove('active');
           state = false;
         }
         else {
           state = true;
-          wrap.classList.add('active');
-          wrap.style.height = dropDownHeight + 'px';
-
-          document.body.addEventListener('click', function(e) {
-            e.stopImmediatePropagation();
-            if(e.target.classList.contains('dropdown__item')){
-              wrap.style.height = 45 + 'px';
-              state = false;
-              wrap.classList.remove('active');
-            }
-          });
+          element.classList.add('active');
+          element.style.height = dropDownHeight + 'px';
         }
       });
-
-      wrap.appendChild(el);
-      return {
-        set: function(target) {
-          el.innerText = target;
-        },
-        init: function() {
-          dropDownHeight =  wrap.getBoundingClientRect().height;
-          wrap.style.height = 45 + 'px';
-          wrap.classList.remove('active');
-          state = false;
-        }
-      }
-    }
-    let current = slider.getElementsByClassName('slick-slide slick-active')[0]
-      .getElementsByTagName('h2')[0];
-
-    const activeItem = dropdownControl();
-    activeItem.set(current.innerHTML);
-
-
-    const buildElement = function(data, index) {
-      let el = document.createElement('div');
-      el.classList = 'dropdown__item';
-      el.innerHTML = data.innerHTML;
-      el.dataset.id = index;
-
-      el.addEventListener('click', function(e){
-        let target = e.target;
-        activeItem.set(target.innerHTML);
-        $(slider).slick('slickGoTo',target.dataset.id);
-      });
-      wrap.appendChild(el);
-    }
-    for(let i = 0; i < heads.length; i++) {
-      buildElement(heads[i], i);
-    }
-
-    function injectIntoItems() {
-      const items = slider.getElementsByClassName('slick-slide');
-
-      for(let i = 0; i < items.length; i++) {
-        let target = items[i].getElementsByClassName('menu_page_slider_content')[0];
-        console.log( target.getElementsByClassName('menu_page_slider_img')[0]);
-        target.appendChild(wrap);
-
-
-      }
-    }
-
-    injectIntoItems();
-    // activeItem.init();
-    // document.getElementsByClassName('menu_page_slider_dishes')[0].appendChild(wrap);
-
+    });
   }
 }
 
