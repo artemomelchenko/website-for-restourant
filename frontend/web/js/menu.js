@@ -153,4 +153,6 @@ window.addEventListener('DOMContentLoaded', (event) => {
         offset: '-75%'
       });
     });
+
+    dateTimePicker();
   }
