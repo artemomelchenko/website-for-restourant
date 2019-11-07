@@ -119,31 +119,36 @@ $this->registerJsFile('/js/menu.js');
 
         <div class="menu_page_slider_dishes" data-slider="1">
 
-            <?php foreach ($dishes->categories as $dish): ?>
-                <div class="menu_page_slider_content">
-                    <div class="menu_page_slider_heading">
-                        <h2><?= $dish->name ?></h2>
-                    </div>
-                    <div class="menu_page_slider_img">
-                        <img src="img/<?= $dish->img ?>" alt="картинка  страв">
-                    </div>
-                    <div class="menu_page_slider_list">
-                        <table>
-                            <?php foreach ($dish->items as $item): ?>
-                                <tr>
-                                    <td><?= $item->name ?></td>
-                                    <td class="menu_price"><?= $item->price ?></td>
-                                </tr>
-                            <?php endforeach; ?>
-                        </table>
-                    </div>
+            <?php foreach($dishes->categories as $dish): ?>
+          <div class="menu_page_slider_content">
+              <div class="menu_page_slider_heading">
+                  <h2><?= $dish->name ?></h2>
                 </div>
+            <div class="menu_page_slider_img">
+              <img src="img/<?= $dish->img ?>" alt="картинка  страв">
+            </div>
+            <ul>
+            <?php foreach($dishes->categories as $dish2): ?>
+              <li><?= $dish2->name ?></li>
             <?php endforeach; ?>
-        </div>
-    </section>
-    <!--     </div>   <!-- end container -->
-    <!--    <section> <!--  end -->
-
+            </ul>
+            <div class="menu_page_slider_list">
+              <table>
+                  <?php foreach ($dish->items as $item): ?>
+                <tr>
+                  <td><?= $item->name ?></td>
+                  <td class="menu_price"><?= $item->price ?></td>
+                </tr>
+                  <?php endforeach; ?>
+              </table>
+            </div>
+          </div>
+        <?php endforeach; ?>
+          </div>
+      </section>
+<!--     </div>   <!-- end container -->
+<!--    <section> <!--  end -->
+   
     <section id="drinks">
         <!--       <div class="container">-->
         <div class="drinks">

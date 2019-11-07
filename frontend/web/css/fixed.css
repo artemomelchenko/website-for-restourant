@@ -1,4 +1,329 @@
+#eclipse.active{
+    overflow-x: hidden;
+}
+
 td, th {
     padding-bottom: 26px;
     line-height: 1.5rem;
+}
+#menu, #reserv, #recipe, #calculation,
+#gallery, #about, header {
+ height: auto;
+}
+#reserv, #recipe, #calculation,
+#gallery, footer{
+    padding-top: 200px;
+}
+#about, #recipe{
+    padding-top: 150px;
+}
+#recipe {
+    padding-bottom: 50px;
+}
+
+
+/* RECERV */
+
+.reserv_btn {
+    right: 0.7%;
+}
+
+
+/* RECIPE*/
+
+.recipe_slider_wrapper{
+    margin-bottom: 20px;
+}
+.recipe_border{
+    position: relative;
+}
+
+/*GALLERY*/
+
+#gallery .slider__counter {
+    top: auto;
+    right: 0;
+    left: 0;
+    margin: auto;
+    bottom: -7%;
+}
+#gallery .arrow__l {
+    right: calc(46% - 60px);
+}
+#gallery .arrow__r {
+    left: calc(52.5% - 140px);
+}
+#gallery .arrow__l, #gallery .arrow__r {
+    top: 106%;
+}
+
+
+
+@media only screen and (max-width: 1280px){
+    .calculation_content_wrapper {
+        margin: 50px 3%;
+    }
+}
+@media only screen and (max-width: 1200px){
+    #recipe .arrow__l, #recipe .arrow__r {
+        top: 94%;
+    }
+    #gallery .arrow__l, #gallery .arrow__r {
+        top: 106%;
+    }
+
+}
+
+@media only screen and (max-width: 1024px) {
+    .form_row {
+        padding: 24px 0
+    }
+    .calculation_content_wrapper {
+        margin: 50px 3%;
+    }
+    gallery .arrow__r {
+        left: calc(53.5% - 140px);
+    }
+}
+@media only screen and (max-width: 998px){
+    .calculation_content_wrapper {
+        margin: 48px 4%;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+
+
+    .main_btn_small {
+        position: relative;
+        top: 440px;
+    }
+
+    .slider__counter {
+        top: calc(78% - 6px);
+    }
+
+    .slider_container .arrow__l, .slider_container .arrow__r {
+        top: 78%;
+    }
+
+    .arrow-menu .arrow {
+        right: 120px;
+    }
+
+    .arrow-menu:before {
+        right: 79px;
+    }
+
+    #recipe ul.slick-dots {
+        top: 50%;
+    }
+    .form_row {
+        padding: 16px 0;
+    }
+    #recipe .arrow__l, #recipe .arrow__r {
+        top: 93%;
+    }
+    #gallery .arrow__l, #gallery .arrow__r {
+        top: 105%;
+    }
+    #gallery .arrow__l {
+        right: calc(45% - 60px);
+    }
+    #gallery .arrow__r {
+        left: calc(55.5% - 140px);
+    }
+
+}
+@media only screen and (max-width: 480px) {
+    .slider_wrapper {
+        padding-top: 68px !important;
+    }
+    .slider_img img {
+        top: 7%;
+        right: 7%;
+        max-width: 96%;
+    }
+    .slider_picture {
+        top: -6%;
+        right: 8%;
+        max-width: 90%;
+    }
+    .main_btn_small {
+        top: 44vh;
+    }
+    .slider__counter {
+        top: calc(76% - 6px);
+    }
+    .slider_container .arrow__l, .slider_container .arrow__r {
+        top: 76%;
+    }
+
+    .reserv_btn {
+        right: 0%;
+    }
+    #recipe .slider__counter {
+        top: -15px;
+    }
+    #recipe .arrow__r {
+        left: 27%;
+    }
+    #recipe .arrow__l {
+        left: 59%;
+    }
+    #recipe .arrow__l, #recipe .arrow__r  {
+        top: 345px;
+    }
+    #recipe ul.slick-dots {
+        display: none!important;
+    }
+    .recipe_slider_wrapper {
+         margin-bottom: 0px;
+    }
+    .recipe_text{
+        padding-bottom: 0;
+    }
+    .form_row {
+        padding: 0;
+    }
+    #gallery .arrow__l, #gallery .arrow__r {
+        top: 104%;
+    }
+    #gallery .arrow__l {
+        right: calc(42% - 60px);
+    }
+    #gallery .arrow__r {
+        left: calc(62.5% - 140px);
+    }
+    .form_wrapper {
+        width: 320px;
+        height: 90vh;
+        top: 0;
+        margin: 0 auto;
+    }
+    #svg_form1{
+        padding: 20px 0 40px 0;
+    }
+
+
+}
+
+@media only screen and (max-width: 414px) {
+
+    .slider_wrapper {
+        padding-top: 30px !important;
+    }
+    .main_btn_small {
+        top: 50vh;
+    }
+    #recipe .slider__counter {
+        top: 24px;
+    }
+    #recipe .arrow__l, #recipe .arrow__r {
+        top: 362px;
+    }
+    #gallery .arrow__r {
+        left: calc(60.5% - 140px);
+    }
+    .footer_decoration img{
+        height: 28vh;
+    }
+}
+@media only screen and (max-width: 375px){
+    #recipe .slider__counter {
+        top: -15px;
+    }
+    #recipe .arrow__r {
+        left: 25%;
+    }
+    #recipe .arrow__l, #recipe .arrow__r  {
+        top: 345px;
+
+    }
+    #gallery .arrow__l {
+        right: calc(40% - 60px);
+    }
+    gallery .arrow__r {
+        left: calc(61% - 140px);
+}
+
+@media only screen and (max-width: 375px) and (max-height: 736px) {
+    .slider_img img {
+        top: 26%;
+        right: 3%;
+        max-width: 90%;
+    }
+    .slider_picture {
+        top: 15%;
+        right: 14%;
+        max-width: 82%;
+    }
+    .main_btn_small {
+        top: 46vh;
+    }
+    #recipe .slider__counter {
+        top: -15px;
+    }
+    #recipe .arrow__r {
+        left: 25%;
+    }
+    #recipe .arrow__l, #recipe .arrow__r  {
+        top: 345px;
+    }
+}
+
+@media only screen and (max-width: 360px) {
+    .slider_img img {
+        top: 33%;
+    }
+
+    .slider_picture {
+        top: 20%;
+    }
+    #recipe .slider__counter {
+        top: -60px;
+    }
+    #recipe .arrow__r {
+        left: 24%;
+    }
+    #recipe .arrow__l, #recipe .arrow__r {
+        top: 332px;
+    }
+    #gallery .arrow__l {
+        right: calc(39% - 60px);
+    }
+}
+@media only screen and (max-width: 320px) {
+    .slider_wrapper {
+        padding-top: 9px !important;
+    }
+
+    .slider_picture {
+        top: 46px !important;
+    }
+
+    .slider_img img {
+        top: 39% !important;
+    }
+    .main_btn_small {
+        top: 274px !important;
+    }
+
+    #recipe .slider__counter {
+        top: -114px;
+    }
+    #recipe .arrow__l, #recipe .arrow__r {
+        top: 305px;
+    }
+    #recipe .arrow__r {
+        left: 22%;
+    }
+    #gallery .arrow__r {
+        left: calc(63.5% - 140px);
+    }
+    .footer_decoration img{
+        height: 28vh;
+    }
+
+}
 }

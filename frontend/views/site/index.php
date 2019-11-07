@@ -63,7 +63,7 @@ $this->registerCssFile('/css/fixed.css', ['depends' => ['frontend\assets\AppAsse
         </div>
         <div class="form_row">
             <label for="reserv-people">К-сть чоловік</label>
-            <input id="reserv-people" type="number" name="people">
+            <input id="reserv-people" type="text" name="people" >
         </div>
         <div class="form_row">
             <label for="reserv-message">Коментар</label>
@@ -132,19 +132,18 @@ $this->registerCssFile('/css/fixed.css', ['depends' => ['frontend\assets\AppAsse
             </div>
             <div class="container slider_container" data-pause="0">
                 <div class="main-slider" data-slider="1">
-                    <?php foreach ($page->sliders as $slider): ?>
-                        <?php if (!empty($slider)): ?>
-                            <div class="slider_flex_container ">
-                                <div class="slider_left_part">
-                                    <h1 class="slider_heading"><?= !empty($slider->title) ? $slider->title : '' ?></h1>
-                                    <p class="slider_text">
-                                        <?= !empty($slider->text) ? $slider->text : '' ?>
-                                    </p>
-                                    <?php if (!empty($slider->button_text)): ?>
-                                        <a class="main_btn main_btn_small"
-                                           href="<?= $slider->button_link ?>"><?= $slider->button_text ?></a>
-                                    <?php endif; ?>
-                                </div>
+                    <?php foreach ($page->sliders as $slider):?>
+                    <?php if (!empty($slider)): ?>
+                    <div class="slider_flex_container ">
+                        <div class="slider_left_part">
+                            <h1 class="slider_heading"><?= !empty($slider->title) ? $slider->title : '' ?></h1>
+                            <p class="slider_text">
+                                <?= !empty($slider->text) ? $slider->text : '' ?>
+                            </p>
+                            <?php if (!empty($slider->button_text)): ?>
+                            <a class="main_btn main_btn_small" href="<?= $slider->button_link ?>" data-target="anchor" ><?= $slider->button_text ?></a>
+                            <?php endif; ?>
+                        </div>
 
                                 <div class="slider_right_part">
                                     <?php if (!empty($slider->main_img)): ?>
@@ -232,11 +231,9 @@ $this->registerCssFile('/css/fixed.css', ['depends' => ['frontend\assets\AppAsse
             <div class="reserv_img">
                 <img src="/img/reserv.png" alt="фото тарілкі та столових пріборів">
             </div>
-            <div>
-                <button class="main_btn modal_btn reserv_btn" data-form="reserveTable" data-id="reserv">Забронювати
-                    стіл
-                </button>
-            </div>
+<!--            <div >-->
+                <button class="main_btn modal_btn reserv_btn" data-form="reserveTable" data-id="reserv">Забронювати стіл</button>
+<!--            </div>-->
         </div>
     </div>
     <div class="reserv_decoration">
@@ -276,21 +273,26 @@ $this->registerCssFile('/css/fixed.css', ['depends' => ['frontend\assets\AppAsse
             </svg>
             <span class="heading_recipe head">Рецепт</span>
         </div>
-        <div class="recipe_slider" data-slider="2">
-            <?php foreach ($page->recipes as $recipe): ?>
-                <?php if (!empty($recipe)): ?>
-                    <div class="recipe_slider_wrapper">
-                        <div class="recipe_text">
-                            <h3><?= $recipe->title ?></h3>
-                            <p><?= $recipe->text ?>
-                            </p>
+        <div class="recipe_slider"data-slider="2">
+            <?php foreach ($page->recipes as $recipe):?>
+            <?php if (!empty($recipe)): ?>
+            <div class="recipe_slider_wrapper">
+                <div class="recipe_text">
+                    <h3><?= $recipe->title?></h3>
+                    <p><?= $recipe->text?>
+                    </p>
+                </div>
+                <?php if (!empty($recipe)):?>
+                    <div class="recipe_border active">
+                        <div class="recipe_img">
+                            <img src="/img/recipes/<?= $recipe->img?>" alt="">
                         </div>
-                        <?php if (!empty($recipe)): ?>
-                            <div class="recipe_img">
-                                <img src="/img/recipes/<?= $recipe->img ?>" alt="">
-                            </div>
-                        <?php endif ?>
                     </div>
+<!--                <div class="recipe_img active">-->
+<!--                    <img src="/img/recipes/--><?//= $recipe->img?><!--" alt="">-->
+<!--                </div>-->
+                <?php endif?>
+            </div>
 
                 <?php endif; ?>
             <?php endforeach; ?>
@@ -439,12 +441,13 @@ $this->registerCssFile('/css/fixed.css', ['depends' => ['frontend\assets\AppAsse
                 />
             </svg>
 
-
             <span class="about_heading head">Про Нас</span>
         </div>
         <div class="about_content">
-            <div class="abaut_img">
-                <img src="/img/<?= $page->aboutUs->img ?>" alt="фото ресторану">
+            <div class="about_border">
+                <div class="abaut_img">
+                    <img src="/img/<?= $page->aboutUs->img ?>" alt="фото ресторану">
+                </div>
             </div>
             <div class="about_text">
                 <h3><?= $page->aboutUs->title ?></h3>

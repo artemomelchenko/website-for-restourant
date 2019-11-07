@@ -16,7 +16,6 @@ window.addEventListener('DOMContentLoaded', (event) => {
           modalUtils.eclipse.addEventListener('click', () => {
             modalUtils.activeForm.classList.remove('active');
             removeEclipse();
-
           });
         }
         const removeEclipse = () => {
