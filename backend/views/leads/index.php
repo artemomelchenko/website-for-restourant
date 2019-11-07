@@ -17,21 +17,52 @@ $this->params['breadcrumbs'][] = $this->title;
 
             <?= GridView::widget([
                 'dataProvider' => $dataProvider,
-                'filterModel' => $searchModel,
+//                'filterModel' => $searchModel,
                 'columns' => [
                     ['class' => 'yii\grid\SerialColumn'],
 
-                    'page_id',
-                    'section',
+                    [
+                        'attribute' => 'page_id',
+                        'format' => 'raw',
+                        'value' => function($model){
+                            if ($model->page_id == 1){
+                                return 'Головна';
+                            }elseif ($model->page_id == 2){
+                                return 'Меню';
+                            }
+                        },
+                    ],
+                    [
+                        'attribute' => 'section',
+                        'format' => 'raw',
+                        'value' => function($model){
+                            if ($model->section == 'reserv'){
+                                return '"Забронювати стіл"';
+                            }elseif ($model->section == 'footer'){
+                                return '"Контакти"';
+                            }
+                        },
+                    ],
                     'name',
                     'phone',
-                    'datetime',
-                    'people',
-                    'comment',
-
+                    [
+                        'attribute' => 'datetime',
+                        'format' => 'raw',
+                        'value' => function($model){
+                            return Yii::$app->formatter->format($model->datetime, 'datetime');
+                        },
+                    ],
+                    [
+                        'attribute' => 'create_at',
+                        'format' => 'raw',
+                        'value' => function($model){
+                            return Yii::$app->formatter->format($model->create_at, 'datetime');
+                        },
+                    ],
+                    'create_at',
                     [
                         'class' => 'yii\grid\ActionColumn',
-                        'template' => '{view} {delete}',
+                        'template' => '{view}',
                         'buttons' => [
                             'view' => function ($url, $model) {
                                 return Html::a(

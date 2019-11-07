@@ -46,4 +46,5 @@ return [
     'Update Menu Block: {name}' => 'Редагувати блок "Меню": {name}',
     'Update About Us Block: {name}' => 'Редагувати блок "Про Нас": {name}',
     'Update Settings: {name}' => 'Редагувати Налаштування: {name}',
+    'Create At' => 'Створено',
 ];
