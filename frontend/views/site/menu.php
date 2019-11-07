@@ -126,6 +126,11 @@
             <div class="menu_page_slider_img">
               <img src="img/<?= $dish->img ?>" alt="картинка  страв">
             </div>
+            <ul>
+            <?php foreach($dishes->categories as $dish2): ?>
+              <li><?= $dish2->name ?></li>
+            <?php endforeach; ?>
+            </ul>
             <div class="menu_page_slider_list">
               <table>
                   <?php foreach ($dish->items as $item): ?>

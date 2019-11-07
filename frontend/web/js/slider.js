@@ -242,7 +242,6 @@ function sliderInit() {
   if(window.screen.width  < 500) {
     dropDownInit(disheSlider);
   }
-  
   // dropDownInit(drinkSlider);
   function dropDownInit(slider){
     const heads = Array.from(slider.getElementsByTagName('h2'));
@@ -306,18 +305,32 @@ function sliderInit() {
       el.addEventListener('click', function(e){
         let target = e.target;
         activeItem.set(target.innerHTML);
-        $(slider).slick('slickGoTo',target.dataset.id)
+        $(slider).slick('slickGoTo',target.dataset.id);
       });
       wrap.appendChild(el);
     }
     for(let i = 0; i < heads.length; i++) {
       buildElement(heads[i], i);
     }
-      document.getElementById('dishes').appendChild(wrap);
-      activeItem.init();
-  }
 
+    function injectIntoItems() {
+      const items = slider.getElementsByClassName('slick-slide');
+      
+      for(let i = 0; i < items.length; i++) {
+        let target = items[i].getElementsByClassName('menu_page_slider_content')[0];
+        console.log( target.getElementsByClassName('menu_page_slider_img')[0]);
+        target.appendChild(wrap);
+       
+
+      }
+    }
+    
+    injectIntoItems();
+    // activeItem.init();
+    // document.getElementsByClassName('menu_page_slider_dishes')[0].appendChild(wrap);
+   
   }
+}
 
   
 
