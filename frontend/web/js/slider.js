@@ -188,16 +188,14 @@ function sliderInit() {
             // adaptiveHeight: true
           }
         },
-      //   {
-      //     breakpoint: 500,
-      //     settings: {
-      //       // dots: false,
-      //       arrow: true,
-      //       nextArrow: '<div class="arrow arrow__l"><div class="wrap"></div></div>',
-      //       prevArrow: '<div class="arrow arrow__r"><div class="wrap"></div></div>',
-      //       adaptiveHeight: true
-      //   }
-      // }
+        {
+          breakpoint: 500,
+          settings: {
+            // dots: false,
+            arrow: false,
+            // adaptiveHeight: true
+        }
+      }
     ]
     });
 
@@ -241,12 +239,15 @@ function sliderInit() {
       hoverProduct(drinkSlider);
   }
 
-  dropDownInit(disheSlider);
+  if(window.screen.width  < 500) {
+    dropDownInit(disheSlider);
+  }
+  
   // dropDownInit(drinkSlider);
   function dropDownInit(slider){
     const heads = Array.from(slider.getElementsByTagName('h2'));
     const wrap = document.createElement('div');
-    wrap.classList ='slider__dropdown';
+    wrap.classList ='slider__dropdown active';
 
     const dropdownControl = function() {
       let el = document.createElement('div');
@@ -255,16 +256,25 @@ function sliderInit() {
       let state = true;
 
       el.addEventListener('click', function() {
-        console.log(dropDownHeight);
         if(state){
           wrap.style.height = 45 + 'px';
+          wrap.classList.remove('active');
           state = false;
         }
         else {
           state = true;
+          wrap.classList.add('active');
           wrap.style.height = dropDownHeight + 'px';
+
+          document.body.addEventListener('click', function(e) {
+            e.stopImmediatePropagation();
+            if(e.target.classList.contains('dropdown__item')){
+              wrap.style.height = 45 + 'px';
+              state = false;
+              wrap.classList.remove('active');
+            }
+          });
         }
-       
       });
 
       wrap.appendChild(el);
@@ -273,8 +283,10 @@ function sliderInit() {
           el.innerText = target;
         },
         init: function() {
-          console.log(wrap.getBoundingClientRect().height);
           dropDownHeight =  wrap.getBoundingClientRect().height;
+          wrap.style.height = 45 + 'px';
+          wrap.classList.remove('active');
+          state = false;
         }
       }
     }
@@ -301,10 +313,6 @@ function sliderInit() {
     for(let i = 0; i < heads.length; i++) {
       buildElement(heads[i], i);
     }
-    // heads.forEach(function(el) {
-    //   buildElement(el);
-    // })
-
       document.getElementById('dishes').appendChild(wrap);
       activeItem.init();
   }

@@ -68,7 +68,7 @@ $gallerys = array_chunk($page->galleries,6,true);
         </div>
         <div class="form_row">
             <label for="reserv-people">К-сть чоловік</label>
-            <input id="reserv-people" type="number" name="people" >
+            <input id="reserv-people" type="text" name="people" >
         </div>
         <div class="form_row">
             <label for="reserv-message">Коментар</label>
@@ -144,7 +144,7 @@ $gallerys = array_chunk($page->galleries,6,true);
                                 <?= !empty($slider->text) ? $slider->text : '' ?>
                             </p>
                             <?php if (!empty($slider->button_text)): ?>
-                            <a class="main_btn main_btn_small" href="<?= $slider->button_link ?>" ><?= $slider->button_text ?></a>
+                            <a class="main_btn main_btn_small" href="<?= $slider->button_link ?>" data-target="anchor" ><?= $slider->button_text ?></a>
                             <?php endif; ?>
                         </div>
 
@@ -234,9 +234,9 @@ $gallerys = array_chunk($page->galleries,6,true);
             <div class="reserv_img">
                 <img src="/img/reserv.png" alt="фото тарілкі та столових пріборів">
             </div>
-            <div >
+<!--            <div >-->
                 <button class="main_btn modal_btn reserv_btn" data-form="reserveTable" data-id="reserv">Забронювати стіл</button>
-            </div>
+<!--            </div>-->
         </div>
     </div>
     <div class="reserv_decoration">
@@ -286,9 +286,14 @@ $gallerys = array_chunk($page->galleries,6,true);
                     </p>
                 </div>
                 <?php if (!empty($recipe)):?>
-                <div class="recipe_img">
-                    <img src="/img/recipes/<?= $recipe->img?>" alt="">
-                </div>
+                    <div class="recipe_border active">
+                        <div class="recipe_img">
+                            <img src="/img/recipes/<?= $recipe->img?>" alt="">
+                        </div>
+                    </div>
+<!--                <div class="recipe_img active">-->
+<!--                    <img src="/img/recipes/--><?//= $recipe->img?><!--" alt="">-->
+<!--                </div>-->
                 <?php endif?>
             </div>
 
@@ -536,14 +541,13 @@ $gallerys = array_chunk($page->galleries,6,true);
                       stroke-width="1"/>/>
             </svg>
 
-
-
-
             <span class="about_heading head">Про Нас</span>
         </div>
         <div class="about_content">
-            <div class="abaut_img">
-                <img src="/img/about.jpg" alt="фото ресторану">
+            <div class="about_border">
+                <div class="abaut_img">
+                    <img src="/img/about.jpg" alt="фото ресторану">
+                </div>
             </div>
             <div class="about_text">
                 <h3>Kampana Restaurant</h3>
