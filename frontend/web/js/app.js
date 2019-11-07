@@ -283,7 +283,7 @@ function animationController() {
   
               const inputs = Array.from(form.getElementsByTagName('input'));
               const textarea = form.getElementsByTagName('textarea')[0];
-
+              let csrfToken = $('meta[name="csrf-token"]').attr("content");
               let res = {};
               inputs.forEach(el => {
                 let key = el.getAttribute('name');
@@ -300,9 +300,10 @@ function animationController() {
               const path = window.location.pathname;
   
               $.ajax({
+                dataType: 'json',
                 type: 'POST',
                 path: path,
-                data: res,
+                data: {data: res, '_csrf-frontend': csrfToken},
                 success: function(){
                   // console.log(12323);
                 }

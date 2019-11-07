@@ -55,4 +55,13 @@ class Leads extends \yii\db\ActiveRecord
             'section' => Yii::t('app', 'Section'),
         ];
     }
+
+    public function savingToDb($post){
+
+        $this->name = $post['name'];
+        $this->phone = $post['phone'];
+        $this->datetime = $post['null'];
+        $this->people = $post['people'];
+        $this->people = $post['people'];
+    }
 }

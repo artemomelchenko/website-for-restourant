@@ -83,8 +83,13 @@ class SiteController extends Controller
 
         $leads = new Leads();
 
+        $post = Yii::$app->request->post();
+
         if (Yii::$app->request->isAjax) {
-            VarDumper::dump(Yii::$app->request->post(), 10, 1);
+            if ($post['data']){
+                $test = $leads->savingToDb($post['data']);
+            VarDumper::dump($test, 10, 1);
+            }
         }
 
         return $this->render('index', [
