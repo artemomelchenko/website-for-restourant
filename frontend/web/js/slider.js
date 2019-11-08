@@ -307,14 +307,14 @@ function sliderInit() {
       startHours = 9;
 
   // 09:00 AM
-  start.setHours(9);
-  start.setMinutes(0);
+      start.setHours(9);
+      start.setMinutes(0);
 
   // If today is Saturday or Sunday set 10:00 AM
-  if ([6, 0].indexOf(start.getDay()) != -1) {
-      start.setHours(10);
-      startHours = 10
-  }
+      if ([6, 0].indexOf(start.getDay()) != -1) {
+          start.setHours(10);
+          startHours = 10
+      }
 
   $('#timepicker').datepicker({
       timepicker: true,
@@ -322,6 +322,10 @@ function sliderInit() {
       startDate: start,
       minHours: startHours,
       maxHours: 18,
+      widgetPositioning:{
+        horizontal: 'auto',
+        vertical: 'bottom'
+      },
       onSelect: function (fd, d, picker) {
           // Do nothing if selection was cleared
           if (!d) return;
