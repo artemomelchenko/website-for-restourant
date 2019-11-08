@@ -37,6 +37,10 @@ td, th {
 .recipe_border{
     position: relative;
 }
+/*Calcul*/
+.calc_btn {
+    padding: 8px 55px;
+}
 
 /*GALLERY*/
 
@@ -136,16 +140,18 @@ td, th {
 
 }
 @media only screen and (max-width: 480px) {
+
+
     .slider_wrapper {
         padding-top: 68px !important;
     }
     .slider_img img {
-        top: 7%;
+        top: 1%;
         right: 7%;
         max-width: 96%;
     }
     .slider_picture {
-        top: -6%;
+        top: -13%;
         right: 8%;
         max-width: 90%;
     }
@@ -204,11 +210,19 @@ td, th {
     #svg_form1{
         padding: 20px 0 40px 0;
     }
-
-
+    .calc_btn {
+        padding: 0px;
+    }
+  
 }
 
 @media only screen and (max-width: 414px) {
+    .slider_picture {
+        top: -6%;
+    }
+    .slider_img img {
+        top: 9%;
+    }
 
     .slider_wrapper {
         padding-top: 30px !important;
@@ -226,10 +240,16 @@ td, th {
         left: calc(60.5% - 140px);
     }
     .footer_decoration img{
-        height: 28vh;
+        height: 18vh;
     }
 }
 @media only screen and (max-width: 375px){
+    .slider_picture {
+        top: -14%;
+    }
+    .slider_img img {
+        top: 0%;
+    }
     #recipe .slider__counter {
         top: -15px;
     }
@@ -249,12 +269,12 @@ td, th {
 
 @media only screen and (max-width: 375px) and (max-height: 736px) {
     .slider_img img {
-        top: 26%;
+        top: 20%;
         right: 3%;
         max-width: 90%;
     }
     .slider_picture {
-        top: 15%;
+        top: 9%;
         right: 14%;
         max-width: 82%;
     }
@@ -274,11 +294,11 @@ td, th {
 
 @media only screen and (max-width: 360px) {
     .slider_img img {
-        top: 33%;
+        top: 27%;
     }
 
     .slider_picture {
-        top: 20%;
+        top: 15%;
     }
     #recipe .slider__counter {
         top: -60px;
@@ -299,11 +319,11 @@ td, th {
     }
 
     .slider_picture {
-        top: 46px !important;
+        top: 42px !important;
     }
 
     .slider_img img {
-        top: 39% !important;
+        top: 37% !important;
     }
     .main_btn_small {
         top: 274px !important;

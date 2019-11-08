@@ -8,7 +8,7 @@ $this->registerCssFile('/css/fixed.css', ['depends' => ['frontend\assets\AppAsse
 $this->registerJsFile('/js/menu.js');
 
 ?>
-<div id="eclipse" class=""></div>
+<!-- <div id="eclipse" class=""></div>
 <div class="form_wrapper menu">
     <div class="form_heading">
         <div class="button_close"></div>
@@ -72,7 +72,7 @@ $this->registerJsFile('/js/menu.js');
             <button class="main_btn ">Забронювати</button>
         </div>
     </form>
-</div>
+</div> -->
 <div class="container">
     <div class="header_wrapper">
         <a href="/">
