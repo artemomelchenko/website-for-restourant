@@ -20,14 +20,46 @@ $this->params['breadcrumbs'][] = $this->title;
                 'model' => $model,
                 'attributes' => [
 
-                    'page_id',
-                    'section',
+                    [
+                        'attribute' => 'page_id',
+                        'format' => 'raw',
+                        'value' => function($model){
+                            if ($model->page_id == 1){
+                                return 'Головна';
+                            }elseif ($model->page_id == 2){
+                                return 'Меню';
+                            }
+                        },
+                    ],
+                    [
+                        'attribute' => 'section',
+                        'format' => 'raw',
+                        'value' => function($model){
+                            if ($model->section == 'reserv'){
+                                return '"Забронювати стіл"';
+                            }elseif ($model->section == 'footer'){
+                                return '"Контакти"';
+                            }
+                        },
+                    ],
                     'name',
                     'phone',
-                    'datetime',
+                    [
+                        'attribute' => 'datetime',
+                        'format' => 'raw',
+                        'value' => function($model){
+                            return Yii::$app->formatter->format($model->datetime, 'datetime');
+                        },
+                    ],
                     'people',
                     'comment',
-                    'create_at',
+                    [
+                        'attribute' => 'create_at',
+                        'format' => 'raw',
+                        'value' => function($model){
+                            return Yii::$app->formatter->format($model->create_at, 'datetime');
+                        },
+                    ],
                 ],
             ]) ?>
         </div>

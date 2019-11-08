@@ -86,7 +86,6 @@ $this->registerJsFile('/js/menu.js');
         </div>
     </div>
     <section id="dishes">
-        <!--           <div class="container">-->
         <div class="dishes">
             <svg
                     id="dishes_svg"
@@ -119,39 +118,36 @@ $this->registerJsFile('/js/menu.js');
 
         <div class="menu_page_slider_dishes" data-slider="1">
 
-            <?php foreach($dishes->categories as $dish): ?>
-          <div class="menu_page_slider_content">
-              <div class="menu_page_slider_heading">
-                  <h2><?= $dish->name ?></h2>
+            <?php foreach ($dishes->categories as $dish): ?>
+                <div class="menu_page_slider_content">
+                    <div class="menu_page_slider_heading">
+                        <h2><?= $dish->name ?></h2>
+                    </div>
+                    <div class="menu_page_slider_img">
+                        <img src="img/<?= $dish->img ?>" alt="картинка  страв">
+                    </div>
+                    <ol class="slider__dropdown">
+                        <li class="dropdown__item-header"><?= $dish->name ?></li>
+                        <?php foreach ($dishes->categories as $dish2): ?>
+                            <li class="dropdown__item"><?= $dish2->name ?></li>
+                        <?php endforeach; ?>
+                    </ol>
+                    <div class="menu_page_slider_list">
+                        <table>
+                            <?php foreach ($dish->items as $item): ?>
+                                <tr>
+                                    <td><?= $item->name ?></td>
+                                    <td class="menu_price"><?= $item->price ?></td>
+                                </tr>
+                            <?php endforeach; ?>
+                        </table>
+                    </div>
                 </div>
-            <div class="menu_page_slider_img">
-              <img src="img/<?= $dish->img ?>" alt="картинка  страв">
-            </div>
-            <ol class="slider__dropdown">
-              <li class="dropdown__item-header"><?= $dish->name ?></li>
-              <?php foreach($dishes->categories as $dish2): ?>
-                <li class="dropdown__item"><?= $dish2->name ?></li>
-              <?php endforeach; ?>
-            </ol>
-            <div class="menu_page_slider_list">
-              <table>
-                  <?php foreach ($dish->items as $item): ?>
-                <tr>
-                  <td><?= $item->name ?></td>
-                  <td class="menu_price"><?= $item->price ?></td>
-                </tr>
-                  <?php endforeach; ?>
-              </table>
-            </div>
-          </div>
-        <?php endforeach; ?>
-          </div>
-      </section>
-<!--     </div>   <!-- end container -->
-<!--    <section> <!--  end -->
-   
+            <?php endforeach; ?>
+        </div>
+    </section>
+
     <section id="drinks">
-        <!--       <div class="container">-->
         <div class="drinks">
             <svg
                     id="drinks_svg"
@@ -188,8 +184,8 @@ $this->registerJsFile('/js/menu.js');
                         <img src="/img/<?= $category2->img ?>" alt="картинка  коктейлі">
                     </div>
                     <ol class="slider__dropdown">
-                      <li class="dropdown__item-header"><?= $category2->name ?></li>
-                        <?php foreach($drinks->categories as $drink): ?>
+                        <li class="dropdown__item-header"><?= $category2->name ?></li>
+                        <?php foreach ($drinks->categories as $drink): ?>
                             <li class="dropdown__item"><?= $drink->name ?></li>
                         <?php endforeach; ?>
                     </ol>
@@ -209,5 +205,5 @@ $this->registerJsFile('/js/menu.js');
         <div class="btn_page_menu">
             <a href="/" class="main_btn" id="btn_menu_page">на головну</a>
         </div>
-</div> <!--container end -->
+</div>
 </section>

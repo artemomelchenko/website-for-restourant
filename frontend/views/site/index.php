@@ -47,7 +47,7 @@ $this->registerCssFile('/css/fixed.css', ['depends' => ['frontend\assets\AppAsse
         <span class="heading_form">Забронювати Стіл</span>
     </div>
 
-    <form class="form" id="reserveTable" action="">
+    <form class="form" id="reserveTable">
         <div class="form_row">
             <label for="reserv-name">Ім'я</label>
             <input type="text" maxlength="30" minlength="2" name="name" id="reserv-name" required>
@@ -63,7 +63,7 @@ $this->registerCssFile('/css/fixed.css', ['depends' => ['frontend\assets\AppAsse
         </div>
         <div class="form_row">
             <label for="reserv-people">К-сть чоловік</label>
-            <input id="reserv-people" type="text" name="people" >
+            <input id="reserv-people" type="text" name="people">
         </div>
         <div class="form_row">
             <label for="reserv-message">Коментар</label>
@@ -132,18 +132,19 @@ $this->registerCssFile('/css/fixed.css', ['depends' => ['frontend\assets\AppAsse
             </div>
             <div class="container slider_container" data-pause="0">
                 <div class="main-slider" data-slider="1">
-                    <?php foreach ($page->sliders as $slider):?>
-                    <?php if (!empty($slider)): ?>
-                    <div class="slider_flex_container ">
-                        <div class="slider_left_part">
-                            <h1 class="slider_heading"><?= !empty($slider->title) ? $slider->title : '' ?></h1>
-                            <p class="slider_text">
-                                <?= !empty($slider->text) ? $slider->text : '' ?>
-                            </p>
-                            <?php if (!empty($slider->button_text)): ?>
-                            <a class="main_btn main_btn_small" href="<?= $slider->button_link ?>" data-target="anchor" ><?= $slider->button_text ?></a>
-                            <?php endif; ?>
-                        </div>
+                    <?php foreach ($page->sliders as $slider): ?>
+                        <?php if (!empty($slider)): ?>
+                            <div class="slider_flex_container ">
+                                <div class="slider_left_part">
+                                    <h1 class="slider_heading"><?= !empty($slider->title) ? $slider->title : '' ?></h1>
+                                    <p class="slider_text">
+                                        <?= !empty($slider->text) ? $slider->text : '' ?>
+                                    </p>
+                                    <?php if (!empty($slider->button_text)): ?>
+                                        <a class="main_btn main_btn_small" href="<?= $slider->button_link ?>"
+                                           data-target="anchor"><?= $slider->button_text ?></a>
+                                    <?php endif; ?>
+                                </div>
 
                                 <div class="slider_right_part">
                                     <?php if (!empty($slider->main_img)): ?>
@@ -168,26 +169,25 @@ $this->registerCssFile('/css/fixed.css', ['depends' => ['frontend\assets\AppAsse
 <section id="menu">
     <div class="container">
         <div class="menu_headig_wrapper ">
-            <h2>
-                <svg
-                        id="svg_menu"
-                        width="131"
-                        height="119"
-                        viewBox="0 0 131 119"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg">
-                    <path d="M128.695 6.91846L129.64 6.86599V5.92V2.72V1.65266L128.575 1.72212C123.7 2.04003 116.952 2.19999 108.32 2.19999H100.8H100.106L99.8631 2.8503L66.3917 92.5227L32.1348 2.36481L31.8652 1.6554L31.1095 1.72411C27.6314 2.04029 23.1313 2.19999 17.6 2.19999C11.2102 2.19999 6.28555 2.04001
+            <svg
+                    id="svg_menu"
+                    width="131"
+                    height="119"
+                    viewBox="0 0 131 119"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                <path d="M128.695 6.91846L129.64 6.86599V5.92V2.72V1.65266L128.575 1.72212C123.7 2.04003 116.952 2.19999 108.32 2.19999H100.8H100.106L99.8631 2.8503L66.3917 92.5227L32.1348 2.36481L31.8652 1.6554L31.1095 1.72411C27.6314 2.04029 23.1313 2.19999 17.6 2.19999C11.2102 2.19999 6.28555 2.04001
             2.81054 1.72411L1.72 1.62497V2.72V5.92V6.86599L2.66453 6.91846C6.48982 7.13097 9.13356 7.55308 10.6889 8.13633L10.698 8.13975L10.7072 8.14299C12.2353 8.68233 13.2377 9.68468 13.777 11.2128C14.3567 12.8553 14.68 15.6429 14.68 19.68V97.44C14.68 101.457 14.3608 104.433 13.7643 106.426C13.2022 
             108.2 12.1515 109.474 10.5928 110.305C8.95485 111.07 6.34363 111.591 2.66295 111.802L1.72 111.856V112.8V116V117.095L2.81054 116.996C6.28555 116.68 11.2102 116.52 17.6 116.52C24.6309 116.52 30.0384 116.68 33.837 116.997L34.92 117.087V116V112.8V111.849L33.9699 111.801C29.7466 111.59 26.75 
             111.065 24.8882 110.287C23.1065 109.438 21.9182 108.149 21.2665 106.396C20.6788 104.52 20.36 101.559 20.36 97.44V18.2981L58.7478 117.162L58.9956 117.8H59.68H62.24H62.9346L63.1771 117.149L99.8 18.8295V99.04C99.8 103.077 99.4767 105.865 98.897 107.507C98.3577 109.035 97.3553 110.038 95.8272 
             110.577L95.818 110.58L95.8089 110.584C94.2536 111.167 91.6098 111.589 87.7845 111.802L86.84 111.854V112.8V116V117.074L87.9112 116.997C92.3541 116.68 99.1514 116.52 108.32 116.52C116.952 116.52 123.7 116.68 128.575 116.998L129.64 117.067V116V112.8V111.854L128.695 111.802C124.883 111.59 122.177 
             111.169 120.502 110.58C119.094 110.05 118.13 109.056 117.583 107.507C117.003 105.865 116.68 103.077 116.68 99.04V19.68C116.68 15.6429 117.003 12.8553 117.583 11.2128C118.13 9.66403 119.094 8.67042 120.502 8.13973C122.176 7.55074 124.883 7.13029 128.695 6.91846Z"
-                          stroke="#D9B696"
-                          stroke-width="1"/>
-                </svg>
-                <span class="menu_headig head">Меню</span>
+                      stroke="#D9B696"
+                      stroke-width="1"/>
+            </svg>
+
+            <span class="menu_headig head">Меню</span>
         </div>
-        </h2>
         <div class="menu_wrapper">
             <div class="menu_img">
                 <img src="/img/<?= $page->menuBlock->img ?>" alt="фото страви лосось з клюквиним соусом">
@@ -231,9 +231,8 @@ $this->registerCssFile('/css/fixed.css', ['depends' => ['frontend\assets\AppAsse
             <div class="reserv_img">
                 <img src="/img/reserv.png" alt="фото тарілкі та столових пріборів">
             </div>
-<!--            <div >-->
-                <button class="main_btn modal_btn reserv_btn" data-form="reserveTable" data-id="reserv">Забронювати стіл</button>
-<!--            </div>-->
+            <button class="main_btn modal_btn reserv_btn" data-form="reserveTable" data-id="reserv">Забронювати стіл
+            </button>
         </div>
     </div>
     <div class="reserv_decoration">
@@ -273,26 +272,23 @@ $this->registerCssFile('/css/fixed.css', ['depends' => ['frontend\assets\AppAsse
             </svg>
             <span class="heading_recipe head">Рецепт</span>
         </div>
-        <div class="recipe_slider"data-slider="2">
-            <?php foreach ($page->recipes as $recipe):?>
-            <?php if (!empty($recipe)): ?>
-            <div class="recipe_slider_wrapper">
-                <div class="recipe_text">
-                    <h3><?= $recipe->title?></h3>
-                    <p><?= $recipe->text?>
-                    </p>
-                </div>
-                <?php if (!empty($recipe)):?>
-                    <div class="recipe_border active">
-                        <div class="recipe_img">
-                            <img src="/img/recipes/<?= $recipe->img?>" alt="">
+        <div class="recipe_slider" data-slider="2">
+            <?php foreach ($page->recipes as $recipe): ?>
+                <?php if (!empty($recipe)): ?>
+                    <div class="recipe_slider_wrapper">
+                        <div class="recipe_text">
+                            <h3><?= $recipe->title ?></h3>
+                            <p><?= $recipe->text ?>
+                            </p>
                         </div>
+                        <?php if (!empty($recipe)): ?>
+                            <div class="recipe_border active">
+                                <div class="recipe_img">
+                                    <img src="/img/recipes/<?= $recipe->img ?>" alt="">
+                                </div>
+                            </div>
+                        <?php endif ?>
                     </div>
-<!--                <div class="recipe_img active">-->
-<!--                    <img src="/img/recipes/--><?//= $recipe->img?><!--" alt="">-->
-<!--                </div>-->
-                <?php endif?>
-            </div>
 
                 <?php endif; ?>
             <?php endforeach; ?>
@@ -347,9 +343,7 @@ $this->registerCssFile('/css/fixed.css', ['depends' => ['frontend\assets\AppAsse
             </div>
         </div>
         <div class="calculation_brn">
-            <a href="#">
-                <button class="main_btn calc_btn">Розрахувати банкет</button>
-            </a>
+            <a href="#" class="main_btn calc_btn">Розрахувати банкет</a>
         </div>
     </div>
     <div class="calculation_decoration">
@@ -438,9 +432,7 @@ $this->registerCssFile('/css/fixed.css', ['depends' => ['frontend\assets\AppAsse
               8.2864 5.55996 9.99307 6.19997C11.8064 6.83997 13.0331 8.06663 13.6731 9.87997C14.3131 11.6933 14.6331 14.6266 14.6331 18.68L14.6331 98.04C14.6331 102.093 14.3131 105.027 13.6731 106.84C13.0331 108.653 11.8064 109.88 9.99307 110.52C8.2864 111.16 5.51307 111.587 1.67307 111.8L1.67307 115C1.9316 114.982 2.19795 114.964 2.47211 114.946C6.94879 114.662 13.5091 114.52 22.1531 114.52C30.3334 114.52 36.8404 114.663 41.674 114.95C41.9457 114.966 42.212 114.983 42.4731 115V111.8C38.6331 111.587 35.8064 111.16 33.9931 110.52Z"
                       stroke="#D9B696"
                       stroke-width="1"/>
-                />
             </svg>
-
             <span class="about_heading head">Про Нас</span>
         </div>
         <div class="about_content">
