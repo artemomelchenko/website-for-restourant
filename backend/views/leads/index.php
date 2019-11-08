@@ -49,7 +49,9 @@ $this->params['breadcrumbs'][] = $this->title;
                         'attribute' => 'datetime',
                         'format' => 'raw',
                         'value' => function($model){
-                            return Yii::$app->formatter->format($model->datetime, 'datetime');
+                            if (!empty($model->datetime))
+                                return Yii::$app->formatter->format($model->datetime, 'datetime');
+                            else return '';
                         },
                     ],
                     [
