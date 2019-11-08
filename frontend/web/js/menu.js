@@ -1,6 +1,5 @@
 
 window.addEventListener('DOMContentLoaded', (event) => {
-
       const sliders = sliderInit();
       sliders.menu();
       function formControl() {

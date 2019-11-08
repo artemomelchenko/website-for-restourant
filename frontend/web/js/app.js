@@ -319,3 +319,33 @@ function animationController() {
         init: modalInit
       }  
     }
+
+$(document).ready(function () {
+    // // Back to Top
+    // let $btnTop = $(".scrollTop")
+    // $(window).on("scroll", function (){
+    //     if ($(window).scrollTop() >= 500) {
+    //         $btnTop.fadeIn();
+    //     } else {
+    //         $btnTop.fadeOut();
+    //     }
+    // });
+    // $btnTop.on("click", function(){
+    //     $("html,body").animate({scrollTop: 0}, 1000)
+    // });
+    // END Back to Top
+
+
+    // Phone Masck
+    $('#reserv-phone').mask('+38(000)000-00-00');
+    $('.data_time').mask('00/00/0000 00:00:00');
+
+    // SMOOTH SCROLL
+    $('a[data-target^="anchor"]').bind('click.smoothscroll', function(){
+        let target = $(this).attr('href'),
+            bl_top = $(target).offset().top - 100;
+        $('body, html').animate({scrollTop: bl_top}, 700);
+        return false;
+    })
+
+});
