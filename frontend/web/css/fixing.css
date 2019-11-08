@@ -320,6 +320,10 @@
         padding: 0;
     } 
 
+    #drinks .drinks {
+        top: 0;
+    }
+
     /* .menu_page_slider_list table {
         display: flex;
         width: 100%;
@@ -368,6 +372,10 @@
         right: 10px;
     } 
 
+
+    #dishes .dishes, #drinks .drinks {
+        position: static;
+    }
     #slider .slider_flex_container {
         display: flex!important;
         flex-direction: column;
@@ -464,7 +472,7 @@
     }
 
     #dishes {
-        padding-top:  130px;
+        padding-top:  35px;
     }
 
     #dishes .slider__counter {

@@ -9,7 +9,6 @@ $this->registerJsFile('/js/app.js', ['depends' => ['frontend\assets\AppAsset']])
 $this->registerCssFile('/css/fixing.css', ['depends' => ['frontend\assets\AppAsset']]);
 $this->registerCssFile('/css/fixed.css', ['depends' => ['frontend\assets\AppAsset']]);
 ?>
-
 <header>
     <div class="container">
         <div class="header_wrapper">

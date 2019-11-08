@@ -94,34 +94,6 @@ function sliderInit() {
       const counterMain = counterBuilder(slider);
       const counterRecipe = counterBuilder(sliderRecipe);
       const counterGallery = counterBuilder(gallerySlider);
-
-      // $('.menu_page_slider_dishes').slick({
-      //   arrows: false,
-      //   infinite: false,
-      //   fade: true,
-      //   speed: 700,
-      //   dots: true
-      // });
-
-      // function menuSliders(){
-      //   $('.menu_page_slider_dishes').slick({
-      //     arrows: false,
-      //     infinite: false,
-      //     fade: true,
-      //     speed: 700,
-      //     dots: true
-      //   });
-
-      //   $('.menu_page_slider_drinks').slick({
-      //     arrows: false,
-      //     infinite: false,
-      //     fade: true,
-      //     speed: 700,
-      //     dots: true
-      //   });
-
-        // targetProduct(document.getElementsByClassName('menu_page_slider_dishes')[0]);
-        // targetProduct(document.getElementsByClassName('menu_page_slider_drinks')[0]);
 }
   function targetProduct(slider) {
     const el = document.createElement('div');
@@ -242,8 +214,8 @@ function sliderInit() {
   if(window.screen.width  < 500) {
     dropDownInit(disheSlider);
     dropDownInit(drinkSlider);
-
   }
+
   function dropDownInit(slider){
     const dropDowns = Array.from(slider.getElementsByClassName('slider__dropdown'));
     let state = false;
@@ -351,4 +323,142 @@ function sliderInit() {
           }
       }
   })
-    }
+}
+
+function formControl() {
+  const modalUtils = {
+    eclipse:  document.getElementById('eclipse'),
+    overlay: document.body,
+    closeBtns: document.getElementsByClassName('button_close'),
+    activeForm: null
+  };
+  const modalBtn = Array.from(document.getElementsByClassName('modal_btn'));
+
+  const showEclipse = () => {
+    modalUtils.eclipse.classList.add('active');
+    modalUtils.eclipse.addEventListener('click', () => {
+      modalUtils.activeForm.classList.remove('active');
+      removeEclipse();
+    });
+  }
+  const removeEclipse = () => {
+    modalUtils.eclipse.classList.remove('active');
+    modalUtils.overlay.style.overflowY = 'initial';
+  }
+  const hideModal = (form) => {
+    form.classList.remove('active');
+  }
+  const showModal = (form) => {
+    form.classList.add('active');
+  }
+
+  function modalInit() {
+    modalBtn.forEach(el => {
+      el.addEventListener('click', (e) => {
+        e.preventDefault();
+        showEclipse();
+        modalUtils.overlay.style.overflowY = 'hidden';
+        let target = e.target;
+        let wrap = document.getElementById(`${target.dataset.form}`).parentNode;
+        let closeBtn = wrap.getElementsByClassName('button_close')[0];
+
+        closeBtn.addEventListener('click', (e) => {
+          hideModal(wrap);
+          removeEclipse();
+        });
+
+        let form = document.getElementById(`${target.dataset.form}`);
+        let input = form.getElementsByTagName('input');
+        let textarea = form.getElementsByTagName('textarea')[0];
+        textarea.addEventListener('focus', (e) => {
+          let label = e.target.previousElementSibling;
+          label.classList.add('active');
+        });
+        form.dataset.id = target.dataset.id;
+
+        textarea.addEventListener('focusout', (e) => {
+          if(textarea.value == ''){
+            let label = e.target.previousElementSibling;
+            label.classList.remove('active');
+        }
+        })
+        for(let i = 0; i < input.length; i++) {
+          input[i].addEventListener('focus', (e) => {
+            let label = e.target.previousElementSibling;
+            label.classList.add('active');
+          });
+          input[i].addEventListener('focusout', (e) => {
+            if(input[i].value == ''){
+              let label = e.target.previousElementSibling;
+              label.classList.remove('active');
+          }
+          });
+        }
+        form.addEventListener('submit', function(e){
+          e.preventDefault();
+
+          const inputs = Array.from(form.getElementsByTagName('input'));
+          const textarea = form.getElementsByTagName('textarea')[0];
+          let csrfToken = $('meta[name="csrf-token"]').attr("content");
+          let res = {};
+          inputs.forEach(el => {
+            let key = el.getAttribute('name');
+            let value = el.value;
+            
+            res[key]= value;
+            
+          })
+          let key = textarea.getAttribute('name');
+          let value = textarea.value;
+          res[key]= value;
+          res.id = form.dataset.id;
+
+          const path = window.location.pathname;
+          
+          $.ajax({
+            // dataType: 'json',
+            type: 'POST',
+            path: path,
+            data: {data: res, '_csrf-frontend': csrfToken},
+            success: function(){
+              document.getElementsByClassName('form_wrapper')[0].classList.remove('active');
+              removeEclipse()
+              form.reset();
+            }
+          })
+        });
+        modalUtils.eclipse.classList.add('active');
+        modalUtils.activeForm = form.parentNode;
+        showModal(form.parentNode);
+      });
+    });
+  } 
+
+  $('#reserv-phone').mask('+38(000)000-00-00');
+  return {
+    init: modalInit
+  }  
+}
+
+function smoothScroll(){
+  $('a[data-target^="anchor"]').bind('click.smoothscroll', function(){
+    let target = $(this).attr('href'),
+        bl_top = $(target).offset().top - 100;
+    $('body, html').animate({scrollTop: bl_top}, 700);
+    return false;
+});
+}
+
+function scrollToTop() {
+  let $btnTop = $(".scrollTop")
+  $(window).on("scroll", function (){
+      if ($(window).scrollTop() >= 500) {
+          $btnTop.fadeIn();
+      } else {
+          $btnTop.fadeOut();
+      }
+  });
+  $btnTop.on("click", function(){
+      $("html,body").animate({scrollTop: 0}, 1000)
+  });
+}
