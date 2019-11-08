@@ -59,7 +59,6 @@ $this->params['breadcrumbs'][] = $this->title;
                             return Yii::$app->formatter->format($model->create_at, 'datetime');
                         },
                     ],
-                    'create_at',
                     [
                         'class' => 'yii\grid\ActionColumn',
                         'template' => '{view}',
@@ -67,7 +66,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             'view' => function ($url, $model) {
                                 return Html::a(
                                     '<span class="glyphicon glyphicon-eye-open"></span>',
-                                    '/admin/leads?id=' . $model->id);
+                                    '/admin/leads/view?id=' . $model->id);
                             },
                         ],
                     ],

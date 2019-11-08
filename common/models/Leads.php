@@ -132,7 +132,6 @@ class Leads extends \yii\db\ActiveRecord
             ->setTo(Yii::$app->params['adminEmail'])
             ->setFrom([Yii::$app->params['adminEmail'] => 'test'])
             ->setSubject('Забронювати стіл')
-//            ->setTextBody($a)
             ->send();
     }
 }
