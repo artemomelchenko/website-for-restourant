@@ -53,7 +53,7 @@ $settings = \common\models\Settings::find()->one();
         </div>
         <div class="form_row">
             <label for="reserv-data">Дата та час</label>
-            <input  type='text' id="timepicker" class="data_type">
+            <input  type='text' id="timepicker" class="data_type" data-position="top left">
         </div>
         <div class="form_row">
             <label for="reserv-people">К-сть чоловік</label>
