@@ -24,66 +24,13 @@ window.onload = function() {
     checkPoints();
     const forms = formControl();
     forms.init();
-  
-    var start = new Date(),
-    prevDay,
-    startHours = 9;
-  
-  // 09:00 AM
-  start.setHours(9);
-  start.setMinutes(0);
-  
-  // If today is Saturday or Sunday set 10:00 AM
-  if ([6, 0].indexOf(start.getDay()) != -1) {
-    start.setHours(10);
-    startHours = 10
-  }
-  
-  var start = new Date(),
-  prevDay,
-  startHours = 9;
-  
-  // 09:00 AM
-  start.setHours(9);
-  start.setMinutes(0);
-  
-  // If today is Saturday or Sunday set 10:00 AM
-  if ([6, 0].indexOf(start.getDay()) != -1) {
-  start.setHours(10);
-  startHours = 10
-  }
-  
-  $('#timepicker').datepicker({
-      timepicker: true,
-      language: 'en',
-      startDate: start,
-      minHours: startHours,
-      maxHours: 18,
-      onSelect: function (fd, d, picker) {
-      // Do nothing if selection was cleared
-      if (!d) return;
-  
-      var day = d.getDay();
-  
-      // Trigger only if date is changed
-      if (prevDay != undefined && prevDay == day) return;
-      prevDay = day;
-  
-      // If chosen day is Saturday or Sunday when set
-      // hour value for weekends, else restore defaults
-      if (day == 6 || day == 0) {
-          picker.update({
-              minHours: 10,
-              maxHours: 16
-          })
-      } else {
-          picker.update({
-              minHours: 9,
-              maxHours: 18
-          })
-      }
-  }
-  })
+    
+    $('#reserv-phone').mask('+38(000)000-00-00');
+    $('#timepicker').mask('00/00/0000 00:00:00');
+
+    smoothScroll();
+    scrollToTop();
+
   }
   
 function animationController() {
@@ -209,143 +156,32 @@ function animationController() {
   
     // POPUP
   
-    function formControl() {
-      const modalUtils = {
-        eclipse:  document.getElementById('eclipse'),
-        overlay: document.body,
-        closeBtns: document.getElementsByClassName('button_close'),
-        activeForm: null
-      };
-      const modalBtn = Array.from(document.getElementsByClassName('modal_btn'));
-      const showEclipse = () => {
-        modalUtils.eclipse.classList.add('active');
-        modalUtils.eclipse.addEventListener('click', () => {
-          modalUtils.activeForm.classList.remove('active');
-          removeEclipse();
   
-        });
-      }
-      const removeEclipse = () => {
-        modalUtils.eclipse.classList.remove('active');
-        modalUtils.overlay.style.overflowY = 'initial';
-      }
-      const hideModal = (form) => {
-        form.classList.remove('active');
-      }
-      const showModal = (form) => {
-        form.classList.add('active');
-      }
-  
-      function modalInit() {
-        modalBtn.forEach(el => {
-          el.addEventListener('click', (e) => {
-            e.preventDefault();
-            showEclipse();
-            modalUtils.overlay.style.overflowY = 'hidden';
-            let target = e.target;
-            let wrap = document.getElementById(`${target.dataset.form}`).parentNode;
-            let closeBtn = wrap.getElementsByClassName('button_close')[0];
-  
-            e.target.dataset.form
-            closeBtn.addEventListener('click', (e) => {
-              hideModal(wrap);
-              removeEclipse();
-            });
-            let form = document.getElementById(`${target.dataset.form}`);
-            let input = form.getElementsByTagName('input');
-            let textarea = form.getElementsByTagName('textarea')[0];
-            textarea.addEventListener('focus', (e) => {
-              let label = e.target.previousElementSibling;
-              label.classList.add('active');
-            });
-            form.dataset.id = target.dataset.id;
-  
-            textarea.addEventListener('focusout', (e) => {
-              if(textarea.value == ''){
-                let label = e.target.previousElementSibling;
-                label.classList.remove('active');
-            }
-            })
-            for(let i = 0; i < input.length; i++) {
-              input[i].addEventListener('focus', (e) => {
-                let label = e.target.previousElementSibling;
-                label.classList.add('active');
-              });
-              input[i].addEventListener('focusout', (e) => {
-                if(input[i].value == ''){
-                  let label = e.target.previousElementSibling;
-                  label.classList.remove('active');
-              }
-              });
-            }
-            form.addEventListener('submit', function(e){
-              e.preventDefault();
-  
-              const inputs = Array.from(form.getElementsByTagName('input'));
-              const textarea = form.getElementsByTagName('textarea')[0];
-              let csrfToken = $('meta[name="csrf-token"]').attr("content");
-              let res = {};
-              inputs.forEach(el => {
-                let key = el.getAttribute('name');
-                let value = el.value;
-                
-                res[key]= value;
-                
-              })
-              let key = textarea.getAttribute('name');
-              let value = textarea.value;
-              res[key]= value;
-              res.id = form.dataset.id;
 
-              const path = window.location.pathname;
-  
-              $.ajax({
-                dataType: 'json',
-                type: 'POST',
-                path: path,
-                data: {data: res, '_csrf-frontend': csrfToken},
-                success: function(){
-                  // console.log(12323);
-                }
-              })
-            });
-            modalUtils.eclipse.classList.add('active');
-            modalUtils.activeForm = form.parentNode;
-            showModal(form.parentNode);
-          });
-        });
-      } 
-      return {
-        init: modalInit
-      }  
-    }
-
-$(document).ready(function () {
-    // // Back to Top
-    // let $btnTop = $(".scrollTop")
-    // $(window).on("scroll", function (){
-    //     if ($(window).scrollTop() >= 500) {
-    //         $btnTop.fadeIn();
-    //     } else {
-    //         $btnTop.fadeOut();
-    //     }
-    // });
-    // $btnTop.on("click", function(){
-    //     $("html,body").animate({scrollTop: 0}, 1000)
-    // });
-    // END Back to Top
+// $(document).ready(function () {
+//     // Back to Top
+//     let $btnTop = $(".scrollTop")
+//     $(window).on("scroll", function (){
+//         if ($(window).scrollTop() >= 500) {
+//             $btnTop.fadeIn();
+//         } else {
+//             $btnTop.fadeOut();
+//         }
+//     });
+//     $btnTop.on("click", function(){
+//         $("html,body").animate({scrollTop: 0}, 1000)
+//     });
+//     // END Back to Top
 
 
-    // Phone Masck
-    $('#reserv-phone').mask('+38(000)000-00-00');
-    $('.data_time').mask('00/00/0000 00:00:00');
+//     // Phone Masck
 
-    // SMOOTH SCROLL
-    $('a[data-target^="anchor"]').bind('click.smoothscroll', function(){
-        let target = $(this).attr('href'),
-            bl_top = $(target).offset().top - 100;
-        $('body, html').animate({scrollTop: bl_top}, 700);
-        return false;
-    })
+//     // SMOOTH SCROLL
+//     $('a[data-target^="anchor"]').bind('click.smoothscroll', function(){
+//         let target = $(this).attr('href'),
+//             bl_top = $(target).offset().top - 100;
+//         $('body, html').animate({scrollTop: bl_top}, 700);
+//         return false;
+//     })
 
-});
+// });
